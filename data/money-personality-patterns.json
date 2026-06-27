@@ -1,0 +1,74 @@
+[
+  {
+    "id": "money_as_survival_air",
+    "name": "Money As Survival Air",
+    "keywords": ["survival", "生存", "worrying about survival", "not always thinking about survival", "cashflow"],
+    "conditions": {
+      "cashflow_dependency_gte": 4
+    },
+    "description": "Money is experienced less as wealth and more as breathing room from survival anxiety.",
+    "life_effect": "Low buffer can consume attention and make creative action feel unsafe.",
+    "branch_effect": {
+      "inertia": 1.2,
+      "intervention": 0.6,
+      "rupture": 0.7
+    },
+    "financial_effect": {
+      "baseline_drag": 0.5,
+      "volatility": 0.5,
+      "reason": "survival anxiety turns money into attention pressure"
+    }
+  },
+  {
+    "id": "money_as_permission_to_create",
+    "name": "Money As Permission To Create",
+    "keywords": ["create", "creation", "influence", "meaningful", "product concepts", "public artifacts"],
+    "description": "Money is partly imagined as permission to create without asking family or institutions for approval.",
+    "life_effect": "When small income appears, action momentum can rise sharply.",
+    "branch_effect": {
+      "intervention": 1.5
+    },
+    "financial_effect": {
+      "intervention_growth": 0.45,
+      "volatility": 0.45,
+      "reason": "creative income can unlock autonomy faster than stable income alone"
+    }
+  },
+  {
+    "id": "shame_debt_loop",
+    "name": "Shame Debt Loop",
+    "keywords": ["debt", "负债", "ashamed", "shame", "deservingness", "low sense of deservingness"],
+    "conditions": {
+      "debt_pressure_gte": 2
+    },
+    "description": "Debt is not only a number; it becomes a shame marker that narrows perceived options.",
+    "life_effect": "The person may delay asking for help or taking visible action until the shame is resolved.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 0.6,
+      "intervention": -0.2
+    },
+    "financial_effect": {
+      "baseline_drag": 0.55,
+      "intervention_drag": 0.3,
+      "volatility": 0.35,
+      "reason": "debt shame slows clean financial action"
+    }
+  },
+  {
+    "id": "optionality_seeker",
+    "name": "Optionality Seeker",
+    "keywords": ["freedom", "选择权", "optionality", "not being crushed", "independent", "创业"],
+    "description": "The person wants money mainly because it creates optionality and exit rights.",
+    "life_effect": "If a small ladder is built, the intervention branch can compound; if not, freedom remains fantasy.",
+    "branch_effect": {
+      "intervention": 1.2,
+      "inertia": 0.4
+    },
+    "financial_effect": {
+      "intervention_growth": 0.35,
+      "volatility": 0.35,
+      "reason": "optionality motive supports staged asset building"
+    }
+  }
+]

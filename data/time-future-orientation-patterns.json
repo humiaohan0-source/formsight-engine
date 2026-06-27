@@ -1,0 +1,42 @@
+[
+  {
+    "id": "future_blindness_short_horizon",
+    "name": "未来感变短",
+    "description": "压力过高时，当事人只能看见眼前几天或几周，无法稳定构想长期人生。",
+    "keywords": ["看不到未来", "只想撑过今天", "不知道以后", "走一步看一步", "短期"],
+    "conditions": { "future_blindness_gte": 4 },
+    "amplifies": ["survivor", "escaper"],
+    "branch_effect": { "inertia": 0.9, "rupture": 0.7 },
+    "life_effect": "这会让长期选择变形：不是不想规划，而是未来感已经被压力压短。"
+  },
+  {
+    "id": "urgency_anxiety_false_deadline",
+    "name": "紧迫焦虑制造假截止日",
+    "description": "当事人感觉再不决定就来不及，于是容易做出仓促或过度防御的选择。",
+    "keywords": ["来不及", "年龄焦虑", "必须马上", "错过", "太晚了", "赶紧"],
+    "conditions": { "urgency_anxiety_gte": 4 },
+    "amplifies": ["controller", "prover"],
+    "branch_effect": { "rupture": 0.9, "inertia": 0.4 },
+    "life_effect": "需要区分真实截止日和焦虑截止日，否则重启线会被推高。"
+  },
+  {
+    "id": "short_cycle_planning_ready",
+    "name": "短周期规划能力",
+    "description": "当事人能把未来拆成 7 天、30 天、90 天的可验证步骤，转向线更容易落地。",
+    "keywords": ["计划", "复盘", "90天", "7天", "阶段", "打卡"],
+    "conditions": { "short_cycle_planning_gte": 3 },
+    "amplifies": ["strategist", "future_self"],
+    "branch_effect": { "intervention": 1.5, "inertia": -0.2 },
+    "life_effect": "适合把人生选择改写成阶段性验证，而不是一次性押注。"
+  },
+  {
+    "id": "past_fixation_blocks_new_branch",
+    "name": "过去固定住新分支",
+    "description": "当事人不断回到旧失败、旧关系或旧身份，导致新未来还没开始就被过去解释掉。",
+    "keywords": ["后悔", "如果当时", "过去", "走不出来", "一直想以前", "旧事"],
+    "conditions": { "past_fixation_gte": 4 },
+    "amplifies": ["observer", "inner_child"],
+    "branch_effect": { "inertia": 0.8, "rupture": 0.4 },
+    "life_effect": "新分支需要先处理旧叙事，否则每个机会都会被过去的失败感重新命名。"
+  }
+]

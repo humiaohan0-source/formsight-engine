@@ -1,0 +1,7 @@
+{
+  "mode": "dry_run",
+  "provider": "openai_compatible",
+  "model": "future-configured-model",
+  "max_preview_calls": 8,
+  "description": "Dry-run mode builds the LLM call payloads without sending them to an API."
+}

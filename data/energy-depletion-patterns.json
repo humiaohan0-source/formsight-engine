@@ -1,0 +1,51 @@
+[
+  {
+    "id": "attention_debt",
+    "name": "Attention Debt",
+    "keywords": ["attention", "fragmentation", "stress", "do not act", "analyze"],
+    "description": "The attention system is paying interest on too many unfinished loops.",
+    "amplifies": ["observer", "escaper"],
+    "life_effect": "The person may mistake cognitive overload for lack of destiny or lack of talent.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "ambition_body_mismatch",
+    "name": "Ambition-Body Mismatch",
+    "keywords": ["prove", "performance", "stress", "sleep", "body_energy"],
+    "description": "The ambition system asks for a speed the body cannot sustainably fund.",
+    "amplifies": ["prover", "judge"],
+    "life_effect": "If the body is not treated as part of the simulation, the future branch becomes fragile.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 2
+    }
+  },
+  {
+    "id": "rest_as_forbidden_value",
+    "name": "Rest As Forbidden Value",
+    "keywords": ["rest", "performance", "ordinary", "not good enough", "sacrificed"],
+    "description": "Rest has been coded as falling behind rather than recovering agency.",
+    "amplifies": ["judge", "prover"],
+    "life_effect": "The person may only permit rest after breakdown, making rupture more likely.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "small_energy_rebuild_window",
+    "name": "Small Energy Rebuild Window",
+    "keywords": ["small", "experiment", "sleep", "feedback", "body"],
+    "description": "A lower-energy intervention can rebuild agency without demanding a full life overhaul.",
+    "amplifies": ["controller", "observer"],
+    "life_effect": "Small repeatable experiments are better than heroic transformation attempts.",
+    "branch_effect": {
+      "intervention": 2
+    }
+  }
+]

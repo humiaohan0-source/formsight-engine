@@ -1,0 +1,82 @@
+[
+  {
+    "id": "delay_and_adapt",
+    "name": "Delay And Adapt",
+    "branch": "inertia",
+    "description": "The person survives by adapting to the current structure while postponing the main decision.",
+    "effects": {
+      "self_trust": -1,
+      "action_momentum": -1,
+      "relational_safety": 0,
+      "financial_buffer": 1,
+      "body_recovery": -1,
+      "social_visibility": 0,
+      "family_gravity": 1,
+      "identity_flexibility": -1
+    }
+  },
+  {
+    "id": "small_public_experiment",
+    "name": "Small Public Experiment",
+    "branch": "intervention",
+    "description": "The person ships a small external artifact before feeling fully ready.",
+    "effects": {
+      "self_trust": 1,
+      "action_momentum": 2,
+      "relational_safety": 0,
+      "financial_buffer": 0.5,
+      "body_recovery": 0,
+      "social_visibility": 2,
+      "family_gravity": -1,
+      "identity_flexibility": 1
+    }
+  },
+  {
+    "id": "truth_conversation",
+    "name": "Truth Conversation",
+    "branch": "intervention",
+    "description": "The person tells a close observer the truth earlier instead of disappearing later.",
+    "effects": {
+      "self_trust": 1,
+      "action_momentum": 1,
+      "relational_safety": 2,
+      "financial_buffer": 0,
+      "body_recovery": 1,
+      "social_visibility": 0,
+      "family_gravity": 0,
+      "identity_flexibility": 1
+    }
+  },
+  {
+    "id": "compressed_break",
+    "name": "Compressed Break",
+    "branch": "rupture",
+    "description": "A suppressed conflict breaks through and forces a reset.",
+    "effects": {
+      "self_trust": -1,
+      "action_momentum": 2,
+      "relational_safety": -2,
+      "financial_buffer": -2,
+      "body_recovery": -2,
+      "social_visibility": 1,
+      "family_gravity": -2,
+      "identity_flexibility": 2
+    }
+  },
+  {
+    "id": "recovery_rebuild",
+    "name": "Recovery Rebuild",
+    "branch": "rupture",
+    "description": "After rupture, the person must rebuild energy, money, and trust before the new path stabilizes.",
+    "effects": {
+      "self_trust": 1,
+      "action_momentum": 0,
+      "relational_safety": 1,
+      "financial_buffer": 1,
+      "body_recovery": 2,
+      "social_visibility": 0,
+      "family_gravity": 0,
+      "identity_flexibility": 1
+    }
+  }
+]

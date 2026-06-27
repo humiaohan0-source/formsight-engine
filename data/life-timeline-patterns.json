@@ -1,0 +1,63 @@
+[
+  {
+    "id": "early_recognition_hunger",
+    "name": "Early Recognition Hunger",
+    "keywords": ["first time being seen", "praise", "recognition", "excellent", "not good enough"],
+    "description": "Early experiences taught the person that being seen and being valuable are tightly connected.",
+    "amplifies": ["prover", "judge"],
+    "life_effect": "Future choices may repeatedly seek stages where worth can be proven.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "failure_memory_lock",
+    "name": "Failure Memory Lock",
+    "keywords": ["failure", "wrong choice", "irreversible", "shame", "mistake"],
+    "description": "A past failure or near-failure has become a reference point for future risk.",
+    "amplifies": ["controller", "judge"],
+    "life_effect": "The person may overpay for certainty because uncertainty feels historically dangerous.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "stable_role_trap",
+    "name": "Stable Role Trap",
+    "keywords": ["stable job", "stable environment", "growth feels limited", "leaving"],
+    "description": "A stable role has become both a shelter and a cage.",
+    "amplifies": ["controller", "observer"],
+    "life_effect": "The person may need a staged exit because the old role still protects real needs.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "relationship_mirror_history",
+    "name": "Relationship Mirror History",
+    "keywords": ["close friend", "relationship", "disappear", "withdraw", "fine"],
+    "description": "Relationships have repeatedly reflected a pattern the person struggles to see alone.",
+    "amplifies": ["observer", "escaper", "pleaser"],
+    "life_effect": "External observation becomes a key route out of private self-simulation.",
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "unlived_self_accumulation",
+    "name": "Unlived Self Accumulation",
+    "keywords": ["more freedom", "meaningful career", "perform", "ordinary", "delaying"],
+    "description": "An unlived self has accumulated enough pressure to start shaping present decisions.",
+    "amplifies": ["escaper", "prover", "observer"],
+    "life_effect": "If not given a small channel, this pressure may eventually seek a large rupture.",
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 2
+    }
+  }
+]

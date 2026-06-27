@@ -1,0 +1,42 @@
+[
+  {
+    "id": "peer_evaluation_vigilance",
+    "name": "同辈评价警觉",
+    "description": "同学、朋友、同龄人评价留下的经验，会让当事人在进入新环境前先扫描自己会不会被看低。",
+    "keywords": ["同学", "朋友评价", "被孤立", "被嘲笑", "同龄人", "比较"],
+    "conditions": { "peer_evaluation_pressure_gte": 4 },
+    "amplifies": ["protector", "observer"],
+    "branch_effect": { "inertia": 0.9, "intervention": 0.4 },
+    "life_effect": "这会让转向线初期行动变慢：不是没有能力，而是每一步都在先处理“别人怎么看”。"
+  },
+  {
+    "id": "mentor_permission_window",
+    "name": "导师型他人打开许可窗口",
+    "description": "当事人并非完全靠自推，一旦遇到可信的老师、前辈、专业人士，未来线会更容易从犹豫进入测试。",
+    "keywords": ["老师", "导师", "前辈", "有人指点", "被认可", "贵人"],
+    "conditions": { "mentor_support_gte": 3 },
+    "amplifies": ["future_self", "strategist"],
+    "branch_effect": { "intervention": 1.7, "inertia": -0.3 },
+    "life_effect": "建议把外部反馈做成固定节点，找一个能给现实校准的人，会明显提高转向线质量。"
+  },
+  {
+    "id": "authority_wound",
+    "name": "权威创伤",
+    "description": "过去被老师、领导、父母或制度性评价压住，会让当事人既渴望被认可，又抗拒被安排。",
+    "keywords": ["老师骂", "领导压", "权威", "被否定", "被控制", "不敢反抗"],
+    "conditions": { "authority_wound_gte": 4 },
+    "amplifies": ["rebel", "protector"],
+    "branch_effect": { "rupture": 1.2, "intervention": 0.5 },
+    "life_effect": "如果转向线没有自主解释权，很容易从“理性调整”变成“突然反抗”。"
+  },
+  {
+    "id": "circle_energy_mismatch",
+    "name": "圈层能量不匹配",
+    "description": "身边人不是坏，而是目标、节奏和价值不匹配，长期会消耗行动动量。",
+    "keywords": ["圈子", "朋友", "聊不到一起", "身边人不理解", "环境消耗"],
+    "conditions": { "circle_energy_mismatch_gte": 4 },
+    "amplifies": ["survivor", "observer"],
+    "branch_effect": { "inertia": 0.7, "intervention": 0.8 },
+    "life_effect": "未来线要检查“换圈层”而不仅是“改自己”，因为新连接会改变机会入口。"
+  }
+]

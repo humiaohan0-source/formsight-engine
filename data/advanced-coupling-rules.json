@@ -1,0 +1,79 @@
+[
+  {
+    "id": "family_expectation_low_mobility_transition_delay",
+    "name": "家庭期待 x 低机动性：转型延迟",
+    "if": {
+      "inner_agents_any": ["controller", "pleaser"],
+      "external_agents_all": ["family_expectation"],
+      "world_scores": {
+        "life_mobility_lte": 5,
+        "external_pressure_gte": 12
+      }
+    },
+    "branch_effects": {
+      "inertia": 1.8,
+      "intervention": -0.3
+    },
+    "interpretation": "当家庭期待强、人生机动性不足时，转型会被包装成需要更多准备，惯性线变强。"
+  },
+  {
+    "id": "prover_visibility_exhaustion_loop",
+    "name": "证明者 x 高可见度 x 低恢复：机会与耗竭同增",
+    "if": {
+      "inner_agents_all": ["prover"],
+      "external_agents_any": ["labor_market", "city_pressure"],
+      "world_scores": {
+        "external_pressure_gte": 12
+      }
+    },
+    "branch_effects": {
+      "intervention": 1.1,
+      "rupture": 1
+    },
+    "interpretation": "证明欲会推动机会，但身体恢复不足时，机会线和断裂线会同时变强。"
+  },
+  {
+    "id": "escaper_low_relational_safety_sudden_cutoff",
+    "name": "逃离者 x 低关系安全感：突然切断",
+    "if": {
+      "inner_agents_all": ["escaper"],
+      "world_scores": {
+        "life_mobility_lte": 5,
+        "external_pressure_gte": 6
+      }
+    },
+    "branch_effects": {
+      "rupture": 1.7
+    },
+    "interpretation": "当压力高但关系承接不足时，逃离不再只是幻想，而会变成突然切断。"
+  },
+  {
+    "id": "support_network_observer_feedback_intervention",
+    "name": "支持网络 x 外部观察：干预线增强",
+    "if": {
+      "external_agents_all": ["support_network"],
+      "patterns_any": ["witnessed_reality_testing", "truth_teller_present"]
+    },
+    "branch_effects": {
+      "intervention": 1.4,
+      "rupture": -0.3
+    },
+    "interpretation": "外部观察者能把私下反复想的问题变成可测试现实，干预线增强。"
+  },
+  {
+    "id": "asset_constraint_staged_exit",
+    "name": "资产约束 x 阶梯式退出：可控转向",
+    "if": {
+      "external_agents_all": ["asset_constraint"],
+      "world_scores": {
+        "financial_runway_gte": 5,
+        "life_mobility_gte": 4
+      }
+    },
+    "branch_effects": {
+      "intervention": 1,
+      "inertia": 0.3
+    },
+    "interpretation": "资产缓冲不算自由，但足够支持阶梯式试错，因此干预线可被打开。"
+  }
+]

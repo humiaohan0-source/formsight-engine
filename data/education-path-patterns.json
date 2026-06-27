@@ -1,0 +1,66 @@
+[
+  {
+    "id": "school_peer_safety_low",
+    "name": "Low Peer Safety Schooling",
+    "keywords": ["classmate", "peer", "bullied", "isolated", "school", "同学", "同伴", "孤立", "霸凌", "被排挤", "学校", "人际关系不好"],
+    "conditions": {
+      "peer_safety_lte": 2
+    },
+    "description": "School did not feel socially safe, so growth became linked with vigilance and distance.",
+    "life_effect": "Future group settings may trigger caution before curiosity.",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "teacher_recognition_window",
+    "name": "Teacher Recognition Window",
+    "keywords": ["teacher", "mentor", "encouraged", "老师", "好老师", "被老师影响", "导师", "认可"],
+    "conditions": {
+      "teacher_support_gte": 3
+    },
+    "description": "A teacher or mentor became proof that a different self could be seen.",
+    "life_effect": "Specific adult recognition can reopen action momentum after school damage.",
+    "branch_effect": {
+      "intervention": 2
+    }
+  },
+  {
+    "id": "school_fit_misalignment",
+    "name": "School Fit Misalignment",
+    "keywords": ["wrong school", "transfer", "ordinary school", "not fit", "学校不适合", "调剂", "保守填报", "专业不合适", "学校普通"],
+    "conditions": {
+      "school_fit_lte": 2
+    },
+    "description": "The school track feels like a compromised placement rather than a chosen environment.",
+    "life_effect": "The person may keep searching for a second educational identity.",
+    "branch_effect": {
+      "intervention": 2,
+      "inertia": 1
+    }
+  },
+  {
+    "id": "exam_setback_identity_mark",
+    "name": "Exam Setback Identity Mark",
+    "keywords": ["exam", "gaokao", "middle school exam", "failed", "成绩不好", "高考", "中考", "发挥不好", "考差", "没考好"],
+    "description": "Exam disappointment became a self-evaluation mark, not only an educational event.",
+    "life_effect": "Later choices may overcompensate by seeking a more legitimate track.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "study_rhythm_fragmented",
+    "name": "Fragmented Study Rhythm",
+    "keywords": ["library", "foundation course", "delay", "negative news", "progress slow", "图书馆", "基础课", "进度慢", "负面新闻", "换方向"],
+    "description": "Learning effort exists, but direction switching breaks accumulation.",
+    "life_effect": "Future education branches need a fixed test window, not more information scanning.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 2
+    }
+  }
+]

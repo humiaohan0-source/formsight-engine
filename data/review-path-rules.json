@@ -1,0 +1,37 @@
+[
+  {
+    "id": "external_observer",
+    "name": "External Observer Evidence",
+    "description": "Adds a small calibration bonus when the seed includes observations from friends, colleagues, partners, or other people who know the subject.",
+    "model_meaning": "External observation reduces the bias of pure self-narrative.",
+    "interpretation": "Useful when the subject can provide short, consent-based third-party observations.",
+    "branch_effects": {
+      "intervention": 1.2,
+      "inertia": -0.2
+    }
+  },
+  {
+    "id": "private_structured_material",
+    "name": "Private Structured Material",
+    "description": "Keeps sensitive material local while giving the engine more structured fields to work with.",
+    "model_meaning": "Privacy is preserved, but the seed must be more detailed to compensate for fewer external observations.",
+    "interpretation": "Useful when the subject cannot or should not share private evidence publicly.",
+    "material_quality_bonus": 8,
+    "branch_effects": {
+      "inertia": 0.4,
+      "intervention": 0.4
+    }
+  },
+  {
+    "id": "deep_research_mode",
+    "name": "Deep Research Mode",
+    "description": "Uses richer material, longer timelines, more agents, and deeper coupling analysis.",
+    "model_meaning": "A research-oriented mode for longer simulations and more detailed model inspection.",
+    "interpretation": "Useful for advanced users who want to inspect the model rather than receive a short report.",
+    "material_quality_bonus": 14,
+    "branch_effects": {
+      "intervention": 1,
+      "rupture": 0.4
+    }
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "agent_id": "prover",
+    "stance": "seeks visible proof and external validation",
+    "state_effects": {
+      "action_momentum": 1,
+      "social_visibility": 1,
+      "body_recovery": -1
+    },
+    "branch_pressure": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "agent_id": "controller",
+    "stance": "tries to reduce risk before allowing movement",
+    "state_effects": {
+      "financial_buffer": 1,
+      "family_gravity": 1,
+      "identity_flexibility": -1
+    },
+    "branch_pressure": {
+      "inertia": 2
+    }
+  },
+  {
+    "agent_id": "observer",
+    "stance": "creates insight but may delay embodiment",
+    "state_effects": {
+      "self_trust": 1,
+      "action_momentum": -1,
+      "identity_flexibility": 1
+    },
+    "branch_pressure": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "agent_id": "escaper",
+    "stance": "seeks breathing room when pressure becomes too dense",
+    "state_effects": {
+      "identity_flexibility": 1,
+      "relational_safety": -1,
+      "financial_buffer": -1
+    },
+    "branch_pressure": {
+      "rupture": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "agent_id": "pleaser",
+    "stance": "keeps relational peace by hiding direct needs",
+    "state_effects": {
+      "relational_safety": -1,
+      "family_gravity": 1,
+      "self_trust": -1
+    },
+    "branch_pressure": {
+      "inertia": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "agent_id": "judge",
+    "stance": "raises the standard before permitting action or rest",
+    "state_effects": {
+      "body_recovery": -1,
+      "self_trust": -1,
+      "social_visibility": 1
+    },
+    "branch_pressure": {
+      "inertia": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "agent_id": "family_expectation",
+    "stance": "pulls decisions back toward socially legible stability",
+    "state_effects": {
+      "family_gravity": 2,
+      "identity_flexibility": -1,
+      "financial_buffer": 1
+    },
+    "branch_pressure": {
+      "inertia": 2
+    }
+  },
+  {
+    "agent_id": "labor_market",
+    "stance": "rewards visible proof and punishes indefinite waiting",
+    "state_effects": {
+      "social_visibility": 1,
+      "action_momentum": 1,
+      "self_trust": 1
+    },
+    "branch_pressure": {
+      "intervention": 2
+    }
+  },
+  {
+    "agent_id": "city_pressure",
+    "stance": "compresses time through cost, comparison, and urgency",
+    "state_effects": {
+      "body_recovery": -1,
+      "family_gravity": 1,
+      "self_trust": -1
+    },
+    "branch_pressure": {
+      "inertia": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "agent_id": "support_network",
+    "stance": "turns private rumination into witnessed reality testing",
+    "state_effects": {
+      "relational_safety": 2,
+      "self_trust": 1,
+      "action_momentum": 1
+    },
+    "branch_pressure": {
+      "intervention": 2
+    }
+  },
+  {
+    "agent_id": "energy_system",
+    "stance": "forces the simulation to respect body and attention limits",
+    "state_effects": {
+      "body_recovery": -2,
+      "action_momentum": -1,
+      "identity_flexibility": -1
+    },
+    "branch_pressure": {
+      "rupture": 2
+    }
+  },
+  {
+    "agent_id": "asset_constraint",
+    "stance": "limits transition speed through cashflow and runway",
+    "state_effects": {
+      "financial_buffer": -1,
+      "identity_flexibility": -1,
+      "family_gravity": 1
+    },
+    "branch_pressure": {
+      "inertia": 2
+    }
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "world_as_threat_field",
+    "name": "世界被看成危险场",
+    "description": "当事人默认世界是不安全、竞争、会伤人的，很多选择会先防御再行动。",
+    "keywords": ["世界很危险", "人心复杂", "社会残酷", "不安全", "防备", "被骗"],
+    "conditions": { "world_threat_gte": 4 },
+    "amplifies": ["protector", "controller"],
+    "branch_effect": { "inertia": 1.0, "rupture": 0.4 },
+    "life_effect": "未来线会偏向保守，机会会先被看成风险；需要小范围现实测试来重新校准世界观。"
+  },
+  {
+    "id": "idealism_without_test",
+    "name": "唯心解释强于现实测试",
+    "description": "当事人倾向用命运感、直觉、暗示、意义来解释选择，但现实验证不足。",
+    "keywords": ["命中注定", "宇宙", "吸引力法则", "直觉告诉我", "预兆", "玄学"],
+    "conditions": { "over_sign_reading_gte": 4 },
+    "amplifies": ["observer", "future_self"],
+    "branch_effect": { "inertia": 0.6, "rupture": 0.4, "intervention": 0.3 },
+    "life_effect": "直觉可以作为线索，但不能替代验证；否则容易把冲动、逃避或幻想误读成命运。"
+  },
+  {
+    "id": "material_reality_anchor",
+    "name": "现实材料锚定",
+    "description": "当事人愿意用钱、时间、身体、行动结果来校准想法，这会提高预测稳定性。",
+    "keywords": ["现实", "验证", "数据", "结果", "行动", "试错"],
+    "conditions": { "reality_testing_gte": 4 },
+    "amplifies": ["strategist", "future_self"],
+    "branch_effect": { "intervention": 1.5, "inertia": -0.3 },
+    "life_effect": "这类人适合用短周期实验推进未来线：不是想通再做，而是边做边校准。"
+  },
+  {
+    "id": "zero_sum_social_world",
+    "name": "零和社会观",
+    "description": "如果当事人认为资源、关系、机会都是抢来的，就会更难相信合作和长期积累。",
+    "keywords": ["内卷", "抢资源", "只有输赢", "别人会占便宜", "社会达尔文"],
+    "conditions": { "zero_sum_belief_gte": 4 },
+    "amplifies": ["prover", "protector"],
+    "branch_effect": { "inertia": 0.8, "rupture": 0.5 },
+    "life_effect": "合作关系会被提前污染，转向线需要设计低背叛成本的合作方式。"
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "early_adulthood",
+    "name": "Early Adulthood",
+    "pressure_fields": ["career direction", "identity formation", "intimacy", "economic independence"],
+    "common_inflection_points": ["first major career turn", "leaving a stable role", "forming long-term relationships"]
+  },
+  {
+    "id": "mid_adulthood",
+    "name": "Mid Adulthood",
+    "pressure_fields": ["long-term responsibility", "family structure", "career ceiling", "meaning crisis"],
+    "common_inflection_points": ["role fatigue", "second career turn", "relationship renegotiation"]
+  },
+  {
+    "id": "late_adulthood",
+    "name": "Late Adulthood",
+    "pressure_fields": ["legacy", "health", "regret integration", "family memory"],
+    "common_inflection_points": ["life review", "identity simplification", "relationship repair"]
+  }
+]
+

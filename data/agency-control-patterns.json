@@ -1,0 +1,42 @@
+[
+  {
+    "id": "learned_helpless_choice_freeze",
+    "name": "习得性无力导致选择冻结",
+    "description": "过去反复努力无果，会让当事人在新选择前默认“做了也没用”。",
+    "keywords": ["没用", "努力也没结果", "改变不了", "算了", "无力", "麻木"],
+    "conditions": { "learned_helplessness_gte": 4 },
+    "amplifies": ["escaper", "inner_child"],
+    "branch_effect": { "inertia": 1.2, "rupture": 0.5 },
+    "life_effect": "这会让主线变强：不是不知道该做什么，而是行动前就已经预设失败。"
+  },
+  {
+    "id": "external_locus_waiting_for_permission",
+    "name": "等待外部许可",
+    "description": "当事人习惯等父母、伴侣、老师、环境或命运给许可，导致行动主权偏弱。",
+    "keywords": ["等别人同意", "不敢自己决定", "看家里", "看情况", "等机会", "等一个信号"],
+    "conditions": { "external_locus_gte": 4 },
+    "amplifies": ["pleaser", "controller"],
+    "branch_effect": { "inertia": 1.1, "intervention": -0.3 },
+    "life_effect": "未来线会卡在“等确定”里；真正需要移动的是决策所有权。"
+  },
+  {
+    "id": "experiment_identity",
+    "name": "实验者身份",
+    "description": "当事人能把选择看成实验，而不是一次性决定人生，这会显著提高转向线稳定性。",
+    "keywords": ["试试看", "实验", "低成本", "先做一版", "测试", "迭代"],
+    "conditions": { "experiment_identity_gte": 3 },
+    "amplifies": ["strategist", "future_self"],
+    "branch_effect": { "intervention": 1.8, "rupture": -0.4 },
+    "life_effect": "适合用低后悔测试推进：先生成证据，再决定是否加码。"
+  },
+  {
+    "id": "perfection_control_delays_action",
+    "name": "完美控制延迟行动",
+    "description": "当事人需要足够确定、足够完美才开始，导致机会被反复延迟。",
+    "keywords": ["准备好了再", "不够完美", "怕失败", "必须确定", "不敢开始"],
+    "conditions": { "perfection_control_gte": 4 },
+    "amplifies": ["controller", "prover"],
+    "branch_effect": { "inertia": 0.9, "intervention": -0.4 },
+    "life_effect": "如果不允许粗糙开始，未来线会继续停在脑内模拟。"
+  }
+]

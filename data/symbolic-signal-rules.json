@@ -1,0 +1,337 @@
+[
+  {
+    "id": "name_as_social_mirror",
+    "name": "名字作为社会镜面",
+    "anchor_types": ["name"],
+    "keywords": ["明", "见", "相", "远", "安", "成", "志", "宇", "然", "寒", "光", "proof", "sight", "form", "name"],
+    "global_keywords": ["名字", "署名", "笔名", "网名", "name", "nickname"],
+    "confidence": "weak",
+    "interpretation": "名字不会决定命运，但它会反复出现在称呼、署名、账号、作品和自我想象里，因此可能成为身份叙事的一部分。",
+    "life_effect": "当名字和作品署名、被看见、证明自己发生连接时，它会轻微增强公开表达和作品化身份。",
+    "branch_effect": {
+      "intervention": 0.3
+    },
+    "state_effect": {
+      "social_visibility": 0.2,
+      "self_trust": 0.1
+    }
+  },
+  {
+    "id": "nickname_or_online_handle_identity",
+    "name": "网名/账号作为第二身份",
+    "anchor_types": ["name", "online_identity", "project"],
+    "keywords": ["网名", "账号", "id", "handle", "nickname", "alias", "小号", "主页", "profile"],
+    "global_keywords": ["网名", "账号", "主页", "小号", "nickname", "handle"],
+    "confidence": "medium",
+    "interpretation": "网名和账号常常比真实姓名更接近一个人想成为的样子，它会影响公开表达、作品发布和社交场域选择。",
+    "life_effect": "如果线上身份开始稳定承载作品，现实身份的转向会更容易发生。",
+    "branch_effect": {
+      "intervention": 0.7
+    },
+    "state_effect": {
+      "social_visibility": 0.5,
+      "identity_flexibility": 0.3
+    }
+  },
+  {
+    "id": "place_split_identity",
+    "name": "地点分裂与身份过渡",
+    "anchor_types": ["place"],
+    "keywords": ["现在", "常住", "搬家", "异地", "离开", "回到", "城市", "xiamen", "chongqing", "beijing", "shanghai"],
+    "global_keywords": ["现在", "常住", "搬家", "异地", "厦门", "重庆", "北京", "上海"],
+    "confidence": "medium",
+    "interpretation": "当前地和归属地分开时，人容易处在过渡身份里：一部分生活在当下，一部分仍被原来的家庭、记忆和评价系统牵引。",
+    "life_effect": "地点分裂会增强身份弹性，也会增加悬置感，让人更需要一个能落地的现实作品或现实身份。",
+    "branch_effect": {
+      "intervention": 0.6,
+      "inertia": 0.3
+    },
+    "state_effect": {
+      "identity_flexibility": 0.4,
+      "family_gravity": 0.2
+    }
+  },
+  {
+    "id": "room_or_desk_as_execution_field",
+    "name": "房间/书桌作为执行场",
+    "anchor_types": ["object", "place", "routine"],
+    "keywords": ["房间", "书桌", "床", "宿舍", "出租屋", "工位", "桌面", "workspace", "desk", "room"],
+    "global_keywords": ["房间", "书桌", "宿舍", "出租屋", "工位", "桌面"],
+    "confidence": "weak",
+    "interpretation": "一个人长期行动失败，常常不只因为意志，而是因为日常空间没有形成清晰的执行场。",
+    "life_effect": "当空间被重新布置成低阻力执行场，行动线会被轻微打开；如果空间持续混乱，惯性线会增加。",
+    "branch_effect": {
+      "intervention": 0.3,
+      "inertia": 0.2
+    },
+    "state_effect": {
+      "action_momentum": 0.2
+    }
+  },
+  {
+    "id": "pet_as_daily_anchor",
+    "name": "宠物作为日常锚点",
+    "anchor_types": ["care_responsibility", "recent_events", "relationship"],
+    "keywords": ["狗", "猫", "宠物", "养", "dog", "cat", "pet"],
+    "global_keywords": ["狗", "猫", "宠物", "dog", "cat"],
+    "confidence": "medium",
+    "interpretation": "宠物不是事业变量，但它会改变日常节律、责任感和情感承接方式。",
+    "life_effect": "宠物会降低完全断裂的概率，因为它让生活里保留了一个具体、持续、需要照顾的现实锚点。",
+    "branch_effect": {
+      "rupture": -0.5,
+      "inertia": 0.2
+    },
+    "state_effect": {
+      "relational_safety": 0.4,
+      "body_recovery": 0.1
+    }
+  },
+  {
+    "id": "body_illness_as_lost_rhythm_symbol",
+    "name": "疾病作为失去节律的象征",
+    "anchor_types": ["health_disruption", "life_timeline", "health"],
+    "keywords": ["病", "胃病", "失眠", "焦虑", "身体", "疼", "节奏", "rhythm", "illness", "stomach"],
+    "global_keywords": ["胃病", "身体", "节奏", "rhythm", "illness", "stomach"],
+    "confidence": "high",
+    "interpretation": "疾病不只是身体事件，也可能成为“我本来可以很好，但节奏被打断了”的身份记忆。",
+    "life_effect": "它会让人强烈渴望恢复节律，也可能在压力节点触发对旧状态的怀念和自责。",
+    "branch_effect": {
+      "inertia": 0.5,
+      "rupture": 0.4,
+      "intervention": 0.3
+    },
+    "state_effect": {
+      "body_recovery": -0.3,
+      "self_trust": -0.2
+    }
+  },
+  {
+    "id": "scar_or_medical_record_as_identity_mark",
+    "name": "伤痕/病历作为身份标记",
+    "anchor_types": ["health_disruption", "object", "life_timeline"],
+    "keywords": ["病历", "检查", "药", "手术", "伤疤", "诊断", "medical", "scar", "medicine"],
+    "global_keywords": ["病历", "检查", "药", "手术", "伤疤"],
+    "confidence": "weak",
+    "interpretation": "病历、药、伤疤这类物件会把身体事件固定成可反复看见的身份标记。",
+    "life_effect": "如果它只提醒脆弱，会增强惯性；如果它被重新解释为恢复证据，会增强干预线。",
+    "branch_effect": {
+      "inertia": 0.3,
+      "intervention": 0.2
+    },
+    "state_effect": {
+      "body_recovery": -0.1
+    }
+  },
+  {
+    "id": "threshold_event_as_identity_gate",
+    "name": "门槛事件作为身份关口",
+    "anchor_types": ["academic_delay", "career_threshold", "exam", "graduation", "life_timeline", "recent_events"],
+    "keywords": ["毕业", "延毕", "论文", "考试", "考研", "入职", "离职", "转行", "thesis", "graduation", "exam"],
+    "global_keywords": ["毕业", "延毕", "论文", "考试", "考研", "入职", "离职", "转行"],
+    "confidence": "high",
+    "interpretation": "门槛事件会把人卡在旧身份和新身份之间。它不是普通任务，而是身份转换关口。",
+    "life_effect": "如果门槛没有完成，它会持续拉高默认线；一旦完成，会释放大量被压住的行动能量。",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 0.6,
+      "rupture": 0.3
+    },
+    "state_effect": {
+      "family_gravity": 0.6,
+      "action_momentum": -0.2
+    }
+  },
+  {
+    "id": "fraud_or_betrayal_as_trust_injury",
+    "name": "欺骗/背叛作为信任伤口",
+    "anchor_types": ["betrayal", "academic_crisis", "relationship", "recent_events"],
+    "keywords": ["骗", "骗子", "举报", "背叛", "出轨", "欺骗", "deceived", "reported", "betrayal"],
+    "global_keywords": ["骗", "骗子", "举报", "背叛", "欺骗"],
+    "confidence": "high",
+    "interpretation": "欺骗和背叛会让人更害怕不可控后果，因此增强控制者、逃避冲突和延迟行动。",
+    "life_effect": "它可能让人更不愿把真实困难提前说出来，也更想等到完全安全再行动。",
+    "branch_effect": {
+      "inertia": 0.7,
+      "rupture": 0.4
+    },
+    "state_effect": {
+      "self_trust": -0.4,
+      "relational_safety": -0.3
+    }
+  },
+  {
+    "id": "public_artifact_as_identity_proof",
+    "name": "公开作品作为身份凭证",
+    "anchor_types": ["project", "artifact", "portfolio", "recent_events"],
+    "keywords": ["作品", "项目", "github", "开源", "文章", "视频", "产品", "demo", "portfolio", "artifact"],
+    "global_keywords": ["作品", "项目", "github", "开源", "demo", "产品"],
+    "confidence": "medium",
+    "interpretation": "公开作品会把抽象能力变成别人能看见、能评价、能传播的现实对象。",
+    "life_effect": "它会显著增强干预线，因为它直接改变社会可见度和自我证明方式。",
+    "branch_effect": {
+      "intervention": 1.2
+    },
+    "state_effect": {
+      "social_visibility": 0.7,
+      "action_momentum": 0.4,
+      "self_trust": 0.3
+    }
+  },
+  {
+    "id": "unfinished_object_as_open_loop",
+    "name": "未完成物作为开放回路",
+    "anchor_types": ["project", "object", "recent_events", "repeated_pattern"],
+    "keywords": ["未完成", "烂尾", "草稿", "半成品", "todo", "unfinished", "draft"],
+    "global_keywords": ["未完成", "烂尾", "草稿", "半成品", "todo"],
+    "confidence": "medium",
+    "interpretation": "未完成物会持续占用注意力，让人既感觉自己有可能，又不断被未兑现的可能性追赶。",
+    "life_effect": "如果未完成物过多，默认线增强；如果选一个完成，它会转化为干预线燃料。",
+    "branch_effect": {
+      "inertia": 0.6,
+      "intervention": 0.2
+    },
+    "state_effect": {
+      "attention_fragmentation": 0.4,
+      "action_momentum": -0.2
+    }
+  },
+  {
+    "id": "repeated_number_or_date_as_private_clock",
+    "name": "反复数字/日期作为私人时钟",
+    "anchor_types": ["date", "number", "life_timeline", "recent_events"],
+    "keywords": ["生日", "周年", "倒计时", "deadline", "日期", "数字", "number", "date"],
+    "global_keywords": ["生日", "周年", "倒计时", "deadline", "日期"],
+    "confidence": "weak",
+    "interpretation": "反复出现的数字或日期会成为私人时钟，让某些时间点被赋予额外压力或仪式感。",
+    "life_effect": "如果日期被用作公开承诺，会增强行动；如果只成为倒计时焦虑，会增强惯性。",
+    "branch_effect": {
+      "inertia": 0.2,
+      "intervention": 0.2
+    },
+    "state_effect": {
+      "action_momentum": 0.1
+    }
+  },
+  {
+    "id": "family_title_as_role_lock",
+    "name": "家庭称谓作为角色锁定",
+    "anchor_types": ["family", "relationship", "social_role"],
+    "keywords": ["儿子", "女儿", "哥哥", "姐姐", "弟弟", "妹妹", "父亲", "母亲", "家里", "family"],
+    "global_keywords": ["儿子", "女儿", "家里", "父母", "家庭"],
+    "confidence": "medium",
+    "interpretation": "家庭称谓会把人固定在某种角色里，即使年龄增长，也可能继续被旧角色期待牵引。",
+    "life_effect": "当家庭称谓和经济依赖、学业/工作压力耦合时，默认线明显增强。",
+    "branch_effect": {
+      "inertia": 0.6
+    },
+    "state_effect": {
+      "family_gravity": 0.5
+    }
+  },
+  {
+    "id": "relationship_object_as_attachment_anchor",
+    "name": "关系物作为依恋锚点",
+    "anchor_types": ["relationship", "object", "life_timeline"],
+    "keywords": ["礼物", "照片", "聊天记录", "纪念", "戒指", "衣服", "gift", "photo", "chat"],
+    "global_keywords": ["礼物", "照片", "聊天记录", "纪念"],
+    "confidence": "weak",
+    "interpretation": "关系物会把一段关系固定成可反复触发的情绪入口。",
+    "life_effect": "它可能稳定亲密感，也可能让旧关系继续占据身份空间。",
+    "branch_effect": {
+      "inertia": 0.2,
+      "rupture": 0.1
+    },
+    "state_effect": {
+      "relational_safety": 0.1
+    }
+  },
+  {
+    "id": "money_amount_as_shame_marker",
+    "name": "金额作为羞耻标记",
+    "anchor_types": ["financial_pressure", "asset", "recent_events"],
+    "keywords": ["负债", "欠", "钱", "几千", "几万", "收入", "存款", "debt", "money"],
+    "global_keywords": ["负债", "欠", "钱", "收入", "存款", "debt"],
+    "confidence": "medium",
+    "interpretation": "金额本身未必巨大，但会成为羞耻、急迫、比较和自我价值判断的标记。",
+    "life_effect": "它会降低大步转向能力，但也可能推动小规模现金流实验。",
+    "branch_effect": {
+      "inertia": 0.4,
+      "intervention": 0.3
+    },
+    "state_effect": {
+      "financial_buffer": -0.4,
+      "action_momentum": 0.1
+    }
+  },
+  {
+    "id": "lost_rhythm_as_original_self_myth",
+    "name": "失去的节律作为原初自我神话",
+    "anchor_types": ["life_timeline", "health_disruption", "repeated_pattern"],
+    "keywords": ["以前", "本来", "节奏", "自在", "学习很多", "如果一直", "original", "rhythm"],
+    "global_keywords": ["以前", "本来", "节奏", "自在", "学习很多"],
+    "confidence": "high",
+    "interpretation": "当一个人反复怀念某个高节律旧状态，那个旧状态会变成原初自我神话。",
+    "life_effect": "它会提供强烈恢复动力，也可能让现在的行动一直被过去的自己审判。",
+    "branch_effect": {
+      "intervention": 0.5,
+      "inertia": 0.5
+    },
+    "state_effect": {
+      "self_trust": -0.1,
+      "action_momentum": 0.2
+    }
+  },
+  {
+    "id": "dream_or_recurring_phrase_as_unprocessed_signal",
+    "name": "梦/反复词作为未处理信号",
+    "anchor_types": ["dream", "phrase", "repeated_pattern"],
+    "keywords": ["梦", "反复", "总是", "一句话", "词", "dream", "phrase", "recurring"],
+    "global_keywords": ["梦", "反复", "总是", "一句话"],
+    "confidence": "weak",
+    "interpretation": "反复出现的梦、词或句子，常常不是预测，而是未被处理的情绪和主题在找出口。",
+    "life_effect": "如果被记录和解释，它会进入干预线；如果被忽略，它会继续以焦虑或拖延形式出现。",
+    "branch_effect": {
+      "intervention": 0.3,
+      "inertia": 0.2
+    },
+    "state_effect": {
+      "identity_flexibility": 0.2
+    }
+  },
+  {
+    "id": "self_archive_as_identity_system",
+    "name": "自我档案作为身份系统",
+    "anchor_types": ["project", "self_distillation", "repeated_pattern"],
+    "keywords": ["赛博日记", "自我蒸馏", "个人知识库", "第二大脑", "AI", "codex", "系统", "self-distillation", "second brain"],
+    "global_keywords": ["赛博日记", "自我蒸馏", "个人知识库", "第二大脑", "codex", "FormSight", "见相"],
+    "confidence": "medium",
+    "interpretation": "这类项目不是普通兴趣，而是把混乱经验转成可理解、可复用、可对话系统的尝试。",
+    "life_effect": "它会增强隐秘转向线，因为事业入口可能不是传统求职，而是把自我理解、AI 工具和产品表达结合成作品。",
+    "branch_effect": {
+      "intervention": 1.1
+    },
+    "state_effect": {
+      "identity_flexibility": 0.5,
+      "social_visibility": 0.4,
+      "self_trust": 0.3
+    }
+  },
+  {
+    "id": "institution_name_as_evaluation_shadow",
+    "name": "学校/公司名作为评价阴影",
+    "anchor_types": ["institution", "academic_delay", "career_threshold", "recent_events"],
+    "keywords": ["学校", "公司", "调剂", "第一志愿", "单位", "institution", "school", "company"],
+    "global_keywords": ["学校", "公司", "调剂", "第一志愿", "单位"],
+    "confidence": "medium",
+    "interpretation": "学校或公司名常常承载外部评价：够不够好、配不配、有没有输。",
+    "life_effect": "如果机构名成为羞耻来源，会增强证明者和默认线；如果被作品覆盖，干预线增强。",
+    "branch_effect": {
+      "inertia": 0.5,
+      "intervention": 0.3
+    },
+    "state_effect": {
+      "self_trust": -0.2,
+      "social_visibility": 0.1
+    }
+  }
+]

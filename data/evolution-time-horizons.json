@@ -1,0 +1,22 @@
+[
+  {
+    "id": "three_months",
+    "name": "3 months",
+    "multiplier": 1
+  },
+  {
+    "id": "one_year",
+    "name": "1 year",
+    "multiplier": 2
+  },
+  {
+    "id": "three_years",
+    "name": "3 years",
+    "multiplier": 3
+  },
+  {
+    "id": "ten_years",
+    "name": "10 years",
+    "multiplier": 4
+  }
+]

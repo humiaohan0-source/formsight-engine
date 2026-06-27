@@ -1,0 +1,64 @@
+[
+  {
+    "id": "pressure_surface",
+    "name": "Pressure Surface",
+    "event": "The current question becomes harder to postpone.",
+    "state_effects": {
+      "self_trust": 0,
+      "action_momentum": -1,
+      "body_recovery": -1,
+      "family_gravity": 1
+    }
+  },
+  {
+    "id": "opportunity_window",
+    "name": "Opportunity Window",
+    "event": "A small but real opportunity appears before certainty is complete.",
+    "state_effects": {
+      "action_momentum": 1,
+      "social_visibility": 1,
+      "identity_flexibility": 1
+    }
+  },
+  {
+    "id": "observer_feedback",
+    "name": "Observer Feedback",
+    "event": "An outside observer reflects the repeated pattern back to the person.",
+    "state_effects": {
+      "self_trust": 1,
+      "relational_safety": 1,
+      "action_momentum": 1
+    }
+  },
+  {
+    "id": "cost_reality_check",
+    "name": "Cost Reality Check",
+    "event": "Money, energy, and family expectations test whether the new branch is grounded.",
+    "state_effects": {
+      "financial_buffer": -1,
+      "body_recovery": -1,
+      "family_gravity": 1
+    }
+  },
+  {
+    "id": "identity_threshold",
+    "name": "Identity Threshold",
+    "event": "The person must lose part of the old identity before the new one is validated.",
+    "state_effects": {
+      "identity_flexibility": 1,
+      "self_trust": 1,
+      "social_visibility": 1,
+      "family_gravity": -1
+    }
+  },
+  {
+    "id": "branch_lock_in",
+    "name": "Branch Lock-In",
+    "event": "The repeated choice starts becoming the default future.",
+    "state_effects": {
+      "action_momentum": 1,
+      "identity_flexibility": 1,
+      "family_gravity": 0
+    }
+  }
+]

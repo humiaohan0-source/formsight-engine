@@ -1,0 +1,42 @@
+[
+  {
+    "id": "freedom_vs_stability_behavior",
+    "name": "Freedom Desire, Stability Behavior",
+    "if_all_keywords": ["freedom", "stable", "delay"],
+    "description": "The user says they want freedom, but repeated behavior or context keeps selecting stability and delay.",
+    "risk": "Freedom may remain an identity fantasy unless it is converted into observable action.",
+    "confidence_bonus": 2
+  },
+  {
+    "id": "recognition_denial_loop",
+    "name": "Recognition Denied, Recognition Pursued",
+    "if_all_keywords": ["recognition", "praise", "reject praise"],
+    "description": "The user appears driven by recognition while also rejecting or distrusting recognition once received.",
+    "risk": "No amount of outside validation fully resolves the inner proof loop.",
+    "confidence_bonus": 2
+  },
+  {
+    "id": "intimacy_desire_withdrawal",
+    "name": "Intimacy Desire, Withdrawal Under Pressure",
+    "if_all_keywords": ["relationships", "fine", "disappear"],
+    "description": "The user wants relationships where they do not perform, but pressure still triggers withdrawal or concealment.",
+    "risk": "The relationship branch may repeat unless truth appears earlier than retreat.",
+    "confidence_bonus": 3
+  },
+  {
+    "id": "analysis_action_gap",
+    "name": "Clear Analysis, Weak Action",
+    "if_all_keywords": ["analyze", "clearly", "do not act"],
+    "description": "The user can model the problem internally but does not reliably convert insight into external action.",
+    "risk": "Prediction should weight behavior history more than insight quality.",
+    "confidence_bonus": 3
+  },
+  {
+    "id": "meaning_need_cashflow_lock",
+    "name": "Meaning Need, Cashflow Lock",
+    "if_all_keywords": ["meaningful career", "cashflow", "stable job"],
+    "description": "The user seeks a more meaningful path while the current cashflow structure keeps the old identity useful.",
+    "risk": "Future prediction should account for staged transition constraints.",
+    "confidence_bonus": 2
+  }
+]

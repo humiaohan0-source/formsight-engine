@@ -1,0 +1,62 @@
+[
+  {
+    "branch_id": "inertia",
+    "cinematic_name": "默认人生线",
+    "narrative_logic": "如果 {primary_agent} 继续主导，{core_conflict} 会被处理得更熟练，但不会真正松开。",
+    "shareable_sentence": "这条线最像“没有崩坏，但也没有真正换命”。",
+    "future_scenes": [
+      {
+        "horizon": "3个月后",
+        "text": "你会更频繁地意识到当前结构不再适合你，但仍会把行动推迟到更安全的时刻。"
+      },
+      {
+        "horizon": "1年后",
+        "text": "{variable_phrase}，所以问题不会消失，只会换一种形式回来。"
+      },
+      {
+        "horizon": "3年后",
+        "text": "你可能已经更擅长维持稳定，但选择范围会比现在更窄。"
+      }
+    ]
+  },
+  {
+    "branch_id": "intervention",
+    "cinematic_name": "隐秘转向线",
+    "narrative_logic": "这条线不是靠突然勇敢，而是让一个关键变量先动起来，逼迫旧结构重新排列。",
+    "shareable_sentence": "这条线最像“不是推翻人生，而是悄悄换掉评价系统”。",
+    "future_scenes": [
+      {
+        "horizon": "3个月后",
+        "text": "一个小的公开试验会开始改变外界如何看见你，也改变你如何相信自己。"
+      },
+      {
+        "horizon": "1年后",
+        "text": "如果外部反馈能被稳定接住，{core_conflict} 不再只是一种内耗，而会变成转向信号。"
+      },
+      {
+        "horizon": "3年后",
+        "text": "真正决定这条线的，是你是否进入新的评价系统，而不是你是否一次性做对。"
+      }
+    ]
+  },
+  {
+    "branch_id": "rupture",
+    "cinematic_name": "断裂重启线",
+    "narrative_logic": "当压抑的冲突长期没有出口，人生不会优雅转向，而会用一次断裂强迫系统重排。",
+    "shareable_sentence": "这条线最像“身体和现实替你做了那个你迟迟不敢做的决定”。",
+    "future_scenes": [
+      {
+        "horizon": "3个月后",
+        "text": "某个压力点会让你开始幻想彻底离开，而不是继续解释自己为什么还没准备好。"
+      },
+      {
+        "horizon": "1年后",
+        "text": "{variable_phrase}，断裂线会从情绪冲动变成现实选项。"
+      },
+      {
+        "horizon": "3年后",
+        "text": "如果断裂发生，它未必是失败，但它通常意味着前面太多信号被延迟处理。"
+      }
+    ]
+  }
+]

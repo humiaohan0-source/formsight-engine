@@ -1,0 +1,66 @@
+[
+  {
+    "id": "face_as_family_currency",
+    "name": "Face As Family Currency",
+    "keywords": ["face", "respectable", "lose face", "丢脸", "面子", "体面", "让家里有面子", "别人怎么看"],
+    "conditions": {
+      "face_pressure_gte": 3
+    },
+    "description": "Family respect is partly organized around face, comparison, and visible achievement.",
+    "life_effect": "Choices become harder when they cannot be explained as respectable.",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "parent_path_shadow",
+    "name": "Parent Path Shadow",
+    "keywords": ["repeat my father", "repeat my mother", "父亲的路", "母亲的路", "重复父母", "官场", "爱情路", "婚姻路"],
+    "conditions": {
+      "parent_path_shadow_gte": 2
+    },
+    "description": "The user is not only choosing a future, but also trying not to repeat a parental life path.",
+    "life_effect": "Avoidance of inherited scripts can become as powerful as desire for a new path.",
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 2
+    }
+  },
+  {
+    "id": "emotional_debt_family",
+    "name": "Emotional Debt Family",
+    "keywords": ["owe", "sacrifice", "because of me", "亏欠", "都是因为我", "牺牲", "养大", "不容易"],
+    "conditions": {
+      "emotional_inheritance_gte": 3
+    },
+    "description": "Care and guilt are tangled, making independence feel morally expensive.",
+    "life_effect": "The person may delay autonomy until it can be justified as not betraying the family.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "unstable_parental_attachment",
+    "name": "Unstable Parental Attachment",
+    "keywords": ["divorce", "remarry", "fear", "not close", "离婚", "再婚", "不亲", "不熟", "畏惧", "关系不好"],
+    "description": "Family attachment is unstable enough that safety and closeness are not naturally linked.",
+    "life_effect": "Relationship safety may stay low even when practical support exists.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 2
+    }
+  },
+  {
+    "id": "control_disguised_as_care",
+    "name": "Control Disguised As Care",
+    "keywords": ["for your own good", "control", "door lock", "strict", "都是为你好", "控制", "严苛", "卸门锁", "打骂", "辱骂"],
+    "description": "Care appears together with control, so support may also feel invasive.",
+    "life_effect": "The person may reject help because help has historically carried control.",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 2
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "prover_judge",
+    "agents": ["prover", "judge"],
+    "name": "achievement without arrival",
+    "dynamic": "The Prover runs toward recognition while the Judge prevents any result from feeling complete.",
+    "trajectory_risk": "The person may become more capable while feeling less free."
+  },
+  {
+    "id": "controller_observer",
+    "agents": ["controller", "observer"],
+    "name": "clear analysis, delayed entry",
+    "dynamic": "The Controller demands certainty while the Observer supplies endless analysis.",
+    "trajectory_risk": "The person may stay before the threshold of action for years."
+  },
+  {
+    "id": "pleaser_escaper",
+    "agents": ["pleaser", "escaper"],
+    "name": "compliance before disappearance",
+    "dynamic": "The Pleaser preserves peace until the Escaper takes over and leaves abruptly.",
+    "trajectory_risk": "Relationships and collaborations may break when others thought everything was fine."
+  },
+  {
+    "id": "controller_escaper",
+    "agents": ["controller", "escaper"],
+    "name": "controlled life, sudden restart",
+    "dynamic": "The Controller suppresses risk for too long, then the Escaper seeks a full reset.",
+    "trajectory_risk": "Life alternates between over-control and abrupt escape."
+  },
+  {
+    "id": "prover_pleaser",
+    "agents": ["prover", "pleaser"],
+    "name": "earning love through usefulness",
+    "dynamic": "The Prover seeks value through achievement while the Pleaser seeks safety through usefulness.",
+    "trajectory_risk": "The person may become reliable to everyone while postponing their own desire."
+  }
+]
+

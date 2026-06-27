@@ -1,0 +1,202 @@
+{
+  "simulation_depth": "deep",
+  "llm_cost_profile": "deep_llm",
+  "llm_adapter": {
+    "mode": "dry_run",
+    "model": "future-configured-model"
+  },
+  "evidence_mode": {
+    "mode": "external_observer"
+  },
+  "profile": {
+    "age": 29,
+    "life_stage": "early_adulthood",
+    "city": "Shanghai",
+    "industry": "content and technology",
+    "current_question": "I want to change career direction, but I keep delaying the decision.",
+    "self_description": [
+      "I always want to prove myself.",
+      "I am afraid of choosing the wrong path.",
+      "I can analyze my problems clearly, but I often do not act.",
+      "In relationships I often say I am fine even when I am not."
+    ]
+  },
+  "recent_events": [
+    {
+      "type": "career",
+      "text": "A new opportunity appeared, but it requires leaving a stable environment."
+    },
+    {
+      "type": "relationship",
+      "text": "A close friend said I always disappear when pressure becomes real."
+    }
+  ],
+  "social_roles": [
+    {
+      "role": "employee",
+      "load": 4,
+      "description": "Stable job, but growth feels limited."
+    },
+    {
+      "role": "adult_child",
+      "load": 3,
+      "description": "Family expects stability and dislikes risky career changes."
+    },
+    {
+      "role": "friend",
+      "load": 2,
+      "description": "Often plays the listener in friendships."
+    }
+  ],
+  "assets": {
+    "monthly_income_level": 3,
+    "savings_months": 6,
+    "debt_pressure": 1,
+    "skill_assets": ["writing", "product thinking", "AI tool usage"],
+    "reputation_assets": ["reliable", "thoughtful", "good at analysis"]
+  },
+  "environment": {
+    "city_tier": "tier_1",
+    "industry_volatility": 4,
+    "opportunity_density": 4,
+    "living_cost_pressure": 4,
+    "social_comparison_pressure": 4
+  },
+  "family_system": {
+    "family_expectation": "stability over exploration",
+    "emotional_closeness": 3,
+    "financial_dependency": 1,
+    "boundary_pressure": 3,
+    "unspoken_family_rule": "Do not make risky choices unless success is almost guaranteed."
+  },
+  "relationship_network": {
+    "supportive_people": 2,
+    "truth_tellers": 1,
+    "draining_ties": 3,
+    "romantic_stability": 2,
+    "observer_feedback": [
+      "A close friend says I disappear when pressure becomes real."
+    ]
+  },
+  "health_and_energy": {
+    "sleep_quality": 2,
+    "stress_level": 4,
+    "body_energy": 3,
+    "attention_fragmentation": 4
+  },
+  "time_horizon": {
+    "short_term_months": 3,
+    "medium_term_months": 18,
+    "long_term_years": 10
+  },
+  "life_timeline": [
+    {
+      "age": 12,
+      "type": "recognition",
+      "text": "The first time I felt truly seen was after being praised for excellent performance."
+    },
+    {
+      "age": 18,
+      "type": "failure_memory",
+      "text": "I made a wrong choice once and felt ashamed for a long time."
+    },
+    {
+      "age": 25,
+      "type": "stable_role",
+      "text": "I entered a stable job, but later felt the role protected me and trapped me at the same time."
+    }
+  ],
+  "value_system": {
+    "top_values": ["freedom", "meaning", "recognition", "relational truth"],
+    "sacrificed_values": ["rest", "direct needs", "play"],
+    "non_negotiables": ["not living only for performance", "having a meaningful career"],
+    "value_conflict": "I want freedom, but I also need safety and family permission."
+  },
+  "decision_style": {
+    "default_mode": "certainty before entry",
+    "under_pressure": "withdraw first, explain later",
+    "risk_response": "over-prepare and seek recognition before acting",
+    "best_intervention": "small public experiment with external feedback"
+  },
+  "social_capital": {
+    "current_circle": "stable but not very expansive",
+    "bridge_ties": 1,
+    "warm_introductions": 1,
+    "public_visibility": 1,
+    "trusted_observers": ["close friend", "former colleague"],
+    "missing_network": "people already living the future identity I want"
+  },
+  "intimacy_and_family_path": {
+    "romantic_status": "not fully stable",
+    "commitment_pressure": 2,
+    "marriage_childbearing_pressure": 1,
+    "truth_expression_capacity": 2,
+    "private_life_need": "relationships where I do not need to perform"
+  },
+  "wealth_path": {
+    "cashflow_dependency": 4,
+    "optionality_capital": 2,
+    "spending_pressure": 3,
+    "asset_building_path": "turn writing, product thinking, and AI tool usage into public artifacts",
+    "transition_budget": "needs a staged exit ladder"
+  },
+  "macro_era": {
+    "era_signals": ["AI tool leverage", "content and technology volatility", "portfolio work"],
+    "ai_exposure": 4,
+    "automation_risk": 3,
+    "prototype_cost": 1,
+    "market_window": "small shipped artifacts can create new proof faster than old credentials"
+  },
+  "symbolic_material": {
+    "names": [
+      {
+        "label": "FormSight",
+        "meaning": "seeing a life pattern before being trapped by it"
+      }
+    ],
+    "places": [
+      {
+        "label": "Shanghai",
+        "meaning": "a dense field of opportunity, comparison, and public evaluation"
+      }
+    ],
+    "objects": [
+      {
+        "label": "unfinished notebook",
+        "meaning": "an open loop between planning and visible action"
+      }
+    ],
+    "digital_identities": [
+      {
+        "label": "public portfolio identity",
+        "meaning": "a possible second identity beyond the stable employee role"
+      }
+    ],
+    "unfinished_artifacts": [
+      {
+        "label": "half-built portfolio",
+        "meaning": "ability exists but has not yet become social proof"
+      }
+    ],
+    "recurring_words": ["proof", "freedom", "certainty", "visibility"],
+    "long_texts": [
+      "I keep returning to the idea that I need a visible artifact before I can believe I have changed. The room, the notebook, the deadline, and the public portfolio all feel connected: I want a new identity, but I keep waiting for enough certainty before I show anything."
+    ]
+  },
+  "repeated_patterns": [
+    "delay before important decisions",
+    "over-prepare before starting",
+    "seek recognition but reject praise",
+    "withdraw when emotional pressure rises"
+  ],
+  "desired_future": [
+    "more freedom",
+    "a meaningful career",
+    "relationships where I do not need to perform"
+  ],
+  "feared_future": [
+    "staying ordinary",
+    "making a wrong irreversible choice",
+    "being seen as not good enough"
+  ]
+}

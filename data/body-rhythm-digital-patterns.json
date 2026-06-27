@@ -1,0 +1,52 @@
+[
+  {
+    "id": "appearance_visibility_anxiety",
+    "name": "外貌与可见性焦虑",
+    "description": "当事人对被看见、被评价、被比较高度敏感，容易影响社交、恋爱、内容表达和职业曝光。",
+    "keywords": ["外貌", "身材", "不好看", "自卑", "怕被看见", "镜头"],
+    "conditions": { "appearance_anxiety_gte": 4 },
+    "amplifies": ["protector", "inner_child"],
+    "branch_effect": { "inertia": 0.7, "intervention": 0.5 },
+    "life_effect": "未来线需要设计低曝光起步方式，先恢复身体和形象掌控感，再进入更高可见度场景。"
+  },
+  {
+    "id": "gendered_self_constraint",
+    "name": "性别角色自我限制",
+    "description": "女性/男性角色期待、婚恋评价、家庭责任或身体经验，会改变当事人对事业和关系的选择边界。",
+    "keywords": ["女生", "结婚年龄", "生孩子", "性别", "女性", "男性", "年龄焦虑"],
+    "conditions": { "gender_constraint_gte": 4 },
+    "amplifies": ["protector", "strategist"],
+    "branch_effect": { "intervention": 0.8, "inertia": 0.6 },
+    "life_effect": "报告会把婚恋、身体、年龄和事业放在同一张图里看，而不是分开讲。"
+  },
+  {
+    "id": "rhythm_fragility",
+    "name": "生活节律脆弱",
+    "description": "睡眠、注意力、拖延和日常秩序不稳定，会让未来线在执行阶段反复掉线。",
+    "keywords": ["熬夜", "作息", "拖延", "起不来", "注意力", "执行不了"],
+    "conditions": { "rhythm_fragility_gte": 4 },
+    "amplifies": ["survivor", "inner_child"],
+    "branch_effect": { "inertia": 1.0, "intervention": -0.2 },
+    "life_effect": "最优解不是立刻加目标，而是先修复日常节律，否则任何路线都会在执行端失真。"
+  },
+  {
+    "id": "digital_negative_scan_loop",
+    "name": "数字信息负面扫描循环",
+    "description": "短视频、社交媒体和搜索内容把注意力持续拉向焦虑材料，让人以为自己看清了现实，其实是在强化恐惧。",
+    "keywords": ["刷视频", "小红书", "短视频平台", "焦虑", "搜很多", "看帖子", "信息太多"],
+    "conditions": { "negative_information_scanning_gte": 4 },
+    "amplifies": ["observer", "protector"],
+    "branch_effect": { "inertia": 0.9, "rupture": 0.4 },
+    "life_effect": "未来线需要减少无效信息摄入，用可验证的小测试替代反复搜索。"
+  },
+  {
+    "id": "saved_content_no_action",
+    "name": "收藏很多但行动很少",
+    "description": "当事人不断收藏方法、案例和方向，但真正开始的动作很少，说明行动入口太大或失败成本太高。",
+    "keywords": ["收藏", "想学", "看了很多", "没有行动", "知道但做不到"],
+    "conditions": { "saved_content_no_action_gte": 3 },
+    "amplifies": ["observer", "strategist"],
+    "branch_effect": { "intervention": 0.8, "inertia": 0.5 },
+    "life_effect": "转向线必须拆成 7 天内能完成的验证动作，而不是继续增加理解。"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "money_as_face_repair",
+    "name": "用钱修复面子感",
+    "description": "消费或赚钱不只是资源问题，也是在修复被比较、被看低、被亏欠的感受。",
+    "keywords": ["面子", "不想被看不起", "花钱", "消费", "证明自己", "体面"],
+    "conditions": { "money_shame_gte": 4 },
+    "amplifies": ["inner_child", "protector"],
+    "branch_effect": { "inertia": 0.8, "rupture": 0.6 },
+    "life_effect": "财务线需要同时看现金流和羞耻感，否则没钱这个状态会继续反向塑造选择。"
+  },
+  {
+    "id": "class_mobility_pressure",
+    "name": "阶层跃迁压力",
+    "description": "当事人把个人选择和家庭阶层、未来体面、同龄人比较绑在一起，导致小选择被放大成命运审判。",
+    "keywords": ["阶层", "出人头地", "比别人差", "学历", "稳定工作", "体面工作"],
+    "conditions": { "class_anxiety_gte": 4 },
+    "amplifies": ["strategist", "observer"],
+    "branch_effect": { "intervention": 0.9, "inertia": 0.7 },
+    "life_effect": "转向线不能只讲兴趣，要给出可被家庭和现实接受的阶层解释。"
+  },
+  {
+    "id": "spending_as_emotional_leak",
+    "name": "消费成为情绪泄口",
+    "description": "当压力无法被表达时，钱会变成短期止痛工具，削弱资产缓冲和长期选择权。",
+    "keywords": ["乱花钱", "报复性消费", "买东西", "控制不住消费", "花钱缓解"],
+    "conditions": { "consumption_pressure_gte": 4 },
+    "amplifies": ["inner_child", "survivor"],
+    "branch_effect": { "inertia": 0.8, "rupture": 0.5 },
+    "life_effect": "报告会把消费冲动视为能量泄漏，而不是单纯的自控力问题。"
+  },
+  {
+    "id": "security_before_desire",
+    "name": "安全感优先于愿望",
+    "description": "在钱和身份没有托底前，当事人会不断压低真实愿望，优先选择看起来不出错的路线。",
+    "keywords": ["安全感", "稳定", "不敢冒险", "怕没钱", "现实一点"],
+    "conditions": { "financial_runway_lte": 2 },
+    "amplifies": ["protector", "survivor"],
+    "branch_effect": { "inertia": 1.1, "intervention": -0.2 },
+    "life_effect": "真正可行的转向线必须先设计资产缓冲，否则建议再好也会被现实压力压回去。"
+  }
+]

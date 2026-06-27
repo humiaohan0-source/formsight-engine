@@ -1,0 +1,68 @@
+[
+  {
+    "id": "limited_runway",
+    "name": "Limited Runway",
+    "conditions": {
+      "financial_runway_lte": 5
+    },
+    "description": "The person has some buffer, but not enough to safely absorb a large failed transition.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1,
+      "rupture": 1
+    },
+    "recommended_strategy": "staged experiment instead of full leap"
+  },
+  {
+    "id": "income_floor_without_freedom",
+    "name": "Income Floor Without Freedom",
+    "conditions": {
+      "monthly_income_level_gte": 3,
+      "life_mobility_lte": 5
+    },
+    "description": "Income provides stability but does not automatically create life mobility.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1
+    },
+    "recommended_strategy": "separate survival income from exploration capital"
+  },
+  {
+    "id": "skill_based_mobility",
+    "name": "Skill-Based Mobility",
+    "conditions": {
+      "skill_assets_min": 2
+    },
+    "description": "The person's skills can create optionality even when financial runway is not abundant.",
+    "branch_effect": {
+      "intervention": 2
+    },
+    "recommended_strategy": "convert skills into small external tests"
+  },
+  {
+    "id": "reputation_buffer",
+    "name": "Reputation Buffer",
+    "conditions": {
+      "reputation_assets_min": 2
+    },
+    "description": "The person has social credibility that can reduce the cost of asking for help or opportunities.",
+    "branch_effect": {
+      "intervention": 1
+    },
+    "recommended_strategy": "use reputation to ask for warmer, lower-risk opportunities"
+  },
+  {
+    "id": "high_cost_transition",
+    "name": "High-Cost Transition",
+    "conditions": {
+      "living_cost_pressure_gte": 4,
+      "financial_runway_lte": 6
+    },
+    "description": "A transition is psychologically attractive but financially expensive.",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 1
+    },
+    "recommended_strategy": "build a three-step exit ladder before a full identity jump"
+  }
+]

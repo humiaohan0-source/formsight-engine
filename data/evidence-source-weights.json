@@ -1,0 +1,32 @@
+{
+  "behavior_history": {
+    "name": "Behavior History",
+    "weight": 4,
+    "description": "Repeated actions and historical events are stronger than self-explanation."
+  },
+  "observer_feedback": {
+    "name": "Observer Feedback",
+    "weight": 4,
+    "description": "External witnesses reduce blind spots in self-report."
+  },
+  "structured_facts": {
+    "name": "Structured Facts",
+    "weight": 3,
+    "description": "Assets, roles, health, environment, and network fields are grounded state variables."
+  },
+  "self_report": {
+    "name": "Self Report",
+    "weight": 2,
+    "description": "Self-description is useful but may include identity stories and blind spots."
+  },
+  "aspiration_fear": {
+    "name": "Aspiration And Fear",
+    "weight": 2,
+    "description": "Desired and feared futures reveal direction, but not always behavior."
+  },
+  "model_inference": {
+    "name": "Model Inference",
+    "weight": 1,
+    "description": "Weakest evidence: useful only when supported by stronger sources."
+  }
+}

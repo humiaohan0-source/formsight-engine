@@ -1,0 +1,59 @@
+[
+  {
+    "id": "chronic_condition_cashflow_risk",
+    "name": "Chronic Condition Cashflow Risk",
+    "keywords": ["stomach illness", "胃病", "chronic", "body", "health"],
+    "conditions": {
+      "body_energy_lte": 2
+    },
+    "description": "A chronic body issue can interrupt work capacity, attention, and unexpected spending.",
+    "life_effect": "The wealth line needs health-adjusted pacing; otherwise intervention can turn into depletion.",
+    "branch_effect": {
+      "inertia": 0.5,
+      "intervention": -0.2,
+      "rupture": 0.8
+    },
+    "financial_effect": {
+      "baseline_drag": 0.35,
+      "intervention_drag": 0.35,
+      "volatility": 0.7,
+      "reason": "health risk can interrupt cashflow and force spending"
+    }
+  },
+  {
+    "id": "stable_sleep_protects_buffer",
+    "name": "Stable Sleep Protects Buffer",
+    "conditions": {
+      "sleep_quality_gte": 4
+    },
+    "description": "Sleep quality is good enough to protect basic execution and reduce burnout spending.",
+    "life_effect": "Body stability slightly improves the chance that small income becomes retained buffer.",
+    "branch_effect": {
+      "intervention": 0.5
+    },
+    "financial_effect": {
+      "intervention_growth": 0.2,
+      "volatility": -0.2,
+      "reason": "stable sleep protects execution and financial consistency"
+    }
+  },
+  {
+    "id": "stress_lowers_financial_patience",
+    "name": "Stress Lowers Financial Patience",
+    "conditions": {
+      "stress_level_gte": 3,
+      "attention_fragmentation_gte": 4
+    },
+    "description": "Stress and fragmented attention make long-horizon financial planning harder.",
+    "life_effect": "The person may seek fast relief or fast proof instead of compounding patiently.",
+    "branch_effect": {
+      "inertia": 0.6,
+      "rupture": 0.4
+    },
+    "financial_effect": {
+      "intervention_drag": 0.25,
+      "volatility": 0.45,
+      "reason": "stress lowers patience for slow wealth accumulation"
+    }
+  }
+]

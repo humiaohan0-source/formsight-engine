@@ -1,0 +1,69 @@
+[
+  {
+    "id": "family_expectation",
+    "name": "Family Expectation",
+    "domain": "family",
+    "desire": "stability, safety, socially acceptable outcomes",
+    "pressure_style": "subtle guilt, comparison, risk warning",
+    "keywords": ["family expects", "stability", "risky", "guaranteed"],
+    "amplifies": ["controller", "judge"],
+    "suppresses": ["gambler", "escaper"],
+    "life_effect": "narrows risky branches and increases delayed decision behavior"
+  },
+  {
+    "id": "labor_market",
+    "name": "Labor Market",
+    "domain": "career",
+    "desire": "adaptability, visible skill, timing",
+    "pressure_style": "opportunity windows, volatility, credential filtering",
+    "keywords": ["industry", "opportunity", "career", "market"],
+    "amplifies": ["prover", "observer"],
+    "suppresses": ["pleaser"],
+    "life_effect": "rewards prepared action but punishes endless hesitation"
+  },
+  {
+    "id": "city_pressure",
+    "name": "City Pressure",
+    "domain": "environment",
+    "desire": "speed, comparison, high cost survival",
+    "pressure_style": "living cost, social comparison, time compression",
+    "keywords": ["tier_1", "living cost", "comparison", "Shanghai"],
+    "amplifies": ["prover", "controller"],
+    "suppresses": ["wounded_child"],
+    "life_effect": "increases urgency and makes rest feel like falling behind"
+  },
+  {
+    "id": "support_network",
+    "name": "Support Network",
+    "domain": "relationship",
+    "desire": "reality testing, emotional support, honest reflection",
+    "pressure_style": "feedback, witnessing, rescue from private rumination",
+    "keywords": ["supportive", "truth tellers", "friend"],
+    "amplifies": ["observer"],
+    "suppresses": ["judge", "escaper"],
+    "life_effect": "reduces distortion and helps convert insight into action"
+  },
+  {
+    "id": "energy_system",
+    "name": "Energy System",
+    "domain": "health",
+    "desire": "sleep, attention, recovery, body capacity",
+    "pressure_style": "fatigue, stress, attention fragmentation",
+    "keywords": ["sleep", "stress", "energy", "attention"],
+    "amplifies": ["escaper", "judge"],
+    "suppresses": ["prover", "observer"],
+    "life_effect": "can make exhaustion look like destiny or lack of will"
+  },
+  {
+    "id": "asset_constraint",
+    "name": "Asset Constraint",
+    "domain": "finance",
+    "desire": "runway, optionality, downside protection",
+    "pressure_style": "monthly burn, debt pressure, savings limit",
+    "keywords": ["savings", "debt", "income", "runway"],
+    "amplifies": ["controller"],
+    "suppresses": ["gambler"],
+    "life_effect": "determines whether a branch can be explored safely or only imagined"
+  }
+]
+

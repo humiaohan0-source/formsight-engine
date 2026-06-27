@@ -1,0 +1,75 @@
+[
+  {
+    "id": "truth_before_commitment",
+    "name": "Truth Before Commitment",
+    "keywords": ["relational truth", "fine", "relationship", "close friend", "direct needs"],
+    "description": "Long-term intimacy requires the person to express discomfort before withdrawing.",
+    "amplifies": ["pleaser", "escaper", "observer"],
+    "life_effect": "The relationship branch improves when truth becomes earlier and less dramatic.",
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "stability_partner_pressure",
+    "name": "Stability Partner Pressure",
+    "keywords": ["stable", "family permission", "romantic_stability", "responsibility"],
+    "description": "Romantic and family expectations may converge around stability, increasing pressure on non-linear choices.",
+    "amplifies": ["controller", "pleaser"],
+    "life_effect": "Career change and intimacy choices may become coupled instead of separate.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "caregiver_identity_risk",
+    "name": "Caregiver Identity Risk",
+    "keywords": ["listener", "friend", "supportive", "perform", "direct needs"],
+    "description": "The person may be loved for being understanding while hiding the cost of that role.",
+    "amplifies": ["pleaser", "observer"],
+    "life_effect": "If care is not reciprocated, intimacy becomes another performance system.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "private_life_as_fate_anchor",
+    "name": "Private Life As Fate Anchor",
+    "keywords": ["relationships", "meaning", "not perform", "truth tellers"],
+    "description": "A more honest private life can stabilize the public risk of career experimentation.",
+    "amplifies": ["observer", "pleaser"],
+    "life_effect": "Relational safety becomes a platform for change, not a distraction from change.",
+    "branch_effect": {
+      "intervention": 2
+    }
+  },
+  {
+    "id": "marriage_pressure_coupling",
+    "name": "Marriage Pressure Coupling",
+    "keywords": ["marriage", "family permission", "parents", "结婚", "成家", "催婚", "父母", "彩礼", "房子", "婚后", "生育"],
+    "description": "Marriage is not only romantic; it couples family expectations, money, housing, gender roles, and future mobility.",
+    "amplifies": ["controller", "pleaser"],
+    "life_effect": "If these variables are not separated before commitment, the relationship can become the container for every unsolved pressure.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "unmet_desire_turning_outward",
+    "name": "Unmet Desire Turning Outward",
+    "keywords": ["unmet needs", "not satisfied", "affair", "attracted", "不满意", "不幸福", "没被爱", "被吸引", "心动", "出轨", "精神出轨", "暧昧"],
+    "description": "When desire and recognition cannot be spoken inside the relationship, attention may turn outward.",
+    "amplifies": ["escaper", "prover", "pleaser"],
+    "life_effect": "The external person is often a symbol of an unlived self, not only a romantic alternative.",
+    "branch_effect": {
+      "rupture": 3,
+      "intervention": 1
+    }
+  }
+]

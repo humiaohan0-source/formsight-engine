@@ -1,0 +1,101 @@
+[
+  {
+    "id": "identity_and_question",
+    "name": "Identity and current question",
+    "max_score": 12,
+    "target_count": 6,
+    "paths": ["profile", "profile.self_description", "profile.current_question"],
+    "strong_interpretation": "The current life question and self-description are clear enough.",
+    "thin_interpretation": "The current question is still too generic, so the simulation may become abstract."
+  },
+  {
+    "id": "behavior_history",
+    "name": "Behavior history",
+    "max_score": 14,
+    "target_count": 8,
+    "paths": ["recent_events", "life_timeline", "repeated_patterns"],
+    "strong_interpretation": "There is enough behavioral history to support pattern inference.",
+    "thin_interpretation": "Behavioral evidence is thin, so the model can only infer personality patterns weakly."
+  },
+  {
+    "id": "developmental_timeline",
+    "name": "Developmental timeline and event repair",
+    "max_score": 16,
+    "target_count": 14,
+    "paths": ["life_timeline", "recent_events", "symbolic_anchors"],
+    "strong_interpretation": "There is enough timeline material to infer event sedimentation across life stages.",
+    "thin_interpretation": "Timeline material is thin, so the model may miss when and how earlier events shaped later decision patterns."
+  },
+  {
+    "id": "reality_variables",
+    "name": "Reality variables",
+    "max_score": 16,
+    "target_count": 16,
+    "paths": ["social_roles", "assets", "environment", "health_and_energy", "wealth_path", "macro_era"],
+    "strong_interpretation": "Roles, assets, environment, and body variables are relatively complete.",
+    "thin_interpretation": "Reality constraints are thin, so future lines may lack grounded boundaries."
+  },
+  {
+    "id": "family_and_relationship",
+    "name": "Family and relationship system",
+    "max_score": 14,
+    "target_count": 12,
+    "paths": ["family_system", "intergenerational_family", "relationship_network", "intimacy_and_family_path"],
+    "strong_interpretation": "Family and relationship pressure can participate in the simulation.",
+    "thin_interpretation": "Family or relationship material is thin, so intimacy and observer calibration may be weaker."
+  },
+  {
+    "id": "education_and_peer_history",
+    "name": "Education and peer history",
+    "max_score": 14,
+    "target_count": 12,
+    "paths": ["education_path", "life_timeline", "peer_authority"],
+    "strong_interpretation": "School stages, peer relations, and authority experience can explain early personality formation.",
+    "thin_interpretation": "Education and peer material is thin, so the model may miss how early environments shaped the current choice style."
+  },
+  {
+    "id": "place_class_body_digital",
+    "name": "Place, class, body, rhythm, and digital life",
+    "max_score": 18,
+    "target_count": 16,
+    "paths": ["place_mobility", "class_money_shame", "body_image_gender", "time_rhythm", "digital_information", "meaning_belief", "worldview_orientation", "agency_control", "time_future_orientation"],
+    "strong_interpretation": "Hidden growth variables such as city fit, class pressure, body visibility, rhythm, information intake, and meaning system are available.",
+    "thin_interpretation": "Hidden growth variables are thin, so the future report may overfocus on obvious family, work, or money variables."
+  },
+  {
+    "id": "romantic_worldview_agency",
+    "name": "Romantic history, worldview, and agency",
+    "max_score": 14,
+    "target_count": 12,
+    "paths": ["romantic_history", "worldview_orientation", "agency_control", "time_future_orientation", "intimacy_and_family_path"],
+    "strong_interpretation": "Romantic history, worldview, locus of control, and future-time orientation can participate in future-line inference.",
+    "thin_interpretation": "Romantic, worldview, and agency material is thin, so the model may miss how the person interprets risk, love, failure, and future choices."
+  },
+  {
+    "id": "values_and_decisions",
+    "name": "Values and decision style",
+    "max_score": 14,
+    "target_count": 10,
+    "paths": ["value_system", "decision_style", "desired_future", "feared_future"],
+    "strong_interpretation": "Value conflicts and decision style are clear enough.",
+    "thin_interpretation": "Value tradeoff material is thin, so turning-point prediction is less reliable."
+  },
+  {
+    "id": "external_observation",
+    "name": "External observation",
+    "max_score": 18,
+    "target_count": 5,
+    "paths": ["relationship_network.observer_feedback", "social_capital.trusted_observers"],
+    "strong_interpretation": "External observers can calibrate the self-narrative.",
+    "thin_interpretation": "External observation is thin; private review depends more on structured material and lower confidence."
+  },
+  {
+    "id": "symbolic_and_longform_material",
+    "name": "Symbolic and longform material",
+    "max_score": 16,
+    "target_count": 12,
+    "paths": ["symbolic_material", "symbolic_anchors", "symbolic_material.long_texts"],
+    "strong_interpretation": "Symbolic anchors and longform material are dense enough to expose weak signals.",
+    "thin_interpretation": "Symbolic and longform material is thin, so name/place/object/dream cues should be treated as weak hints."
+  }
+]

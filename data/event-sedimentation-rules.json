@@ -1,0 +1,255 @@
+[
+  {
+    "id": "early_family_pressure",
+    "name": "早期家庭压力沉积",
+    "event_types": ["family", "home", "parent", "childhood"],
+    "keywords": ["父母", "母亲", "父亲", "家庭", "家里", "管束", "评价", "控制", "吵架", "冷暴力", "原生家庭", "parent", "family"],
+    "age_stages": {
+      "early_childhood": 1.45,
+      "childhood": 1.3,
+      "adolescence": 1.15,
+      "early_adulthood": 0.95,
+      "adulthood": 0.8,
+      "unknown": 0.9
+    },
+    "base_intensity": 2.2,
+    "repair_keywords": ["说开", "和解", "支持", "理解", "修复", "保护", "有人帮", "repair", "support"],
+    "variable_effects": {
+      "self_trust": -0.55,
+      "relational_safety": -0.35,
+      "action_momentum": -0.25,
+      "family_gravity": 0.75,
+      "identity_flexibility": -0.25
+    },
+    "branch_effect": {
+      "inertia": 0.45,
+      "rupture": 0.35,
+      "intervention": -0.12
+    },
+    "life_effect": "早期家庭压力会让后续选择更容易先考虑评价、责任和安全，而不是直接进入真实试错。"
+  },
+  {
+    "id": "school_peer_evaluation",
+    "name": "学校评价与同伴关系沉积",
+    "event_types": ["education", "school", "peer", "exam"],
+    "keywords": ["学校", "同学", "老师", "考试", "成绩", "排名", "霸凌", "孤立", "排挤", "被笑", "否定", "school", "peer"],
+    "age_stages": {
+      "early_childhood": 1,
+      "childhood": 1.25,
+      "adolescence": 1.35,
+      "early_adulthood": 1.05,
+      "adulthood": 0.75,
+      "unknown": 0.9
+    },
+    "base_intensity": 2,
+    "repair_keywords": ["朋友", "老师帮", "被认可", "支持", "转学后变好", "修复", "support"],
+    "variable_effects": {
+      "self_trust": -0.45,
+      "social_visibility": -0.3,
+      "action_momentum": -0.18,
+      "identity_flexibility": -0.15
+    },
+    "branch_effect": {
+      "inertia": 0.3,
+      "rupture": 0.22,
+      "intervention": -0.08
+    },
+    "life_effect": "学校和同伴评价会改变一个人后续是否敢暴露能力、进入新圈层、接受被比较。"
+  },
+  {
+    "id": "romantic_identity_shift",
+    "name": "感情身份转折沉积",
+    "event_types": ["relationship_identity_shift", "romance", "love", "marriage"],
+    "keywords": ["恋爱", "分手", "暧昧", "伴侣", "婚姻", "结婚", "出轨", "背叛", "被爱", "不被爱", "关系", "love", "relationship"],
+    "age_stages": {
+      "early_childhood": 0.6,
+      "childhood": 0.8,
+      "adolescence": 1.15,
+      "early_adulthood": 1.3,
+      "adulthood": 1.1,
+      "unknown": 1
+    },
+    "base_intensity": 2.1,
+    "repair_keywords": ["沟通", "说开", "修复", "疗愈", "稳定", "尊重", "边界", "repair"],
+    "variable_effects": {
+      "relational_safety": -0.55,
+      "self_trust": -0.25,
+      "identity_flexibility": 0.18,
+      "action_momentum": -0.12
+    },
+    "branch_effect": {
+      "inertia": 0.18,
+      "rupture": 0.42,
+      "intervention": 0.08
+    },
+    "life_effect": "强关系事件会重写亲密关系里的安全感，并影响未来伴侣选择、婚姻风险和撤退阈值。"
+  },
+  {
+    "id": "betrayal_or_deception",
+    "name": "背叛与欺骗记忆沉积",
+    "event_types": ["betrayal", "deception", "trust_break"],
+    "keywords": ["骗", "欺骗", "背叛", "被坑", "隐瞒", "劈腿", "失信", "利用", "betrayal", "deception"],
+    "age_stages": {
+      "early_childhood": 1.15,
+      "childhood": 1.2,
+      "adolescence": 1.25,
+      "early_adulthood": 1.15,
+      "adulthood": 1,
+      "unknown": 1
+    },
+    "base_intensity": 2.4,
+    "repair_keywords": ["道歉", "赔偿", "看清", "离开", "支持", "法律", "解决", "repair"],
+    "variable_effects": {
+      "relational_safety": -0.75,
+      "self_trust": -0.28,
+      "action_momentum": -0.22,
+      "family_gravity": 0.12
+    },
+    "branch_effect": {
+      "inertia": 0.2,
+      "rupture": 0.55,
+      "intervention": -0.05
+    },
+    "life_effect": "背叛记忆会让人更难相信承诺，也更容易在关系或合作里提前撤退。"
+  },
+  {
+    "id": "health_disruption",
+    "name": "身体中断事件沉积",
+    "event_types": ["health", "body", "illness"],
+    "keywords": ["生病", "身体", "住院", "手术", "失眠", "焦虑", "抑郁", "休学", "崩溃", "健康", "illness", "health"],
+    "age_stages": {
+      "early_childhood": 1.1,
+      "childhood": 1.1,
+      "adolescence": 1.15,
+      "early_adulthood": 1.2,
+      "adulthood": 1.1,
+      "unknown": 1
+    },
+    "base_intensity": 2.3,
+    "repair_keywords": ["恢复", "治疗", "休息", "规律", "运动", "好转", "复诊", "repair"],
+    "variable_effects": {
+      "body_recovery": -0.8,
+      "action_momentum": -0.32,
+      "financial_buffer": -0.18,
+      "self_trust": -0.12
+    },
+    "branch_effect": {
+      "inertia": 0.25,
+      "rupture": 0.28,
+      "intervention": -0.04
+    },
+    "life_effect": "身体中断会改变行动容量和风险承受力，很多人生选择会被体力、睡眠和恢复周期重新定价。"
+  },
+  {
+    "id": "academic_delay_or_failure",
+    "name": "学业延迟与失败沉积",
+    "event_types": ["education", "exam", "academic_delay", "academic_crisis", "graduate_exam_path"],
+    "keywords": ["延毕", "挂科", "考研", "复读", "失败", "没考上", "换专业", "跨考", "退学", "毕业", "delayed graduation", "academic failure", "exam failure"],
+    "age_stages": {
+      "early_childhood": 0.4,
+      "childhood": 0.8,
+      "adolescence": 1.2,
+      "early_adulthood": 1.35,
+      "adulthood": 0.9,
+      "unknown": 1
+    },
+    "base_intensity": 2.1,
+    "repair_keywords": ["重新规划", "补救", "通过", "上岸", "导师支持", "找到方向", "repair"],
+    "variable_effects": {
+      "self_trust": -0.45,
+      "action_momentum": -0.35,
+      "identity_flexibility": 0.12,
+      "financial_buffer": -0.15
+    },
+    "branch_effect": {
+      "inertia": 0.35,
+      "rupture": 0.25,
+      "intervention": 0.08
+    },
+    "life_effect": "学业延迟会让人更容易把下一次选择看成证明题，也可能逼出更现实的低后悔测试。"
+  },
+  {
+    "id": "financial_shame_pressure",
+    "name": "金钱羞耻与资源压力沉积",
+    "event_types": ["money", "finance", "family", "work"],
+    "keywords": ["没钱", "债", "借钱", "贫穷", "房租", "花钱", "彩礼", "工资", "经济", "羞耻", "被看不起", "money", "debt"],
+    "age_stages": {
+      "early_childhood": 1.25,
+      "childhood": 1.25,
+      "adolescence": 1.15,
+      "early_adulthood": 1.1,
+      "adulthood": 1,
+      "unknown": 1
+    },
+    "base_intensity": 2.2,
+    "repair_keywords": ["存款", "还清", "稳定收入", "支持", "副业", "缓冲", "repair"],
+    "variable_effects": {
+      "financial_buffer": -0.7,
+      "self_trust": -0.22,
+      "family_gravity": 0.28,
+      "action_momentum": -0.18
+    },
+    "branch_effect": {
+      "inertia": 0.38,
+      "rupture": 0.18,
+      "intervention": -0.06
+    },
+    "life_effect": "没钱不是空白状态，它会持续压缩试错空间，让人更倾向短期安全和外部评价。"
+  },
+  {
+    "id": "care_responsibility",
+    "name": "照料责任沉积",
+    "event_types": ["care", "care_responsibility"],
+    "keywords": ["照顾", "生病的家人", "养老", "弟弟", "妹妹", "孩子", "责任", "牺牲", "顾家", "care responsibility", "caregiving"],
+    "age_stages": {
+      "early_childhood": 1.2,
+      "childhood": 1.25,
+      "adolescence": 1.2,
+      "early_adulthood": 1.1,
+      "adulthood": 1,
+      "unknown": 1
+    },
+    "base_intensity": 2,
+    "repair_keywords": ["分担", "有人帮", "请护工", "边界", "支持", "协商", "repair"],
+    "variable_effects": {
+      "family_gravity": 0.65,
+      "action_momentum": -0.22,
+      "financial_buffer": -0.12,
+      "identity_flexibility": -0.12
+    },
+    "branch_effect": {
+      "inertia": 0.42,
+      "rupture": 0.22,
+      "intervention": -0.08
+    },
+    "life_effect": "长期照料责任会让人生线更容易被家庭需要牵引，个人试错会被延后或压缩。"
+  },
+  {
+    "id": "relocation_or_place_split",
+    "name": "迁移与归属分裂沉积",
+    "event_types": ["place", "relocation", "school", "work"],
+    "keywords": ["搬家", "转学", "外地", "城市", "离开家", "异地", "归属", "漂", "迁移", "relocation", "city"],
+    "age_stages": {
+      "early_childhood": 1.15,
+      "childhood": 1.25,
+      "adolescence": 1.2,
+      "early_adulthood": 1.1,
+      "adulthood": 1,
+      "unknown": 1
+    },
+    "base_intensity": 1.8,
+    "repair_keywords": ["适应", "新朋友", "稳定", "留下", "归属", "支持", "repair"],
+    "variable_effects": {
+      "identity_flexibility": 0.35,
+      "relational_safety": -0.2,
+      "social_visibility": -0.12,
+      "action_momentum": 0.08
+    },
+    "branch_effect": {
+      "inertia": -0.05,
+      "rupture": 0.2,
+      "intervention": 0.22
+    },
+    "life_effect": "迁移经历会同时带来适应力和归属裂缝，让人更容易想象另一种人生，但也更怕没有落点。"
+  }
+]

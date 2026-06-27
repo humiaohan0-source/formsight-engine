@@ -1,0 +1,62 @@
+[
+  {
+    "id": "freedom_vs_safety",
+    "name": "Freedom Versus Safety",
+    "keywords": ["freedom", "stable", "safe", "wrong path", "risk"],
+    "description": "Freedom and safety are both high-value needs, so many choices feel internally split.",
+    "amplifies": ["controller", "escaper"],
+    "life_effect": "The person may alternate between over-control and sudden longing for escape.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "recognition_as_permission",
+    "name": "Recognition As Permission",
+    "keywords": ["prove", "recognition", "praise", "being seen", "not good enough"],
+    "description": "Recognition is treated as permission to exist, choose, or rest.",
+    "amplifies": ["prover", "judge"],
+    "life_effect": "The person may wait for external confirmation before trusting inner preference.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "meaning_over_status",
+    "name": "Meaning Over Status",
+    "keywords": ["meaningful career", "meaning", "not perform", "desired future"],
+    "description": "Meaning has started to compete with visible achievement as a primary value.",
+    "amplifies": ["observer", "escaper"],
+    "life_effect": "A purely prestigious path may stop working even if it remains externally successful.",
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "relational_truth_need",
+    "name": "Relational Truth Need",
+    "keywords": ["relationships", "fine", "truth tellers", "close friend", "perform"],
+    "description": "The person values relationships where truth can be spoken without losing position.",
+    "amplifies": ["pleaser", "observer"],
+    "life_effect": "Relationships become a major site of fate correction, not just emotional comfort.",
+    "branch_effect": {
+      "intervention": 2
+    }
+  },
+  {
+    "id": "autonomy_after_duty",
+    "name": "Autonomy After Duty",
+    "keywords": ["adult child", "family expects", "responsibility", "stability", "freedom"],
+    "description": "Duty was learned earlier than autonomy, so freedom often needs a moral justification.",
+    "amplifies": ["pleaser", "controller"],
+    "life_effect": "The person may need to redefine freedom as responsibility to the future self.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2
+    }
+  }
+]

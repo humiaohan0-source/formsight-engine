@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ai_tool_leverage_window",
+    "name": "AI Tool Leverage Window",
+    "keywords": ["AI tool usage", "content and technology", "product thinking", "writing"],
+    "description": "AI tools lower the cost of prototyping, publishing, and testing a new identity.",
+    "amplifies": ["observer", "prover"],
+    "life_effect": "The era rewards small shipped artifacts more than private preparation.",
+    "branch_effect": {
+      "intervention": 3
+    }
+  },
+  {
+    "id": "credential_volatility",
+    "name": "Credential Volatility",
+    "keywords": ["industry volatility", "technology", "recognition", "stable environment"],
+    "description": "Old credentials decay faster in a volatile field, while new proof can compound quickly.",
+    "amplifies": ["controller", "prover"],
+    "life_effect": "Waiting for perfect certainty can be more dangerous than a controlled visible test.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2
+    }
+  },
+  {
+    "id": "city_cost_compression",
+    "name": "City Cost Compression",
+    "keywords": ["Shanghai", "tier_1", "living cost", "comparison", "pressure"],
+    "description": "High-cost cities compress time, risk tolerance, and self-evaluation.",
+    "amplifies": ["controller", "judge", "prover"],
+    "life_effect": "The person may feel late even when they are only under a noisy reference system.",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "portfolio_work_emergence",
+    "name": "Portfolio Work Emergence",
+    "keywords": ["writing", "AI tool usage", "product thinking", "small experiment", "public"],
+    "description": "The environment increasingly allows identity to be built through a portfolio of small outputs.",
+    "amplifies": ["observer", "escaper", "prover"],
+    "life_effect": "A parallel path can be built before the old path is abandoned.",
+    "branch_effect": {
+      "intervention": 3
+    }
+  }
+]

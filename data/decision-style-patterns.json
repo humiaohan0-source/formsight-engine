@@ -1,0 +1,60 @@
+[
+  {
+    "id": "certainty_before_entry",
+    "name": "Certainty Before Entry",
+    "keywords": ["delay", "over-prepare", "analyze", "wrong path", "do not act"],
+    "description": "The person wants enough certainty before entering a new branch.",
+    "amplifies": ["controller", "observer"],
+    "life_effect": "The main risk is not bad action, but losing timing while preparing to avoid bad action.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 2
+    }
+  },
+  {
+    "id": "private_simulation_loop",
+    "name": "Private Simulation Loop",
+    "keywords": ["analyze", "clearly", "feedback", "truth tellers", "private"],
+    "description": "The person thinks deeply alone, but may need an external witness to close the loop.",
+    "amplifies": ["observer"],
+    "life_effect": "Insight becomes powerful only when converted into a visible test.",
+    "branch_effect": {
+      "intervention": 2
+    }
+  },
+  {
+    "id": "pressure_escape_decision",
+    "name": "Pressure-Escape Decision",
+    "keywords": ["pressure", "disappear", "withdraw", "leaving", "freedom"],
+    "description": "When pressure exceeds capacity, the person may decide through withdrawal rather than negotiation.",
+    "amplifies": ["escaper", "pleaser"],
+    "life_effect": "Some life changes may look sudden from outside but were internally delayed for a long time.",
+    "branch_effect": {
+      "rupture": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "small_experiment_ready",
+    "name": "Small Experiment Ready",
+    "keywords": ["AI tool usage", "writing", "product thinking", "new opportunity", "small"],
+    "description": "The person already has enough skill material to run a small external experiment.",
+    "amplifies": ["observer", "prover"],
+    "life_effect": "A visible low-risk test is more suitable than a dramatic full reset.",
+    "branch_effect": {
+      "intervention": 3
+    }
+  },
+  {
+    "id": "approval_weighted_choice",
+    "name": "Approval-Weighted Choice",
+    "keywords": ["family expects", "recognition", "praise", "disappoint", "stable"],
+    "description": "The decision field is weighted by how others may evaluate the choice.",
+    "amplifies": ["pleaser", "prover", "controller"],
+    "life_effect": "The person may mistake social permission for inner clarity.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  }
+]

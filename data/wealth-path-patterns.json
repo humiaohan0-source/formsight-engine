@@ -1,0 +1,49 @@
+[
+  {
+    "id": "cashflow_lock",
+    "name": "Cashflow Lock",
+    "keywords": ["income", "stable job", "living cost", "debt", "savings"],
+    "description": "Current cashflow protects survival but also makes identity change feel expensive.",
+    "amplifies": ["controller"],
+    "life_effect": "The financial path needs an exit ladder rather than a single leap.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "skill_to_asset_window",
+    "name": "Skill-To-Asset Window",
+    "keywords": ["writing", "product thinking", "AI tool usage", "public experiment"],
+    "description": "Skills can be converted into visible assets if they are packaged and tested externally.",
+    "amplifies": ["prover", "observer"],
+    "life_effect": "The person can create optionality before quitting or fully changing identity.",
+    "branch_effect": {
+      "intervention": 3
+    }
+  },
+  {
+    "id": "status_consumption_pressure",
+    "name": "Status Consumption Pressure",
+    "keywords": ["comparison", "tier_1", "ordinary", "recognition", "living cost"],
+    "description": "Comparison pressure may pull money toward status defense instead of future mobility.",
+    "amplifies": ["prover", "judge"],
+    "life_effect": "Wealth mobility improves when money is treated as option-buying, not image repair.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "low_runway_high_meaning",
+    "name": "Low Runway High Meaning",
+    "keywords": ["meaningful career", "freedom", "savings", "wrong irreversible choice"],
+    "description": "A meaningful change is desired before enough financial runway exists.",
+    "amplifies": ["escaper", "controller"],
+    "life_effect": "Meaning must be tested in small paid or reputation-building forms before full transition.",
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  }
+]

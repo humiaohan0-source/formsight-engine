@@ -1,0 +1,16 @@
+{
+  "name": "formsight-engine",
+  "version": "0.1.0",
+  "description": "FormSight / 见相: an experimental parallel life simulation engine.",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "check": "node --check src/simulate.js && node --check src/engine.js && node --check src/render-report.js && node --check src/render-visualization.js",
+    "simulate": "node src/simulate.js examples/sample-seed.json",
+    "report": "node src/render-report.js examples/sample-seed.json reports/sample-report.html",
+    "visualize": "node src/render-visualization.js examples/sample-seed.json reports/simulation-visualization.html"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

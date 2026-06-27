@@ -1,0 +1,73 @@
+[
+  {
+    "id": "threshold_before_action",
+    "name": "Threshold Before Action",
+    "description": "A moment where the person has enough information but still seeks more certainty.",
+    "signals": ["delay", "over-prepare", "analyze"],
+    "likely_age_window": "late 20s to early 30s",
+    "tests": ["controller", "observer"],
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2
+    }
+  },
+  {
+    "id": "small_public_commitment",
+    "name": "Small Public Commitment",
+    "description": "A low-risk public experiment tests whether the person can act before feeling fully ready.",
+    "signals": ["AI tool usage", "writing", "product thinking", "new opportunity"],
+    "likely_age_window": "late 20s to mid 30s",
+    "tests": ["observer", "controller", "prover"],
+    "branch_effect": {
+      "intervention": 3
+    }
+  },
+  {
+    "id": "identity_cost_moment",
+    "name": "Identity Cost Moment",
+    "description": "A choice requires losing an old identity before the new identity is socially confirmed.",
+    "signals": ["career change", "new opportunity", "leaving stable environment"],
+    "likely_age_window": "early adulthood",
+    "tests": ["prover", "controller", "escaper"],
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "relationship_truth_moment",
+    "name": "Relationship Truth Moment",
+    "description": "A relationship reveals whether the person can express discomfort before disappearing.",
+    "signals": ["friend feedback", "relationship", "fine", "withdraw"],
+    "likely_age_window": "any",
+    "tests": ["pleaser", "escaper", "observer"],
+    "branch_effect": {
+      "intervention": 1,
+      "rupture": 2
+    }
+  },
+  {
+    "id": "energy_bill_comes_due",
+    "name": "Energy Bill Comes Due",
+    "description": "The body and attention system stop subsidizing an over-controlled life structure.",
+    "signals": ["stress", "attention", "sleep", "pressure"],
+    "likely_age_window": "any high-load period",
+    "tests": ["controller", "judge", "escaper"],
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 2
+    }
+  },
+  {
+    "id": "family_permission_break",
+    "name": "Family Permission Break",
+    "description": "The person realizes that waiting for family permission may be the mechanism keeping the old life stable.",
+    "signals": ["family expects", "stability", "risky", "guaranteed"],
+    "likely_age_window": "early adulthood to mid adulthood",
+    "tests": ["pleaser", "controller", "escaper"],
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  }
+]

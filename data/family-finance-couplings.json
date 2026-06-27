@@ -1,0 +1,56 @@
+[
+  {
+    "id": "support_with_control",
+    "name": "Support With Control",
+    "conditions": {
+      "financial_dependency_gte": 3,
+      "boundary_pressure_gte": 3
+    },
+    "description": "Family support keeps survival possible but also increases control and proof pressure.",
+    "life_effect": "Financial buffer is not fully independent until income separates from family approval.",
+    "branch_effect": {
+      "inertia": 1.4,
+      "intervention": -0.3
+    },
+    "financial_effect": {
+      "baseline_drag": 0.45,
+      "intervention_drag": 0.3,
+      "volatility": 0.35,
+      "reason": "family support reduces collapse risk but limits independent optionality"
+    }
+  },
+  {
+    "id": "normal_stability_pressure",
+    "name": "Normal Stability Pressure",
+    "keywords": ["normal", "stable", "find work", "graduate", "prove"],
+    "description": "Family expects the person to prove normal stability before exploration.",
+    "life_effect": "Stable work may raise cash buffer while delaying creative identity; conflict depends on pacing.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 0.4
+    },
+    "financial_effect": {
+      "intervention_growth": 0.2,
+      "intervention_drag": 0.2,
+      "volatility": 0.25,
+      "reason": "stability pressure can create income but narrow exploration"
+    }
+  },
+  {
+    "id": "family_pressure_spending_defense",
+    "name": "Family Pressure Spending Defense",
+    "keywords": ["pressure", "expectation", "shame", "配得感", "deservingness"],
+    "description": "When family pressure and shame rise, money can be used defensively to feel less failed.",
+    "life_effect": "This can leak buffer even when income improves.",
+    "branch_effect": {
+      "inertia": 0.6,
+      "rupture": 0.4
+    },
+    "financial_effect": {
+      "baseline_drag": 0.25,
+      "intervention_drag": 0.25,
+      "volatility": 0.35,
+      "reason": "pressure and shame can leak money through defensive choices"
+    }
+  }
+]

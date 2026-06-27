@@ -1,0 +1,74 @@
+[
+  {
+    "id": "zero_buffer_high_dependency",
+    "name": "Zero Buffer High Dependency",
+    "conditions": {
+      "savings_months_lte": 0,
+      "financial_dependency_gte": 3
+    },
+    "description": "There is no independent savings buffer while living support still depends on family.",
+    "life_effect": "Every transition must be staged because independence and survival are not yet separated.",
+    "branch_effect": {
+      "inertia": 1.3,
+      "intervention": -0.4,
+      "rupture": 0.7
+    },
+    "financial_effect": {
+      "baseline_drag": 0.8,
+      "intervention_drag": 0.45,
+      "volatility": 0.45,
+      "reason": "no savings and family dependency lower financial shock absorption"
+    }
+  },
+  {
+    "id": "low_spending_pressure_window",
+    "name": "Low Spending Pressure Window",
+    "conditions": {
+      "spending_pressure_lte": 2
+    },
+    "description": "Spending pressure is not the main leak; the bigger issue is income path and runway.",
+    "life_effect": "If income appears, savings can grow faster than in a high-consumption lifestyle.",
+    "branch_effect": {
+      "intervention": 0.8
+    },
+    "financial_effect": {
+      "intervention_growth": 0.45,
+      "volatility": -0.15,
+      "reason": "low spending pressure leaves room for buffer growth once income begins"
+    }
+  },
+  {
+    "id": "attention_debt_blocks_saving",
+    "name": "Attention Debt Blocks Saving",
+    "keywords": ["attention", "拖延", "fragmentation", "hard to concentrate", "execution"],
+    "conditions": {
+      "attention_fragmentation_gte": 4
+    },
+    "description": "Attention fragmentation makes money planning inconsistent even when intentions are good.",
+    "life_effect": "Savings behavior needs automation or simple rules, not more reflection.",
+    "branch_effect": {
+      "inertia": 0.8
+    },
+    "financial_effect": {
+      "baseline_drag": 0.25,
+      "intervention_drag": 0.15,
+      "volatility": 0.25,
+      "reason": "fragmented attention makes saving behavior unstable"
+    }
+  },
+  {
+    "id": "ladder_saving_ready",
+    "name": "Ladder Saving Ready",
+    "keywords": ["ladder", "阶梯", "small survival-and-creation ladder", "small experiment", "staged"],
+    "description": "The person already frames transition as a ladder rather than a leap.",
+    "life_effect": "A simple cash buffer rule can turn small income into real optionality.",
+    "branch_effect": {
+      "intervention": 1
+    },
+    "financial_effect": {
+      "intervention_growth": 0.55,
+      "volatility": -0.25,
+      "reason": "ladder framing supports staged saving and reinvestment"
+    }
+  }
+]

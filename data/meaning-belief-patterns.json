@@ -1,0 +1,42 @@
+[
+  {
+    "id": "quiet_contribution_identity",
+    "name": "安静贡献型自我",
+    "description": "当事人真正想要的不是纯粹成功，而是用一种不太表演的方式产生价值。",
+    "keywords": ["帮助别人", "有意义", "贡献", "价值", "安静", "不想表演"],
+    "conditions": { "contribution_drive_gte": 4 },
+    "amplifies": ["future_self", "strategist"],
+    "branch_effect": { "intervention": 1.2, "inertia": -0.2 },
+    "life_effect": "更适合从服务、作品、咨询、教育或长期项目里获得稳定自我感。"
+  },
+  {
+    "id": "not_ordinary_fear",
+    "name": "害怕自己普通",
+    "description": "普通感恐惧会推着人寻找更大的叙事，但也可能让人轻视眼前可积累的小路径。",
+    "keywords": ["普通", "不甘心", "不想平庸", "特别", "人生不该这样"],
+    "conditions": { "not_ordinary_fear_gte": 4 },
+    "amplifies": ["future_self", "inner_child"],
+    "branch_effect": { "intervention": 0.9, "rupture": 0.6 },
+    "life_effect": "需要把“大命运感”转成可验证的小作品，否则容易在想象和现实之间反复摆动。"
+  },
+  {
+    "id": "meaning_over_visible_success",
+    "name": "意义感高于可见成功",
+    "description": "当事人对外部成功有需求，但真正能持续驱动他的，是这个选择是否让生命变得有解释力。",
+    "keywords": ["意义", "人生", "使命", "内在", "解释", "为什么活"],
+    "conditions": { "meaning_clarity_gte": 4 },
+    "amplifies": ["future_self", "observer"],
+    "branch_effect": { "intervention": 1.3, "inertia": -0.2 },
+    "life_effect": "报告会把职业、关系和城市选择都放进意义系统里判断，而不是只看收益。"
+  },
+  {
+    "id": "fate_psychology_interest",
+    "name": "对命运/心理/玄学结构敏感",
+    "description": "当事人倾向从命运、心理、梦、象征或因果里理解自己，这会提高自我观察力，也可能增加过度解读。",
+    "keywords": ["命运", "心理", "玄学", "梦", "星座", "塔罗", "因果", "觉察"],
+    "conditions": { "spiritual_anchor_gte": 3 },
+    "amplifies": ["observer", "future_self"],
+    "branch_effect": { "intervention": 0.8, "inertia": 0.3 },
+    "life_effect": "适合把直觉材料转译成现实变量，避免只停留在解释和暗示里。"
+  }
+]

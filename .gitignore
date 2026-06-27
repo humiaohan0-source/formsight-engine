@@ -1,0 +1,31 @@
+node_modules/
+npm-debug.log*
+
+# Local/private seed material
+examples/*.local.json
+examples/*.private.json
+examples/*.seed.local.json
+examples/*.seed.private.json
+
+# Generated outputs
+reports/
+tmp/
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials*.json
+secrets*.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.tmp
+~$*

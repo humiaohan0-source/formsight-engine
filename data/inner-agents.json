@@ -1,0 +1,57 @@
+[
+  {
+    "id": "prover",
+    "name": "The Prover",
+    "desire": "recognition and proof of worth",
+    "fear": "being seen as not good enough",
+    "strategy": "turn life into an exam that must be won",
+    "keywords": ["prove", "recognition", "not good enough", "ordinary", "achievement", "praise"],
+    "life_pull": "high achievement with low inner satisfaction"
+  },
+  {
+    "id": "controller",
+    "name": "The Controller",
+    "desire": "safety, certainty, predictability",
+    "fear": "losing control and suffering irreversible consequences",
+    "strategy": "plan, delay, reduce variables, avoid irreversible choices",
+    "keywords": ["wrong path", "stable", "certainty", "risk", "over-prepare", "control"],
+    "life_pull": "stable but narrow life paths"
+  },
+  {
+    "id": "observer",
+    "name": "The Observer",
+    "desire": "clarity and distance",
+    "fear": "being trapped by emotion or foolish commitment",
+    "strategy": "analyze instead of acting",
+    "keywords": ["analyze", "clearly", "do not act", "understand", "delay"],
+    "life_pull": "knowing the path without entering it"
+  },
+  {
+    "id": "escaper",
+    "name": "The Escaper",
+    "desire": "freedom and breathing room",
+    "fear": "being trapped by pressure, intimacy, or responsibility",
+    "strategy": "withdraw, disappear, restart, cool down",
+    "keywords": ["disappear", "withdraw", "pressure", "leaving", "freedom"],
+    "life_pull": "many restarts, delayed main storyline"
+  },
+  {
+    "id": "pleaser",
+    "name": "The Pleaser",
+    "desire": "acceptance and relational safety",
+    "fear": "disappointing others or losing position in a relationship",
+    "strategy": "say fine, suppress needs, avoid conflict",
+    "keywords": ["fine", "relationship", "perform", "friend", "disappoint"],
+    "life_pull": "being needed by many but understood by few"
+  },
+  {
+    "id": "judge",
+    "name": "The Judge",
+    "desire": "correctness and excellence",
+    "fear": "shame, failure, mediocrity",
+    "strategy": "criticize before the world can criticize",
+    "keywords": ["wrong", "not good enough", "reject praise", "failure", "ordinary"],
+    "life_pull": "long-term excellence under internal prosecution"
+  }
+]
+

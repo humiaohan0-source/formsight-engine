@@ -1,0 +1,68 @@
+[
+  {
+    "id": "career_threshold",
+    "name": "Career Threshold",
+    "stage": "early_adulthood",
+    "trigger_conditions": ["career direction", "industry volatility", "opportunity density"],
+    "description": "A new career option appears, but it requires leaving an old identity or stable environment.",
+    "tests_agents": ["controller", "prover", "observer", "escaper"],
+    "state_effects": {
+      "opportunity": 2,
+      "anxiety": 2,
+      "identity_pressure": 2
+    }
+  },
+  {
+    "id": "family_stability_pressure",
+    "name": "Family Stability Pressure",
+    "stage": "early_adulthood",
+    "trigger_conditions": ["family expectation", "risky choice"],
+    "description": "Family pressure appears when the person considers a non-linear life choice.",
+    "tests_agents": ["controller", "judge", "pleaser"],
+    "state_effects": {
+      "guilt": 2,
+      "risk_aversion": 2,
+      "delay": 1
+    }
+  },
+  {
+    "id": "relationship_mirror",
+    "name": "Relationship Mirror",
+    "stage": "early_adulthood",
+    "trigger_conditions": ["friend feedback", "intimacy", "withdrawal"],
+    "description": "A close relationship reflects a pattern the person cannot easily see alone.",
+    "tests_agents": ["pleaser", "escaper", "observer"],
+    "state_effects": {
+      "self_awareness": 2,
+      "defensiveness": 1,
+      "relational_pressure": 1
+    }
+  },
+  {
+    "id": "energy_drop",
+    "name": "Energy Drop",
+    "stage": "any",
+    "trigger_conditions": ["stress", "poor sleep", "attention fragmentation"],
+    "description": "The body and attention system stop supporting the current ambition level.",
+    "tests_agents": ["judge", "escaper", "prover"],
+    "state_effects": {
+      "fatigue": 3,
+      "avoidance": 2,
+      "self_criticism": 1
+    }
+  },
+  {
+    "id": "small_win_window",
+    "name": "Small Win Window",
+    "stage": "any",
+    "trigger_conditions": ["support network", "skill assets", "opportunity"],
+    "description": "A low-risk experiment becomes available, allowing the person to test a new branch without full rupture.",
+    "tests_agents": ["prover", "observer", "controller"],
+    "state_effects": {
+      "confidence": 2,
+      "mobility": 2,
+      "risk_tolerance": 1
+    }
+  }
+]
+

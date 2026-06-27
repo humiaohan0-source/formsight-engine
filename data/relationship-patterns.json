@@ -1,0 +1,98 @@
+[
+  {
+    "id": "listener_role",
+    "name": "The Listener Role",
+    "keywords": ["listener", "friend", "reliable", "thoughtful"],
+    "description": "The person often becomes the one who understands others while hiding their own needs.",
+    "amplifies": ["pleaser", "observer"],
+    "risk": "being needed but not truly met",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "withdraw_under_pressure",
+    "name": "Withdrawal Under Pressure",
+    "keywords": ["disappear", "withdraw", "pressure", "not fine"],
+    "description": "The person stays agreeable until emotional pressure becomes real, then retreats.",
+    "amplifies": ["escaper", "pleaser"],
+    "risk": "others experience the retreat as sudden or confusing",
+    "branch_effect": {
+      "rupture": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "truth_teller_dependence",
+    "name": "Truth-Teller Dependence",
+    "keywords": ["truth tellers", "feedback", "close friend"],
+    "description": "The person needs at least one honest observer to turn self-analysis into grounded action.",
+    "amplifies": ["observer"],
+    "risk": "without outside reflection, insight may become private rumination",
+    "branch_effect": {
+      "intervention": 2
+    }
+  },
+  {
+    "id": "admiration_contract",
+    "name": "Admiration Contract",
+    "keywords": ["recognition", "praise", "excellent", "chosen", "seen"],
+    "description": "The person may unconsciously trade performance for closeness or security.",
+    "amplifies": ["prover", "pleaser"],
+    "risk": "love and respect become difficult to receive when not performing",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "private_need_delay",
+    "name": "Private Need Delay",
+    "keywords": ["fine", "suppress", "avoid conflict", "do not need", "perform"],
+    "description": "Needs are kept private until the internal account has already gone negative.",
+    "amplifies": ["pleaser", "judge"],
+    "risk": "the relationship receives the invoice before it ever saw the bill",
+    "branch_effect": {
+      "intervention": 1,
+      "rupture": 2
+    }
+  },
+  {
+    "id": "stable_but_unseen_partner",
+    "name": "Stable But Unseen Partner",
+    "keywords": ["stable", "marriage", "partner", "结婚", "婚姻", "稳定", "伴侣", "对象", "合适", "不合适", "没感觉", "不满意"],
+    "description": "The relationship may look suitable on the outside, but the person does not feel fully seen inside it.",
+    "amplifies": ["pleaser", "controller", "observer"],
+    "risk": "stability becomes a reason to stay silent instead of a source of safety",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "high_attraction_low_safety",
+    "name": "High Attraction Low Safety",
+    "keywords": ["crush", "chemistry", "attracted", "affair", "cheat", "心动", "上头", "吸引", "暧昧", "出轨", "精神出轨", "越界", "第三者"],
+    "description": "Strong attraction may appear where the current relationship cannot hold truth, boredom, or unmet needs.",
+    "amplifies": ["escaper", "pleaser", "prover"],
+    "risk": "external attraction becomes an escape route rather than a real choice",
+    "branch_effect": {
+      "rupture": 3,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "cold_conflict_loop",
+    "name": "Cold Conflict Loop",
+    "keywords": ["cold violence", "silent treatment", "avoid conflict", "吵架", "冷战", "冷暴力", "不沟通", "回避", "失望", "忍"],
+    "description": "Conflict is not resolved directly; it cools down on the surface while the emotional account keeps accumulating debt.",
+    "amplifies": ["escaper", "pleaser", "judge"],
+    "risk": "the relationship may break suddenly after looking calm for a long time",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 2
+    }
+  }
+]

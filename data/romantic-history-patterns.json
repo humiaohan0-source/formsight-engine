@@ -1,0 +1,42 @@
+[
+  {
+    "id": "first_love_template_transfer",
+    "name": "初恋/早期亲密模板迁移",
+    "description": "早期重要感情会变成后续择偶、信任、退让和自我价值判断的隐形模板。",
+    "keywords": ["初恋", "前任", "第一段感情", "忘不掉", "早期恋爱", "被爱过"],
+    "conditions": { "unresolved_attachment_gte": 3 },
+    "amplifies": ["inner_child", "pleaser"],
+    "branch_effect": { "inertia": 0.7, "rupture": 0.5 },
+    "life_effect": "后续关系不是从零开始，而是在复用旧模板：谁让你感觉熟悉，谁就更容易被误认为命中注定。"
+  },
+  {
+    "id": "betrayal_memory_contracts_trust",
+    "name": "背叛记忆收缩信任",
+    "description": "被欺骗、冷落、出轨或情感失信会让当事人在新关系和新合作里提前防御。",
+    "keywords": ["背叛", "出轨", "被骗", "冷暴力", "被抛弃", "不信任"],
+    "conditions": { "betrayal_memory_gte": 4 },
+    "amplifies": ["protector", "observer"],
+    "branch_effect": { "inertia": 0.8, "rupture": 0.8 },
+    "life_effect": "信任成本会升高，关系和事业合作都容易先扫描风险，再决定要不要投入。"
+  },
+  {
+    "id": "love_as_rescue_script",
+    "name": "把爱当作拯救剧本",
+    "description": "当事人容易把关系想象成逃离现实压力的出口，让伴侣承担过多命运拯救功能。",
+    "keywords": ["救赎", "被拯救", "只有他懂我", "靠感情撑着", "想被爱"],
+    "conditions": { "love_as_rescue_gte": 4 },
+    "amplifies": ["inner_child", "escaper"],
+    "branch_effect": { "inertia": 0.6, "rupture": 1.0 },
+    "life_effect": "感情线会和事业、家庭、钱绑定，一旦关系承接不了全部压力，重启线会变强。"
+  },
+  {
+    "id": "repair_capacity_relationship",
+    "name": "关系修复能力",
+    "description": "如果当事人有过真实沟通、吵架后修复、表达需求后关系没有崩塌的经验，亲密关系会成为支撑而不是消耗。",
+    "keywords": ["沟通后变好", "修复", "和好", "说开了", "互相理解", "稳定关系"],
+    "conditions": { "repair_capacity_gte": 3 },
+    "amplifies": ["future_self", "strategist"],
+    "branch_effect": { "intervention": 1.2, "rupture": -0.4 },
+    "life_effect": "关系可以成为现实测试场：当真话能被承接，转向线更容易稳定推进。"
+  }
+]

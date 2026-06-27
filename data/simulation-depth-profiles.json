@@ -1,0 +1,34 @@
+[
+  {
+    "id": "low_cost",
+    "name": "Low Cost",
+    "rounds": 0,
+    "inner_agent_limit": 0,
+    "external_agent_limit": 0,
+    "description": "Rule engine, knowledge matching, calibration, and deterministic evolution only."
+  },
+  {
+    "id": "standard",
+    "name": "Standard",
+    "rounds": 3,
+    "inner_agent_limit": 3,
+    "external_agent_limit": 3,
+    "description": "A small number of dominant agents react across a few simulated rounds."
+  },
+  {
+    "id": "deep",
+    "name": "Deep",
+    "rounds": 6,
+    "inner_agent_limit": 4,
+    "external_agent_limit": 5,
+    "description": "Inner and external agents repeatedly interact, updating state and branch pressure."
+  },
+  {
+    "id": "flagship",
+    "name": "Flagship",
+    "rounds": 12,
+    "inner_agent_limit": 6,
+    "external_agent_limit": 8,
+    "description": "High-token future mode: more agents, more memory, more rounds, and richer report synthesis."
+  }
+]

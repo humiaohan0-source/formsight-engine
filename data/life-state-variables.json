@@ -1,0 +1,42 @@
+[
+  {
+    "id": "self_trust",
+    "name": "Self Trust",
+    "description": "Whether the person trusts their own signal enough to act before total certainty."
+  },
+  {
+    "id": "action_momentum",
+    "name": "Action Momentum",
+    "description": "How much recent action has converted insight into external reality."
+  },
+  {
+    "id": "relational_safety",
+    "name": "Relational Safety",
+    "description": "Whether relationships can hold truth, discomfort, and change without collapse."
+  },
+  {
+    "id": "financial_buffer",
+    "name": "Financial Buffer",
+    "description": "How much money and income stability can support experimentation."
+  },
+  {
+    "id": "body_recovery",
+    "name": "Body Recovery",
+    "description": "Whether the body and attention system can sustainably fund the current path."
+  },
+  {
+    "id": "social_visibility",
+    "name": "Social Visibility",
+    "description": "Whether the person's ability is visible beyond the existing circle."
+  },
+  {
+    "id": "family_gravity",
+    "name": "Family Gravity",
+    "description": "How strongly family expectation pulls choices back toward the old stable identity."
+  },
+  {
+    "id": "identity_flexibility",
+    "name": "Identity Flexibility",
+    "description": "How easily the person can leave an old identity before the new one is socially confirmed."
+  }
+]

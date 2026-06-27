@@ -1,0 +1,427 @@
+{
+  "simulation_depth": "deep",
+  "llm_cost_profile": "deep_llm",
+  "llm_adapter": {
+    "mode": "dry_run",
+    "model": "future-configured-model"
+  },
+  "evidence_mode": {
+    "mode": "private_structured_material"
+  },
+  "case_meta": {
+    "case_type": "synthetic_anonymous_case",
+    "source": "fictional composite for FormSight content demonstration",
+    "privacy_note": "This is not a real person. It is a synthetic role built from common bullying-related life patterns for model testing."
+  },
+  "profile": {
+    "age": 27,
+    "life_stage": "early_adulthood",
+    "gender": "female",
+    "city": "Hangzhou",
+    "industry": "brand operations and content marketing",
+    "current_question": "I want to know whether my difficulty showing myself, trusting relationships, and changing jobs is connected to what happened in school, and what my next three years may become.",
+    "self_description": [
+      "I look normal and capable from the outside, but I feel very tense when I need to be seen by a group.",
+      "I can do detailed work, write good copy, and notice emotions quickly, but I avoid standing in the center.",
+      "I am afraid of being disliked suddenly, especially in relationships and group settings.",
+      "I often say it is fine, but then I disappear, withdraw, or over-explain.",
+      "I want a stable relationship and a visible career, but the moment I am evaluated, my body freezes first."
+    ]
+  },
+  "symbolic_anchors": [
+    {
+      "type": "school_bullying",
+      "label": "初二开始被小圈子孤立",
+      "meaning": "被看见曾经意味着被嘲笑和攻击，后来逐渐形成低可见度生存策略。"
+    },
+    {
+      "type": "social_visibility",
+      "label": "不愿意在会议和社交平台主动出现",
+      "meaning": "能力存在，但公开表达会触发旧的群体评价记忆。"
+    },
+    {
+      "type": "romantic_trigger",
+      "label": "伴侣冷淡时会迅速预判自己要被抛下",
+      "meaning": "亲密关系触发旧的被排除感，关系预警系统过载。"
+    },
+    {
+      "type": "writing_asset",
+      "label": "从高中开始用日记记录观察",
+      "meaning": "长期隐身也沉淀出细腻观察力和表达资产。"
+    }
+  ],
+  "recent_events": [
+    {
+      "type": "career_visibility",
+      "text": "The company asked her to lead a public campaign presentation, but she kept delaying the slide deck and finally gave the role to a colleague."
+    },
+    {
+      "type": "romantic_conflict",
+      "text": "Her boyfriend replied coldly for two days. She did not ask directly, but checked old chat records, imagined being abandoned, and then became distant."
+    },
+    {
+      "type": "friendship_trigger",
+      "text": "A friend did not invite her to a small dinner. Although there may have been no hostile intent, she felt the same bodily reaction as middle school exclusion."
+    },
+    {
+      "type": "career_opportunity",
+      "text": "A former colleague invited her to join a smaller but more creative content team where she would need to appear more often and own visible work."
+    },
+    {
+      "type": "body_signal",
+      "text": "When she needs to speak in group meetings, her stomach tightens, her shoulders freeze, and she tends to read the room before saying anything."
+    }
+  ],
+  "social_roles": [
+    {
+      "role": "brand_operator",
+      "load": 4,
+      "description": "She handles campaigns, writing, and coordination, but avoids being the face of the project."
+    },
+    {
+      "role": "adult_daughter",
+      "load": 3,
+      "description": "Her family wants her to be stable, polite, and not make trouble."
+    },
+    {
+      "role": "girlfriend",
+      "load": 4,
+      "description": "She wants closeness but becomes highly sensitive to distance and silence."
+    },
+    {
+      "role": "quiet_observer",
+      "load": 3,
+      "description": "In groups she reads micro-expressions quickly and tries to avoid becoming the target."
+    }
+  ],
+  "assets": {
+    "monthly_income_level": 3,
+    "savings_months": 5,
+    "debt_pressure": 0,
+    "skill_assets": [
+      "copywriting",
+      "brand operations",
+      "emotional observation",
+      "content planning",
+      "aesthetic judgment",
+      "private journaling"
+    ],
+    "reputation_assets": [
+      "reliable",
+      "sensitive to user feelings",
+      "good at polishing details",
+      "quiet but accurate"
+    ]
+  },
+  "environment": {
+    "city_tier": "new first-tier city",
+    "industry_volatility": 4,
+    "opportunity_density": 4,
+    "living_cost_pressure": 3,
+    "social_comparison_pressure": 5
+  },
+  "family_system": {
+    "family_expectation": "stable job, stable relationship, do not make conflicts public",
+    "emotional_closeness": 2,
+    "financial_dependency": 1,
+    "boundary_pressure": 3,
+    "unspoken_family_rule": "If you are hurt outside, first check whether you did something wrong."
+  },
+  "education_path": {
+    "school_stages": [
+      {
+        "stage": "primary_school",
+        "state": "quiet but academically good, usually praised for being obedient"
+      },
+      {
+        "stage": "middle_school",
+        "state": "social exclusion, rumor spreading, being laughed at when speaking in class"
+      },
+      {
+        "stage": "high_school",
+        "state": "focused on grades and writing, kept a small distance from classmates"
+      },
+      {
+        "stage": "university",
+        "state": "had a few close friends, avoided student organizations and public competition"
+      }
+    ],
+    "teacher_evaluation": "Teachers often saw her as quiet and sensible, but rarely noticed the relational harm behind the silence.",
+    "academic_identity": "Grades became a safe way to prove value without becoming socially exposed."
+  },
+  "intergenerational_family": {
+    "family_repeated_pattern": "The mother tends to endure and avoid conflict; the father values face and stability.",
+    "inherited_fear": "Do not become the person who causes trouble or is disliked by others.",
+    "inherited_skill": "Observe people's emotions early and keep the situation smooth."
+  },
+  "place_mobility": {
+    "growth_place": "small city",
+    "current_place": "Hangzhou",
+    "belonging_split": "The larger city gives opportunity, but also more comparison and more public evaluation.",
+    "mobility_desire": "She wants a new identity outside the old classmate circle, but fears being seen again."
+  },
+  "peer_authority": {
+    "peer_relation_pattern": "carefully friendly, avoids entering fixed small circles, rarely asks to be included",
+    "authority_relation_pattern": "sensitive to leaders' tone; a small negative comment can freeze action for days",
+    "exclusion_memory": "Middle school classmates created a private group without her, mocked her appearance and voice, and spread that she was pretending to be innocent."
+  },
+  "class_money_shame": {
+    "money_emotion": "money means the right to leave situations without begging for acceptance",
+    "class_memory": "In middle school, classmates compared clothes and phones; she learned to hide what she lacked.",
+    "shame_trigger": "Being seen as cheap, awkward, or not fitting in."
+  },
+  "body_image_gender": {
+    "visibility_experience": "She became very aware of how she looked, walked, spoke, and occupied space after being laughed at.",
+    "gendered_pressure": "She tries to be pleasant, clean, and not too aggressive, because being too visible once felt unsafe.",
+    "body_signal": "Freezing shoulders, stomach tightening, and shallow breathing in group evaluation settings."
+  },
+  "time_rhythm": {
+    "daily_rhythm": "Good at late-night private work, weaker at daytime public action.",
+    "stress_rhythm": "When social threat rises, she loses sleep and rereads messages.",
+    "recovery_need": "Needs predictable solitude after social exposure."
+  },
+  "digital_information": {
+    "social_media_pattern": "Watches other women's transformation and relationship content, saves many posts but rarely posts herself.",
+    "search_pattern": [
+      "why am I afraid of being disliked",
+      "rejection sensitivity",
+      "campus bullying long-term impact",
+      "how to stop overthinking in relationships"
+    ],
+    "information_effect": "Information helps her name the pattern but also keeps her analyzing instead of acting."
+  },
+  "meaning_belief": {
+    "meaning_source": "She wants to turn sensitivity into a skill instead of a wound.",
+    "belief_conflict": "She believes people can change, but her body still expects groups to become dangerous.",
+    "spiritual_or_symbolic_interest": "Feels that some repeated relationship scenes are like life tests she keeps failing."
+  },
+  "romantic_history": {
+    "early_romance_template": "First serious relationship in university felt safe because the other person was protective, but she became dependent on reassurance.",
+    "betrayal_or_abandonment_memory": "A later partner went cold before breaking up, which fused silence with abandonment.",
+    "current_relationship_pattern": "She wants direct reassurance but asks indirectly, then withdraws if the answer is not warm enough.",
+    "attraction_pattern": "Attracted to calm, confident people, but also scared that confident people will judge her weakness."
+  },
+  "worldview_orientation": {
+    "world_assumption": "Groups are not neutral; every group has hidden rankings and possible exclusion.",
+    "risk_model": "Before acting, she predicts who may dislike her, who may laugh, and whether the cost of being visible is worth it.",
+    "reality_anchor": "She knows not every group is dangerous, but her body still treats visibility as risk."
+  },
+  "agency_control": {
+    "locus_of_control": "mixed",
+    "agency_pattern": "High private agency, low public agency.",
+    "control_strategy": "Prepare privately, avoid live exposure, make herself useful so she will not be attacked.",
+    "best_intervention": "small controlled visibility: one public artifact, one direct need expression, one repaired relationship conversation."
+  },
+  "time_future_orientation": {
+    "future_sense": "Can imagine a better future, but only after social threat is lowered.",
+    "short_term_bias": "Chooses immediate safety in groups even when long-term visibility would help her career.",
+    "future_block": "Afraid that once she becomes visible, old exclusion will repeat in a more adult form."
+  },
+  "relationship_network": {
+    "supportive_people": 2,
+    "truth_tellers": 1,
+    "draining_ties": 3,
+    "romantic_stability": 2,
+    "observer_feedback": [
+      "A close friend says she is very perceptive but disappears when she feels unwanted.",
+      "Her boyfriend says she seems calm, but suddenly becomes distant after small cold moments.",
+      "A colleague says her work is strong, but she gives away credit too easily."
+    ]
+  },
+  "health_and_energy": {
+    "sleep_quality": 2,
+    "stress_level": 4,
+    "body_energy": 3,
+    "attention_fragmentation": 4,
+    "chronic_condition": "stress-related stomach pain and shoulder tension during public evaluation"
+  },
+  "life_timeline": [
+    {
+      "age": 8,
+      "type": "recognition",
+      "text": "Praised for being obedient and sensible; learned that being low-conflict brings safety."
+    },
+    {
+      "age": 13,
+      "type": "school_peer_evaluation",
+      "text": "Middle school classmates formed a small circle, excluded her, mocked her voice and appearance, and laughed when she answered questions in class."
+    },
+    {
+      "age": 14,
+      "type": "school_bullying",
+      "text": "A rumor spread that she was pretending to be innocent. She stopped raising her hand and began checking classmates' expressions before speaking."
+    },
+    {
+      "age": 15,
+      "type": "family_response",
+      "text": "When she told her mother she was being isolated, her mother said maybe she should reflect on whether she was too sensitive. No clear repair happened."
+    },
+    {
+      "age": 17,
+      "type": "academic_compensation",
+      "text": "She used grades and writing to rebuild value, but avoided public competitions and group leadership."
+    },
+    {
+      "age": 20,
+      "type": "relationship_repair",
+      "text": "A university friend consistently included her and made her feel that not all groups are unsafe. This became a partial repair."
+    },
+    {
+      "age": 23,
+      "type": "romantic_identity_shift",
+      "text": "A partner became cold before breaking up. Silence began to feel like abandonment again."
+    },
+    {
+      "age": 25,
+      "type": "career_visibility",
+      "text": "At work she received praise for content planning, but avoided becoming the public project owner."
+    },
+    {
+      "age": 27,
+      "type": "turning_point",
+      "text": "A new career opportunity requires visible ownership. She wants it, but the old fear of being judged has become the main threshold."
+    }
+  ],
+  "value_system": {
+    "top_values": [
+      "being safe while being seen",
+      "stable love",
+      "professional recognition",
+      "emotional truth",
+      "freedom to leave harmful circles"
+    ],
+    "sacrificed_values": [
+      "public ambition",
+      "direct needs",
+      "playfulness",
+      "spontaneous expression",
+      "conflict tolerance"
+    ],
+    "non_negotiables": [
+      "not returning to a group where she is humiliated",
+      "not becoming invisible for life",
+      "having at least one relationship where needs can be spoken directly"
+    ],
+    "value_conflict": "She wants to be seen and recognized, but visibility still feels socially dangerous."
+  },
+  "decision_style": {
+    "default_mode": "private preparation before public entry",
+    "under_pressure": "read the room, withdraw, over-explain, then disappear",
+    "risk_response": "choose immediate social safety over long-term growth",
+    "best_intervention": "controlled visibility experiments and direct relationship clarification before emotional withdrawal"
+  },
+  "social_capital": {
+    "current_circle": "few close friends, weak group belonging, strong one-to-one sensitivity",
+    "bridge_ties": 2,
+    "warm_introductions": 1,
+    "public_visibility": 1,
+    "trusted_observers": [
+      "one university friend",
+      "a former colleague",
+      "current boyfriend if communication is direct"
+    ],
+    "missing_network": "safe professional circles that reward visible work without humiliation"
+  },
+  "intimacy_and_family_path": {
+    "romantic_status": "in a relationship but emotionally insecure",
+    "commitment_pressure": 3,
+    "marriage_childbearing_pressure": 3,
+    "truth_expression_capacity": 2,
+    "private_life_need": "a partner who can tolerate direct reassurance requests without shaming her sensitivity"
+  },
+  "wealth_path": {
+    "cashflow_dependency": 3,
+    "optionality_capital": 2,
+    "spending_pressure": 3,
+    "asset_building_path": "turn writing, brand work, emotional observation, and content planning into visible portfolio assets",
+    "transition_budget": "needs a 90-day low-risk visibility ladder before leaving the stable role"
+  },
+  "macro_era": {
+    "era_signals": [
+      "women's emotional growth content",
+      "AI-assisted content production",
+      "personal brand visibility",
+      "portfolio-based career mobility"
+    ],
+    "ai_exposure": 3,
+    "automation_risk": 2,
+    "prototype_cost": 1,
+    "market_window": "Her emotional observation and writing skill can become visible assets if she can tolerate controlled exposure."
+  },
+  "symbolic_material": {
+    "names": [
+      {
+        "label": "last row seat",
+        "meaning": "A safe place where she could observe without being targeted."
+      },
+      {
+        "label": "private notebook",
+        "meaning": "Her unspoken self and the beginning of a possible public voice."
+      }
+    ],
+    "places": [
+      {
+        "label": "middle school corridor",
+        "meaning": "A place where group gaze became dangerous."
+      },
+      {
+        "label": "Hangzhou office meeting room",
+        "meaning": "The adult version of the same visibility test."
+      }
+    ],
+    "objects": [
+      {
+        "label": "muted group chat",
+        "meaning": "Wanting connection while protecting herself from exclusion signals."
+      }
+    ],
+    "digital_identities": [
+      {
+        "label": "private notes account",
+        "meaning": "A possible bridge from hidden observation to public expression."
+      }
+    ],
+    "unfinished_artifacts": [
+      {
+        "label": "content portfolio draft",
+        "meaning": "Visible identity has been prepared but not released."
+      }
+    ],
+    "recurring_words": [
+      "被看见",
+      "不安全",
+      "是不是我太敏感",
+      "别出错",
+      "想被坚定选择"
+    ],
+    "long_texts": [
+      "I know I am no longer in that classroom, but my body still reacts as if there is a small circle watching me. I want to be seen, but I also feel that being seen gives people a chance to attack me. In relationships, silence feels louder than words. At work, I can write and plan well, but when I need to stand in front of people, I feel I am thirteen again."
+    ]
+  },
+  "repeated_patterns": [
+    "avoid public visibility even when ability is enough",
+    "interpret coldness as possible rejection",
+    "over-prepare before being seen",
+    "give credit away to avoid becoming the target",
+    "withdraw before asking directly",
+    "use usefulness and politeness to stay safe",
+    "feel shame after expressing needs"
+  ],
+  "desired_future": [
+    "being visible without freezing",
+    "a relationship where direct needs are safe",
+    "a career path where writing and observation become recognized assets",
+    "not living forever as the girl in the last row"
+  ],
+  "feared_future": [
+    "staying invisible and resentful",
+    "marrying someone who sees sensitivity as trouble",
+    "losing career opportunities because she cannot stand in front",
+    "repeating the same exclusion feeling in every adult group"
+  ],
+  "time_horizon": {
+    "short_term_months": 3,
+    "medium_term_months": 18,
+    "long_term_years": 10
+  }
+}

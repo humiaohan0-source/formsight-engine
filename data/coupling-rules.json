@@ -1,0 +1,83 @@
+[
+  {
+    "id": "controller_family_low_runway",
+    "name": "Stability Lock",
+    "if": {
+      "inner_agents": ["controller"],
+      "external_agents": ["family_expectation", "asset_constraint"],
+      "world_scores": {
+        "financial_runway_lte": 5
+      }
+    },
+    "effect": {
+      "branch": "inertia",
+      "weight_delta": 3,
+      "interpretation": "Safety pressure becomes morally persuasive when family expectation and limited runway appear together."
+    }
+  },
+  {
+    "id": "observer_support_window",
+    "name": "Insight Becomes Action",
+    "if": {
+      "inner_agents": ["observer"],
+      "external_agents": ["support_network"],
+      "world_scores": {
+        "support_capacity_gte": 8
+      }
+    },
+    "effect": {
+      "branch": "intervention",
+      "weight_delta": 2,
+      "interpretation": "Insight is more likely to become action when there is an external witness or truth-teller."
+    }
+  },
+  {
+    "id": "escaper_energy_pressure",
+    "name": "Exhaustion Disguised As Destiny",
+    "if": {
+      "inner_agents": ["escaper"],
+      "external_agents": ["energy_system"],
+      "world_scores": {
+        "energy_risk_gte": 4
+      }
+    },
+    "effect": {
+      "branch": "rupture",
+      "weight_delta": 3,
+      "interpretation": "When energy drops, the desire to escape may be a body signal rather than a true life calling."
+    }
+  },
+  {
+    "id": "prover_city_market",
+    "name": "Achievement Acceleration",
+    "if": {
+      "inner_agents": ["prover"],
+      "external_agents": ["city_pressure", "labor_market"],
+      "world_scores": {
+        "external_pressure_gte": 14
+      }
+    },
+    "effect": {
+      "branch": "inertia",
+      "weight_delta": 2,
+      "interpretation": "High-pressure environments can turn proving into a survival strategy, even when it drains meaning."
+    }
+  },
+  {
+    "id": "skills_support_experiment",
+    "name": "Low-Risk Experiment Path",
+    "if": {
+      "inner_agents": ["observer", "prover"],
+      "external_agents": ["support_network", "labor_market"],
+      "world_scores": {
+        "life_mobility_gte": 3
+      }
+    },
+    "effect": {
+      "branch": "intervention",
+      "weight_delta": 2,
+      "interpretation": "When skill assets and some support exist, the safest change is not a leap but a small experiment."
+    }
+  }
+]
+

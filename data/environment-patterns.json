@@ -1,0 +1,69 @@
+[
+  {
+    "id": "tier1_comparison_pressure",
+    "name": "Tier-1 Comparison Pressure",
+    "conditions": {
+      "city_tier": "tier_1",
+      "social_comparison_pressure_gte": 4
+    },
+    "description": "The environment constantly presents faster, richer, more successful reference groups.",
+    "amplifies": ["prover", "judge", "controller"],
+    "branch_effect": {
+      "inertia": 2
+    }
+  },
+  {
+    "id": "dense_but_noisy_field",
+    "name": "Dense But Noisy Field",
+    "conditions": {
+      "opportunity_density_gte": 4,
+      "social_comparison_pressure_gte": 4
+    },
+    "description": "The field offers many doors, but also makes every door look insufficient once opened.",
+    "amplifies": ["observer", "prover", "judge"],
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2
+    }
+  },
+  {
+    "id": "volatile_opportunity_market",
+    "name": "Volatile Opportunity Market",
+    "conditions": {
+      "industry_volatility_gte": 4,
+      "opportunity_density_gte": 4
+    },
+    "description": "There are real opportunities, but timing and execution matter more than perfect certainty.",
+    "amplifies": ["observer", "prover", "gambler"],
+    "branch_effect": {
+      "intervention": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "high_cost_lock",
+    "name": "High Cost Lock",
+    "conditions": {
+      "living_cost_pressure_gte": 4
+    },
+    "description": "High living costs make even meaningful changes feel expensive and morally risky.",
+    "amplifies": ["controller"],
+    "branch_effect": {
+      "inertia": 1
+    }
+  },
+  {
+    "id": "credential_visibility_market",
+    "name": "Credential Visibility Market",
+    "conditions": {
+      "industry_volatility_gte": 3,
+      "city_tier": "tier_1"
+    },
+    "description": "The environment rewards visible proof, labels, public output, and credible social signals.",
+    "amplifies": ["prover", "controller"],
+    "branch_effect": {
+      "intervention": 1,
+      "rupture": 1
+    }
+  }
+]

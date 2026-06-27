@@ -1,0 +1,42 @@
+[
+  {
+    "id": "leaving_home_as_autonomy",
+    "name": "离开原环境才有自主感",
+    "description": "地理移动不只是搬家，而是把自己从旧评价系统里拆出来。这个模式命中时，换城市、换圈层、换居住方式会显著影响行动力。",
+    "keywords": ["离开家", "去外地", "换城市", "搬出去", "离开原来的环境", "不想待在这里"],
+    "conditions": { "mobility_desire_gte": 5 },
+    "amplifies": ["future_self", "protector"],
+    "branch_effect": { "intervention": 1.6, "inertia": -0.4 },
+    "life_effect": "适合用短周期迁移、短住、异地项目或新圈层测试来验证未来线，而不是只在原环境里反复想。"
+  },
+  {
+    "id": "current_city_misalignment",
+    "name": "当前城市与自我节奏错位",
+    "description": "城市的成本、节奏、圈层和机会密度与个人状态不匹配，会让人把环境阻力误认为自己不行。",
+    "keywords": ["城市", "小地方", "大城市", "回老家", "在这里没有机会", "环境不适合"],
+    "conditions": { "current_city_misalignment_gte": 4 },
+    "amplifies": ["survivor", "protector"],
+    "branch_effect": { "intervention": 1.1, "rupture": 0.7 },
+    "life_effect": "未来线需要把“我不行”和“这个环境不适配”分开，否则容易在一个地方耗到突然断裂。"
+  },
+  {
+    "id": "belonging_split",
+    "name": "归属感分裂",
+    "description": "一个人既不完全属于原来的地方，也还没有进入新的地方，容易长期悬浮、犹豫和自我怀疑。",
+    "keywords": ["融不进去", "不属于", "哪里都不像家", "外人", "格格不入"],
+    "conditions": { "belonging_split_gte": 4 },
+    "amplifies": ["observer", "inner_child"],
+    "branch_effect": { "inertia": 0.8, "intervention": 0.6 },
+    "life_effect": "后续模拟会更重视圈层入口、稳定住处和可重复社交，因为这些会决定转向线能不能落地。"
+  },
+  {
+    "id": "low_visibility_place_preference",
+    "name": "低可见度生活偏好",
+    "description": "比起被看见、被比较、被评价，当事人更想要一个低噪音、低监控、能自己恢复节奏的生活位置。",
+    "keywords": ["不想被看见", "安静生活", "低调", "不想社交", "想躲起来"],
+    "conditions": { "visibility_fear_gte": 4 },
+    "amplifies": ["protector", "inner_child"],
+    "branch_effect": { "inertia": 0.6, "intervention": 0.5 },
+    "life_effect": "最优转向不一定是更高曝光，而可能是先建立低干扰的恢复区，再慢慢扩大行动半径。"
+  }
+]

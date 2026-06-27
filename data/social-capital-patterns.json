@@ -1,0 +1,48 @@
+[
+  {
+    "id": "warm_bridge_gap",
+    "name": "Warm Bridge Gap",
+    "keywords": ["supportive people", "truth tellers", "reputation", "feedback", "close friend"],
+    "description": "The person has some trustworthy ties, but may lack enough bridge ties into new opportunity fields.",
+    "amplifies": ["observer", "controller"],
+    "life_effect": "Insight exists, but opportunity conversion depends on entering new rooms, not only thinking better.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 2
+    }
+  },
+  {
+    "id": "reputation_without_distribution",
+    "name": "Reputation Without Distribution",
+    "keywords": ["reliable", "thoughtful", "good at analysis", "recognition"],
+    "description": "The person is trusted by existing people but has not yet converted trust into wider visibility.",
+    "amplifies": ["prover", "observer"],
+    "life_effect": "A public artifact or small external collaboration can turn private credibility into social mobility.",
+    "branch_effect": {
+      "intervention": 3
+    }
+  },
+  {
+    "id": "circle_ceiling",
+    "name": "Circle Ceiling",
+    "keywords": ["ordinary", "comparison", "city", "tier_1", "stable environment"],
+    "description": "The current circle reinforces the current identity more than the future identity.",
+    "amplifies": ["controller", "judge"],
+    "life_effect": "Without a new reference group, the person may keep measuring the future with the old circle's standards.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "observer_network_ready",
+    "name": "Observer Network Ready",
+    "keywords": ["truth tellers", "feedback", "external feedback", "close friend"],
+    "description": "There is enough witnessing capacity to test a new self without relying only on private judgment.",
+    "amplifies": ["observer"],
+    "life_effect": "The safest next move is to expose a small prototype to people who can tell the truth.",
+    "branch_effect": {
+      "intervention": 2
+    }
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "stability_first_family",
+    "name": "Stability-First Family",
+    "keywords": ["stability", "stable", "risky", "guaranteed", "safe", "risk"],
+    "description": "A family system that treats stability as moral correctness and risk as irresponsibility.",
+    "amplifies": ["controller", "judge", "pleaser"],
+    "suppresses": ["gambler", "escaper"],
+    "life_effect": "Non-linear choices require extra justification and are often delayed until success looks almost guaranteed.",
+    "branch_effect": {
+      "inertia": 2,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "achievement_comparison_family",
+    "name": "Achievement-Comparison Family",
+    "keywords": ["comparison", "achievement", "excellent", "not good enough"],
+    "description": "A family system that evaluates love and respect through visible achievement.",
+    "amplifies": ["prover", "judge"],
+    "suppresses": ["wounded_child"],
+    "life_effect": "The person may confuse being admired with being safe.",
+    "branch_effect": {
+      "inertia": 1,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "emotionally_implicit_family",
+    "name": "Emotionally Implicit Family",
+    "keywords": ["unspoken", "do not", "fine", "avoid conflict", "silence"],
+    "description": "A family system where needs are rarely spoken directly and conflict is managed through silence.",
+    "amplifies": ["pleaser", "observer"],
+    "suppresses": ["gambler"],
+    "life_effect": "The person becomes skilled at reading rooms but may struggle to ask directly.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  },
+  {
+    "id": "boundary_entangled_family",
+    "name": "Boundary-Entangled Family",
+    "keywords": ["expect", "family expects", "adult child", "responsibility", "should"],
+    "description": "A family system where personal choices are implicitly evaluated as family loyalty or betrayal.",
+    "amplifies": ["pleaser", "controller"],
+    "suppresses": ["escaper"],
+    "life_effect": "The person may ask whether a choice is allowed before asking whether it is true.",
+    "branch_effect": {
+      "inertia": 2,
+      "rupture": 1
+    }
+  },
+  {
+    "id": "survival_pragmatic_family",
+    "name": "Survival-Pragmatic Family",
+    "keywords": ["money", "survive", "practical", "secure", "income"],
+    "description": "A family system shaped by scarcity memory, where emotional dreams must first pass the survival test.",
+    "amplifies": ["controller", "prover"],
+    "suppresses": ["observer"],
+    "life_effect": "The person can become extremely capable, but may postpone softer desires until they feel fully earned.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": 1
+    }
+  }
+]

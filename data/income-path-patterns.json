@@ -1,0 +1,69 @@
+[
+  {
+    "id": "no_current_income",
+    "name": "No Current Income",
+    "conditions": {
+      "monthly_income_level_lte": 1
+    },
+    "description": "Current income does not independently support adult transition.",
+    "life_effect": "The first wealth task is income discovery, not investment optimization.",
+    "branch_effect": {
+      "inertia": 1,
+      "intervention": -0.2,
+      "rupture": 0.5
+    },
+    "financial_effect": {
+      "baseline_drag": 0.7,
+      "intervention_drag": 0.25,
+      "volatility": 0.4,
+      "reason": "no independent income makes buffer fragile"
+    }
+  },
+  {
+    "id": "ai_product_micro_income_path",
+    "name": "AI Product Micro-Income Path",
+    "keywords": ["AI tool", "AI collaboration", "product", "prototype", "open-source", "FormSight", "public artifacts"],
+    "description": "AI/product skills can create small paid experiments before a full company exists.",
+    "life_effect": "This path can turn intervention from pure identity change into cashflow learning.",
+    "branch_effect": {
+      "intervention": 2
+    },
+    "financial_effect": {
+      "intervention_growth": 0.75,
+      "volatility": 0.65,
+      "reason": "AI/product micro-income can raise upside before formal employment"
+    }
+  },
+  {
+    "id": "credential_threshold_before_income",
+    "name": "Credential Threshold Before Income",
+    "keywords": ["thesis", "graduate", "delayed graduation", "论文", "延毕"],
+    "description": "A blocked credential threshold delays ordinary income paths.",
+    "life_effect": "Finishing the threshold can unlock baseline income even without a perfect career identity.",
+    "branch_effect": {
+      "inertia": 0.6,
+      "intervention": 0.8
+    },
+    "financial_effect": {
+      "intervention_growth": 0.35,
+      "intervention_drag": 0.25,
+      "volatility": 0.35,
+      "reason": "credential completion can unlock ordinary income but delays the start"
+    }
+  },
+  {
+    "id": "service_bridge_income",
+    "name": "Service Bridge Income",
+    "keywords": ["writing", "AI tool usage", "self-distillation", "consulting", "help others", "influence others"],
+    "description": "The person's skills may first monetize as service, consulting, writing, or guided use rather than product.",
+    "life_effect": "A service bridge can build buffer while product identity matures.",
+    "branch_effect": {
+      "intervention": 1.3
+    },
+    "financial_effect": {
+      "intervention_growth": 0.55,
+      "volatility": 0.35,
+      "reason": "service bridge income can stabilize early intervention"
+    }
+  }
+]

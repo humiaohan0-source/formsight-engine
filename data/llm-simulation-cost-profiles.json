@@ -1,0 +1,27 @@
+[
+  {
+    "id": "standard_llm",
+    "name": "Standard LLM",
+    "agent_reaction_calls": true,
+    "round_synthesis_calls": false,
+    "final_deep_report_calls": true,
+    "description": "Use LLM for agent reactions and final report, but keep round synthesis deterministic."
+  },
+  {
+    "id": "deep_llm",
+    "name": "Deep LLM",
+    "agent_reaction_calls": true,
+    "round_synthesis_calls": true,
+    "final_deep_report_calls": true,
+    "description": "Use LLM for agent reactions, each round synthesis, and final report."
+  },
+  {
+    "id": "flagship_llm",
+    "name": "Flagship LLM",
+    "agent_reaction_calls": true,
+    "round_synthesis_calls": true,
+    "final_deep_report_calls": true,
+    "memory_retrieval_multiplier": 1.8,
+    "description": "Future high-token mode with memory retrieval and richer context per call."
+  }
+]

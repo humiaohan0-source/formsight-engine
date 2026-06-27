@@ -1,0 +1,39 @@
+{
+  "agent_reaction": {
+    "name": "Agent Reaction Prompt",
+    "estimated_prompt_tokens": 650,
+    "estimated_completion_tokens": 220,
+    "template": [
+      "You are simulating one agent inside FormSight, a personal parallel life simulation engine.",
+      "Agent persona: {agent_name}",
+      "Agent stance: {agent_stance}",
+      "Current round event: {round_event}",
+      "Current life state: {life_state}",
+      "Current branch pressure: {branch_pressure}",
+      "Agent memory: {agent_memory}",
+      "Task: decide how this agent reacts, which state variables it changes, and which life branch it pressures.",
+      "Return JSON with: thought, action_tendency, state_effects, branch_pressure, confidence."
+    ]
+  },
+  "round_synthesis": {
+    "name": "Round Synthesis Prompt",
+    "estimated_prompt_tokens": 900,
+    "estimated_completion_tokens": 350,
+    "template": [
+      "You are the simulation coordinator for FormSight.",
+      "Given all agent reactions in this round, synthesize the round outcome.",
+      "Update the life state, identify the dominant branch pressure, and summarize the causal chain.",
+      "Return JSON with: state_after_round, branch_pressure_after_round, turning_signal, summary."
+    ]
+  },
+  "final_deep_report": {
+    "name": "Final Deep Report Prompt",
+    "estimated_prompt_tokens": 2400,
+    "estimated_completion_tokens": 1800,
+    "template": [
+      "You are the ReportAgent for FormSight.",
+      "Given the seed material, calibrated evidence, agent rounds, branch trajectories, and life evolution state, write a deep fate archive.",
+      "The report should explain why the predicted trajectory is plausible, where uncertainty remains, and which future branch is structurally dominant."
+    ]
+  }
+}
