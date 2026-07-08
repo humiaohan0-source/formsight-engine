@@ -1,0 +1,1989 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>见相｜模拟材料输入</title>
+  <style>
+    :root {
+      --bg: #070708;
+      --panel: rgba(255, 255, 255, 0.052);
+      --panel-strong: rgba(255, 255, 255, 0.082);
+      --paper: #f5f2ea;
+      --muted: rgba(245, 242, 234, 0.62);
+      --faint: rgba(245, 242, 234, 0.38);
+      --line: rgba(245, 242, 234, 0.13);
+      --line-strong: rgba(245, 242, 234, 0.22);
+      --accent: #7c83ff;
+      --accent-soft: rgba(124, 131, 255, 0.18);
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      --font-mono: "SFMono-Regular", "Cascadia Mono", "Roboto Mono", monospace;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 76% 8%, rgba(124, 131, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.08), transparent 26%),
+        linear-gradient(180deg, #0b0b0d 0%, #050506 58%, #09090a 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at 50% 18%, black 0%, transparent 72%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px clamp(20px, 4vw, 56px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 7, 8, 0.72);
+      backdrop-filter: blur(22px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .brand img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav a,
+    .nav button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.035);
+      cursor: pointer;
+      transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav button:hover {
+      color: var(--paper);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(62px, 8vw, 116px) clamp(20px, 4vw, 56px) 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(46px, 8vw, 108px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      text-wrap: balance;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.9;
+      text-wrap: pretty;
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.028)),
+        radial-gradient(circle at 88% 18%, rgba(124, 131, 255, 0.18), transparent 38%);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.055);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    .score-ring {
+      width: 148px;
+      aspect-ratio: 1;
+      margin: 4px auto 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        conic-gradient(var(--accent) var(--progress, 0deg), rgba(255, 255, 255, 0.1) 0),
+        radial-gradient(circle, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+      box-shadow: inset 0 0 0 1px var(--line), 0 0 46px rgba(124, 131, 255, 0.12);
+    }
+
+    .score-ring span {
+      display: grid;
+      place-items: center;
+      width: 112px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #09090a;
+      border: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 24px;
+    }
+
+    .panel-title {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .panel-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px clamp(20px, 4vw, 56px) 96px;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .side {
+      position: sticky;
+      top: 90px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(18px);
+    }
+
+    .side h2 {
+      margin: 0 0 14px;
+      font-size: 15px;
+      color: var(--paper);
+    }
+
+    .toc {
+      display: grid;
+      gap: 8px;
+    }
+
+    .toc a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .toc a:hover {
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--line);
+    }
+
+    .toc small {
+      color: var(--faint);
+      font-family: var(--font-mono);
+    }
+
+    .form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      position: relative;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.026)),
+        rgba(255, 255, 255, 0.02);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.26);
+      overflow: hidden;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--mx, 70%) var(--my, 12%), rgba(255, 255, 255, 0.08), transparent 28%);
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .section-card:hover::before {
+      opacity: 1;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      margin-bottom: 22px;
+      align-items: start;
+    }
+
+    .index {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      background: rgba(124, 131, 255, 0.08);
+    }
+
+    .section-card h2 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.12;
+      letter-spacing: -0.055em;
+    }
+
+    .section-card .hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .field label,
+    .field-title {
+      color: rgba(245, 242, 234, 0.88);
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .field small {
+      color: var(--faint);
+      line-height: 1.6;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--paper);
+      background: rgba(0, 0, 0, 0.22);
+      outline: none;
+      transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    input,
+    select {
+      height: 46px;
+      padding: 0 14px;
+    }
+
+    textarea {
+      min-height: 132px;
+      padding: 14px;
+      line-height: 1.75;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(124, 131, 255, 0.62);
+      background: rgba(0, 0, 0, 0.32);
+      box-shadow: 0 0 0 4px rgba(124, 131, 255, 0.12);
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .choice {
+      position: relative;
+      display: block;
+      min-height: 112px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .choice:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .choice span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .choice:has(input:checked) {
+      border-color: rgba(124, 131, 255, 0.7);
+      background: rgba(124, 131, 255, 0.13);
+      box-shadow: inset 0 0 0 1px rgba(124, 131, 255, 0.18);
+    }
+
+    .scale {
+      display: grid;
+      grid-template-columns: 160px 1fr 54px;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .scale:last-child {
+      border-bottom: 0;
+    }
+
+    .scale label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    input[type="range"] {
+      height: auto;
+      padding: 0;
+      accent-color: var(--accent);
+      box-shadow: none;
+    }
+
+    .scale output {
+      color: var(--paper);
+      font-family: var(--font-mono);
+      text-align: right;
+    }
+
+    .actions {
+      position: sticky;
+      bottom: 18px;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(8, 8, 9, 0.78);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.36);
+    }
+
+    .btn {
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.085);
+    }
+
+    .btn.primary {
+      border-color: transparent;
+      color: #080809;
+      background: var(--paper);
+    }
+
+    .btn.accent {
+      border-color: rgba(124, 131, 255, 0.45);
+      background: rgba(124, 131, 255, 0.18);
+    }
+
+    .simulate-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.64);
+      backdrop-filter: blur(18px);
+    }
+
+    .simulate-modal.is-open {
+      display: grid;
+    }
+
+    .simulate-dialog {
+      position: relative;
+      width: min(960px, 100%);
+      max-height: min(820px, calc(100vh - 48px));
+      overflow: auto;
+      border: 1px solid var(--line-strong);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 86% 10%, rgba(124, 131, 255, 0.16), transparent 30%),
+        linear-gradient(145deg, rgba(24, 24, 28, 0.98), rgba(8, 8, 10, 0.98));
+      box-shadow: 0 44px 140px rgba(0, 0, 0, 0.56);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+    }
+
+    .modal-inner {
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .modal-kicker {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(30px, 5vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.065em;
+    }
+
+    .modal-copy {
+      max-width: 700px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .simulate-step {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .simulate-step h3 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .direction-grid,
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .direction-card,
+    .plan-card {
+      position: relative;
+      display: block;
+      min-height: 126px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.035);
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .direction-card:hover,
+    .plan-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.062);
+    }
+
+    .direction-card input,
+    .plan-card input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .direction-card b,
+    .plan-card b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .direction-card span,
+    .plan-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .direction-card:has(input:checked),
+    .plan-card:has(input:checked) {
+      border-color: rgba(124, 131, 255, 0.72);
+      background: rgba(124, 131, 255, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(124, 131, 255, 0.16), 0 0 34px rgba(124, 131, 255, 0.08);
+    }
+
+    .plan-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .plan-card {
+      min-height: 220px;
+    }
+
+    .plan-card.featured {
+      border-color: rgba(245, 242, 234, 0.22);
+      background:
+        radial-gradient(circle at 86% 12%, rgba(124, 131, 255, 0.18), transparent 30%),
+        rgba(255, 255, 255, 0.055);
+    }
+
+    .plan-card.is-disabled {
+      cursor: not-allowed;
+      opacity: 0.54;
+      background: rgba(255, 255, 255, 0.024);
+    }
+
+    .plan-card.is-disabled:hover {
+      transform: none;
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.024);
+    }
+
+    .plan-tag {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    .plan-list {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .plan-list li::before {
+      content: "— ";
+      color: var(--accent);
+    }
+
+    .payment-sheet {
+      display: none;
+      margin-top: 22px;
+      border: 1px solid rgba(245, 245, 247, 0.18);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 0%, rgba(245, 245, 247, 0.1), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035));
+      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.36);
+    }
+
+    .payment-sheet.is-open {
+      display: block;
+      animation: paymentRise 360ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    @keyframes paymentRise {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .payment-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: start;
+      padding: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .payment-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .payment-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+
+    .payment-title {
+      margin: 0;
+      font-size: clamp(24px, 3.4vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+    }
+
+    .payment-price {
+      min-width: 142px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      text-align: right;
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .payment-price small {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    .payment-price strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--paper);
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .payment-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+      gap: 18px;
+      padding: 22px 24px 24px;
+    }
+
+    .payment-panel {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .payment-panel h4 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .payment-panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .payment-panel li::before {
+      content: "•";
+      margin-right: 8px;
+      color: var(--paper);
+    }
+
+    .payment-qr {
+      display: grid;
+      place-items: center;
+      min-height: 210px;
+      border: 1px dashed rgba(255, 255, 255, 0.22);
+      border-radius: 22px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        rgba(0, 0, 0, 0.24);
+      background-size: 18px 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .payment-qr img {
+      display: block;
+      width: min(260px, 100%);
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26);
+    }
+
+    .payment-caption {
+      margin-top: 12px;
+      color: rgba(245, 245, 247, 0.66);
+      font-size: 12px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .payment-qr b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--paper);
+      font-size: 14px;
+    }
+
+    .payment-steps {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .payment-steps li {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .payment-steps span {
+      display: inline-grid;
+      place-items: center;
+      width: 19px;
+      height: 19px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      color: var(--paper);
+      font-family: var(--font-mono);
+      font-size: 10px;
+    }
+
+    .wechat-afterpay {
+      display: none;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wechat-afterpay.is-open {
+      display: block;
+      animation: paymentRise 320ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .payment-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .payment-note {
+      margin: 14px 0 0;
+      color: rgba(245, 245, 247, 0.48);
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    .modal-result {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-result p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 13px;
+    }
+
+    .modal-result b {
+      color: var(--paper);
+      font-weight: 600;
+    }
+
+    .print-sheet {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .layout,
+      .field-grid,
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .direction-grid,
+      .plan-grid,
+      .payment-body,
+      .modal-result {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-head {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-price {
+        text-align: left;
+      }
+
+      .side {
+        position: relative;
+        top: auto;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .scale {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        margin: 16mm;
+      }
+
+      body {
+        background: #fff !important;
+        color: #111 !important;
+      }
+
+      body::before,
+      .topbar,
+      .hero,
+      .layout,
+      .actions {
+        display: none !important;
+      }
+
+      .print-sheet {
+        display: block;
+        color: #111;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      }
+
+      .print-title {
+        font-size: 30px;
+        margin: 0 0 8px;
+      }
+
+      .print-meta {
+        color: #555;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 14px;
+        margin-bottom: 18px;
+      }
+
+      .print-section {
+        break-inside: avoid;
+        margin: 18px 0;
+      }
+
+      .print-section h2 {
+        font-size: 18px;
+        margin: 0 0 8px;
+      }
+
+      .print-item {
+        margin: 10px 0;
+      }
+
+      .print-item b {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .print-item p {
+        white-space: pre-wrap;
+        margin: 0;
+        color: #333;
+        line-height: 1.65;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./index.html#material" aria-label="返回见相官网">
+      <img src="./assets/brand/formsight-logo.svg" alt="见相 logo" />
+      <span>见相 / 模拟材料输入</span>
+    </a>
+    <nav class="nav" aria-label="页面操作">
+      <a href="./index.html">返回首页</a>
+      <a href="#basic">开始填写</a>
+      <button type="button" data-action="save">保存草稿</button>
+      <button type="button" data-action="simulate">点击模拟</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">FORMSIGHT INPUT TEST / V1</p>
+          <h1>不是填问卷，是把你的生活材料变成可模拟结构。</h1>
+          <p class="lead">
+            这份材料收集器会从“现在卡点、过去反复、机会反应、关系系统、资源约束、未来分叉”六个方向提取信息。
+            如果你平时有日记、备忘录、聊天记录或年度总结，也可以直接粘贴在最后的材料区。
+          </p>
+        </div>
+        <aside class="hero-panel">
+          <div class="score-ring" id="scoreRing" style="--progress: 0deg;"><span id="scoreText">0%</span></div>
+          <h2 class="panel-title">填写越具体，模拟越稳定。</h2>
+          <p class="panel-copy">
+            不需要写得漂亮，重点是具体：时间、场景、人物、当时的第一反应。模型更需要“样本”，不是自我评价。
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="layout">
+      <aside class="side">
+        <h2>材料结构</h2>
+        <nav class="toc" aria-label="问题目录">
+          <a href="#basic">基本信息 <small>01</small></a>
+          <a href="#present">当前卡点 <small>02</small></a>
+          <a href="#patterns">反复模式 <small>03</small></a>
+          <a href="#reaction">机会反应 <small>04</small></a>
+          <a href="#system">关系与资源 <small>05</small></a>
+          <a href="#future">未来分叉 <small>06</small></a>
+          <a href="#archive">原始材料 <small>07</small></a>
+        </nav>
+      </aside>
+
+      <form class="form" id="materialForm">
+        <section class="section-card" id="basic" data-title="基本信息">
+          <div class="section-head">
+            <div class="index">01</div>
+            <div>
+              <h2>先确定这次模拟的坐标。</h2>
+              <p class="hint">这里不是为了给你贴标签，而是让模型知道你现在处在哪个现实条件里。</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="nickname">称呼</label>
+              <input id="nickname" name="称呼" placeholder="可以写昵称，不必写真实姓名" />
+            </div>
+            <div class="field">
+              <label for="age">年龄 / 阶段</label>
+              <input id="age" name="年龄或阶段" placeholder="例如：22岁，大四；31岁，创业第3年" />
+            </div>
+            <div class="field">
+              <label for="city">所在城市 / 生活状态</label>
+              <input id="city" name="城市与生活状态" placeholder="例如：杭州，独居，刚换行业" />
+            </div>
+            <div class="field">
+              <label for="focus">这次最想模拟的维度</label>
+              <select id="focus" name="重点模拟维度">
+                <option value="">请选择一个重点</option>
+                <option>事业 / 学业 / 转型</option>
+                <option>感情 / 亲密关系</option>
+                <option>家庭 / 原生关系</option>
+                <option>金钱 / 资源 / 生存压力</option>
+                <option>自我状态 / 精力 / 行动感</option>
+                <option>整体人生路径</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="present" data-title="当前卡点">
+          <div class="section-head">
+            <div class="index">02</div>
+            <div>
+              <h2>你现在真正卡住的地方是什么？</h2>
+              <p class="hint">不要只写“迷茫”“内耗”。请把它写成一个具体场景：发生在哪里，和谁有关，你为什么动不了。</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="currentProblem">如果只能用一个场景描述你现在的处境，会是什么？</label>
+            <textarea id="currentProblem" name="当前核心场景" placeholder="例如：我每天知道应该投简历，但一打开招聘软件就开始怀疑自己，最后去刷短视频。"></textarea>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="wanted">你表面上想要的结果是什么？</label>
+              <textarea id="wanted" name="表面想要的结果" placeholder="例如：找到更稳定的工作、进入关系、离开家、开始赚钱。"></textarea>
+            </div>
+            <div class="field">
+              <label for="blockedBy">但你感觉被什么挡住了？</label>
+              <textarea id="blockedBy" name="主要阻力" placeholder="可以是钱、家庭、能力、身体、关系、害怕失败、害怕被看见。"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="patterns" data-title="反复模式">
+          <div class="section-head">
+            <div class="index">03</div>
+            <div>
+              <h2>过去反复发生的事，通常就是未来的惯性。</h2>
+              <p class="hint">模型不是算命，它会从重复样本里找出你最容易滑回去的轨道。</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="repeatPattern">过去 3 年里，有什么事情反复出现？</label>
+            <textarea id="repeatPattern" name="三年反复模式" placeholder="例如：每次机会快出现，我都会拖延到别人先拿走；每次关系变近，我就会突然冷下来。"></textarea>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="earlyTrace">你能想到最早类似的经历是什么？</label>
+              <textarea id="earlyTrace" name="早期相似经历" placeholder="不一定要童年，也可以是第一次明显记得自己这样反应的经历。"></textarea>
+            </div>
+            <div class="field">
+              <label for="cost">这个模式让你付出了什么代价？</label>
+              <textarea id="cost" name="模式代价" placeholder="例如：错过机会、关系变浅、收入不稳定、长期疲惫、很难信任别人。"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="reaction" data-title="机会反应测试">
+          <div class="section-head">
+            <div class="index">04</div>
+            <div>
+              <h2>机会出现时，你的第一反应是什么？</h2>
+              <p class="hint">这里用“测试”的方式捕捉反应倾向。不要选你觉得正确的，选你最像自己的。</p>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-title">当一个机会突然出现，而且别人开始期待你行动时，你通常会：</div>
+            <div class="choice-grid">
+              <label class="choice">
+                <input type="radio" name="机会第一反应" value="先证明自己配得上" />
+                <b>先证明自己配得上</b>
+                <span>我会开始补材料、补能力、解释自己为什么还没准备好。</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="机会第一反应" value="先观察别人怎么评价" />
+                <b>先观察别人怎么评价</b>
+                <span>我会很在意别人怎么看，确认安全后才敢往前走。</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="机会第一反应" value="先冲出去再说" />
+                <b>先冲出去再说</b>
+                <span>我会先行动，但后面容易因为压力、关系或现实成本掉下来。</span>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-title">给下面几项打分：0 代表很弱，10 代表很强。</div>
+            <div class="scale">
+              <label for="needControl">需要掌控感</label>
+              <input type="range" id="needControl" name="需要掌控感" min="0" max="10" value="5" />
+              <output for="needControl">5</output>
+            </div>
+            <div class="scale">
+              <label for="fearVisible">害怕被看见</label>
+              <input type="range" id="fearVisible" name="害怕被看见" min="0" max="10" value="5" />
+              <output for="fearVisible">5</output>
+            </div>
+            <div class="scale">
+              <label for="actionEnergy">行动能量</label>
+              <input type="range" id="actionEnergy" name="行动能量" min="0" max="10" value="5" />
+              <output for="actionEnergy">5</output>
+            </div>
+            <div class="scale">
+              <label for="supportLevel">可获得支持</label>
+              <input type="range" id="supportLevel" name="可获得支持" min="0" max="10" value="5" />
+              <output for="supportLevel">5</output>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="system" data-title="关系与资源">
+          <div class="section-head">
+            <div class="index">05</div>
+            <div>
+              <h2>人生不是单线问题，而是关系、钱、身体和期待的耦合。</h2>
+              <p class="hint">这一部分会帮助模型判断：你的选择不是“想不想”，而是“现实系统能不能承受”。</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="familySystem">家庭系统正在怎样影响你？</label>
+              <textarea id="familySystem" name="家庭系统影响" placeholder="例如：父母期待、经济绑定、愧疚感、必须照顾谁、不能离开哪里。"></textarea>
+            </div>
+            <div class="field">
+              <label for="relationshipSystem">关系系统正在怎样影响你？</label>
+              <textarea id="relationshipSystem" name="关系系统影响" placeholder="例如：伴侣、朋友、同事、圈层、竞争、孤独感、被比较。"></textarea>
+            </div>
+            <div class="field">
+              <label for="moneyTime">你的钱、时间、身体精力处于什么状态？</label>
+              <textarea id="moneyTime" name="资源状态" placeholder="例如：现金流能撑多久、每天可支配时间、睡眠、身体状况、情绪消耗。"></textarea>
+            </div>
+            <div class="field">
+              <label for="hiddenRule">你生活里有一条“不明说但必须遵守”的规则吗？</label>
+              <textarea id="hiddenRule" name="隐性规则" placeholder="例如：不能让家里失望；必须显得很懂事；不可以比某个人过得好。"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="future" data-title="未来分叉">
+          <div class="section-head">
+            <div class="index">06</div>
+            <div>
+              <h2>请描述三个未来，而不是只问“我会怎样”。</h2>
+              <p class="hint">见相需要比较不同路径的后果。你写得越具体，报告里的未来场景越能落到现实。</p>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="futureDefault">如果你什么都不改变，一年后大概率会怎样？</label>
+              <textarea id="futureDefault" name="惯性未来" placeholder="写现实一点，不要写愿望。"></textarea>
+            </div>
+            <div class="field">
+              <label for="futureSmall">如果你只做一个小改变，最可能改变哪一部分？</label>
+              <textarea id="futureSmall" name="小改变未来" placeholder="例如：每天发出一个申请、每周约一个人聊、每月存一笔缓冲。"></textarea>
+            </div>
+            <div class="field">
+              <label for="futureBrave">如果你做一个真正困难但关键的决定，会是什么？</label>
+              <textarea id="futureBrave" name="关键决定未来" placeholder="例如：离开一段关系、承认自己想转型、公开一个作品、和家里谈边界。"></textarea>
+            </div>
+            <div class="field">
+              <label for="futureFear">你最怕哪个未来成真？</label>
+              <textarea id="futureFear" name="最害怕的未来" placeholder="这往往比“最想要的未来”更能解释你的行动。"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="archive" data-title="原始材料">
+          <div class="section-head">
+            <div class="index">07</div>
+            <div>
+              <h2>如果你有日记、聊天记录、备忘录，可以直接放进来。</h2>
+              <p class="hint">不一定必须填写上面的全部问题。真实材料越多，模型越容易看到你长期生活里的“相”。</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="rawArchive">原始材料 / 补充说明</label>
+            <textarea id="rawArchive" name="原始材料" style="min-height: 220px;" placeholder="可以粘贴日记片段、年度总结、重要聊天记录、你写过的长文本，或者任何你认为能说明自己的材料。"></textarea>
+            <small>如果内容涉及他人隐私，建议先做匿名处理。</small>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button class="btn" type="button" data-action="clear">清空草稿</button>
+          <button class="btn accent" type="button" data-action="copy">复制材料文本</button>
+          <button class="btn primary" type="button" data-action="simulate">点击模拟</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="simulate-modal" id="simulateModal" role="dialog" aria-modal="true" aria-labelledby="simulateTitle">
+    <div class="simulate-dialog">
+      <button class="modal-close" type="button" data-action="close-modal" aria-label="关闭模拟窗口">×</button>
+      <div class="modal-inner">
+        <p class="modal-kicker">START SIMULATION</p>
+        <h2 class="modal-title" id="simulateTitle">选择这次要重点模拟的人生方向。</h2>
+        <p class="modal-copy">
+          见相会先读取你填写的材料，再围绕一个重点方向做路径推演。你也可以选择整体路径，但越具体，报告越容易落到现实场景。
+        </p>
+
+        <div class="simulate-step">
+          <h3>01 / 选择模拟方向</h3>
+          <div class="direction-grid">
+            <label class="direction-card">
+              <input type="radio" name="modalDirection" value="事业 / 学业 / 转型" checked />
+              <b>事业 / 学业 / 转型</b>
+              <span>适合想判断职业方向、转型节点、创业/工作选择的人。</span>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="modalDirection" value="感情 / 亲密关系" />
+              <b>感情 / 亲密关系</b>
+              <span>适合想看关系模式、亲密恐惧、反复拉扯的人。</span>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="modalDirection" value="家庭 / 原生关系" />
+              <b>家庭 / 原生关系</b>
+              <span>适合想看家庭期待、责任位置、边界压力的人。</span>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="modalDirection" value="金钱 / 资源" />
+              <b>金钱 / 资源</b>
+              <span>适合想看现金流、资源结构、生存压力与选择余地的人。</span>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="modalDirection" value="自我状态 / 行动感" />
+              <b>自我状态 / 行动感</b>
+              <span>适合长期内耗、拖延、行动感不足、精力不稳的人。</span>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="modalDirection" value="整体人生路径" />
+              <b>整体人生路径</b>
+              <span>适合材料比较完整，想看多个维度如何互相牵动的人。</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="simulate-step">
+          <h3>02 / 选择模拟方式</h3>
+          <div class="plan-grid">
+            <label class="plan-card is-disabled">
+              <input type="radio" name="modalPlan" value="简单免费模拟" disabled />
+              <span class="plan-tag">FREE / NOT OPEN YET</span>
+              <b>免费简单模拟暂未开放</b>
+              <span>免费版需要接入大模型实时生成。当前还在域名和线上部署阶段，暂时不开放测试。</span>
+              <ul class="plan-list">
+                <li>避免用规则模板复述材料，影响可信度</li>
+                <li>正式上线后会开放免费测试入口</li>
+                <li>现在建议直接使用完整模拟</li>
+              </ul>
+            </label>
+            <label class="plan-card featured">
+              <input type="radio" name="modalPlan" value="付费完整模拟" checked />
+              <span class="plan-tag">PAID / FULL</span>
+              <b>付费完整模拟</b>
+              <span>完整模拟会让 AI 围绕你的材料跑更多变量组合，因此会消耗模型调用与人工整理成本。</span>
+              <ul class="plan-list">
+                <li>更具体的未来生活场景描绘</li>
+                <li>多个关键变量的相互影响</li>
+                <li>行动建议、风险提醒与决策分叉</li>
+                <li>比免费版更细节的 AI 路径推演</li>
+              </ul>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-result">
+          <p id="simulateSummary">
+            <b>下一步：</b>选择模拟方向后扫码付款。付款完成后生成材料 PDF，加微信发送 PDF 和付款截图，2–24 小时内交付报告。
+          </p>
+          <button class="btn primary" type="button" data-action="copy-simulation-request">复制模拟申请</button>
+        </div>
+
+        <section class="payment-sheet" id="paymentSheet" aria-label="付费完整模拟开通页">
+          <div class="payment-head">
+            <div>
+              <span class="payment-kicker">FULL SIMULATION / MANUAL CHECKOUT</span>
+              <h3 class="payment-title">开通付费完整模拟</h3>
+              <p>
+                扫码完成付款后，页面会出现微信二维码。添加微信后，把材料和付款截图发过去，模拟报告会在 2–24 小时内交付。
+              </p>
+            </div>
+            <div class="payment-price">
+              <small>PRICE</small>
+              <strong>¥99</strong>
+            </div>
+          </div>
+
+          <div class="payment-body">
+            <div class="payment-panel">
+              <h4>完整模拟会多得到什么？</h4>
+              <ul>
+                <li>围绕你的材料跑更多变量组合，而不是只给一个初步方向。</li>
+                <li>输出更具体的未来生活场景：人在什么处境里、会怎样反应、可能付出什么代价。</li>
+                <li>拆出关键分叉：哪些选择会牵动事业、关系、家庭、现金流和行动感。</li>
+                <li>给出更细的决策建议、风险提醒和下一步可执行动作。</li>
+              </ul>
+              <p class="payment-note">
+                付费不是为了“卖答案”，而是因为完整模拟需要更长的模型推演、材料整理和人工校对成本。
+                当前为早期共创价，后续会根据报告深度和交付方式调整。
+              </p>
+              <div class="payment-actions">
+                <button class="btn primary" type="button" data-action="show-wechat-afterpay">我已付款，下一步</button>
+                <button class="btn" type="button" data-action="close-payment">先返回选择</button>
+              </div>
+            </div>
+
+            <div class="payment-panel">
+              <h4>扫码付款 · ¥99</h4>
+              <div class="payment-qr">
+                <div>
+                  <img src="./assets/payments/wechat-pay-qr.jpg" alt="见相付费完整模拟微信收款码" />
+                  <div class="payment-caption">付费完整模拟 ¥99</div>
+                </div>
+              </div>
+              <ul class="payment-steps">
+                <li><span>1</span>扫码付款 ¥99</li>
+                <li><span>2</span>点击“我已付款，下一步”</li>
+                <li><span>3</span>生成材料 PDF，加微信发送 PDF 和付款截图</li>
+              </ul>
+
+              <div class="wechat-afterpay" id="wechatAfterpay">
+                <h4>添加微信，发送材料</h4>
+                <div class="payment-qr">
+                  <div>
+                    <img src="./assets/payments/wechat-contact-qr.jpg" alt="见相完整模拟微信联系二维码" />
+                    <div class="payment-caption">
+                      添加微信后发送材料 PDF + 付款截图<br />
+                      2–24 小时内交付完整模拟报告
+                    </div>
+                  </div>
+                </div>
+                <div class="payment-actions">
+                  <button class="btn primary" type="button" data-action="print">生成材料 PDF</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <article class="print-sheet" id="printSheet">
+    <h1 class="print-title">见相模拟材料</h1>
+    <div class="print-meta" id="printMeta"></div>
+    <div id="printContent"></div>
+  </article>
+
+  <script>
+    const storageKey = "formsight.material.v1";
+    const form = document.querySelector("#materialForm");
+    const scoreRing = document.querySelector("#scoreRing");
+    const scoreText = document.querySelector("#scoreText");
+    const printMeta = document.querySelector("#printMeta");
+    const printContent = document.querySelector("#printContent");
+    const simulateModal = document.querySelector("#simulateModal");
+    const simulateSummary = document.querySelector("#simulateSummary");
+    const paymentSheet = document.querySelector("#paymentSheet");
+    const wechatAfterpay = document.querySelector("#wechatAfterpay");
+
+    const fields = Array.from(form.querySelectorAll("input, textarea, select"));
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function getData() {
+      const data = {};
+      fields.forEach((field) => {
+        if (field.type === "radio") {
+          if (field.checked) data[field.name] = field.value;
+          return;
+        }
+        data[field.name] = field.value;
+      });
+      return data;
+    }
+
+    function setData(data) {
+      fields.forEach((field) => {
+        if (field.type === "radio") {
+          field.checked = data[field.name] === field.value;
+          return;
+        }
+        if (Object.prototype.hasOwnProperty.call(data, field.name)) {
+          field.value = data[field.name];
+        }
+      });
+      syncRangeOutputs();
+      updateProgress();
+    }
+
+    function saveDraft() {
+      localStorage.setItem(storageKey, JSON.stringify(getData()));
+      updateProgress();
+    }
+
+    function syncRangeOutputs() {
+      form.querySelectorAll('input[type="range"]').forEach((range) => {
+        const output = range.parentElement.querySelector("output");
+        if (output) output.textContent = range.value;
+      });
+    }
+
+    function updateProgress() {
+      const data = getData();
+      const measurableKeys = Array.from(new Set(
+        fields
+          .filter((field) => field.type !== "range")
+          .map((field) => field.name)
+          .filter(Boolean)
+      ));
+      const filled = measurableKeys.filter((key) => String(data[key] || "").trim().length > 0).length;
+      const percent = measurableKeys.length ? Math.round((filled / measurableKeys.length) * 100) : 0;
+      scoreRing.style.setProperty("--progress", `${percent * 3.6}deg`);
+      scoreText.textContent = `${percent}%`;
+    }
+
+    function buildPlainText() {
+      const data = getData();
+      const lines = ["见相模拟材料", `生成时间：${new Date().toLocaleString("zh-CN")}`, ""];
+      Object.entries(data).forEach(([key, value]) => {
+        const text = String(value || "").trim();
+        if (!text) return;
+        lines.push(`【${key}】`);
+        lines.push(text);
+        lines.push("");
+      });
+      return lines.join("\n");
+    }
+
+    function getSelectedSimulation() {
+      const direction = document.querySelector('input[name="modalDirection"]:checked')?.value || "未选择";
+      const plan = document.querySelector('input[name="modalPlan"]:checked')?.value || "未选择";
+      return { direction, plan };
+    }
+
+    function updateSimulationSummary() {
+      const { direction, plan } = getSelectedSimulation();
+      const paidCopy = plan === "付费完整模拟"
+        ? "完整模拟会围绕材料运行更多变量组合，重点输出未来具体场景、关键分叉、决策建议和风险提醒。"
+        : "免费简单模拟暂未开放。正式接入大模型后，会再开放免费测试入口。";
+      simulateSummary.innerHTML = `<b>当前选择：</b>${escapeHTML(direction)}｜${escapeHTML(plan)}。${escapeHTML(paidCopy)} 付款后生成材料 PDF，加微信发送 PDF 和付款截图，2–24 小时内交付报告。`;
+    }
+
+    function buildSimulationRequest() {
+      const { direction, plan } = getSelectedSimulation();
+      return [
+        "见相模拟申请",
+        `模拟方向：${direction}`,
+        `模拟方式：${plan}`,
+        `提交时间：${new Date().toLocaleString("zh-CN")}`,
+        "",
+        "说明：",
+        plan === "付费完整模拟"
+          ? "我希望做完整模拟，重点看未来具体场景、关键变量、决策建议和更细节的 AI 路径推演。"
+          : "我希望先做简单免费模拟，快速判断当前材料和初步方向。",
+        "",
+        buildPlainText()
+      ].join("\n");
+    }
+
+    function openPaymentSheet() {
+      paymentSheet.classList.add("is-open");
+    }
+
+    function closePaymentSheet() {
+      paymentSheet.classList.remove("is-open");
+      wechatAfterpay.classList.remove("is-open");
+      updateSimulationSummary();
+    }
+
+    function showWechatAfterpay() {
+      wechatAfterpay.classList.add("is-open");
+    }
+
+    function openSimulationModal() {
+      saveDraft();
+      const focusValue = document.querySelector("#focus")?.value;
+      if (focusValue) {
+        const matched = Array.from(document.querySelectorAll('input[name="modalDirection"]'))
+          .find((item) => focusValue.includes(item.value.split(" / ")[0]));
+        if (matched) matched.checked = true;
+      }
+      updateSimulationSummary();
+      const { plan } = getSelectedSimulation();
+      paymentSheet.classList.toggle("is-open", plan === "付费完整模拟");
+      simulateModal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSimulationModal() {
+      simulateModal.classList.remove("is-open");
+      paymentSheet.classList.remove("is-open");
+      wechatAfterpay.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
+
+    function buildPrintSheet() {
+      const data = getData();
+      const { direction, plan } = getSelectedSimulation();
+      const nickname = data["称呼"] || "未填写称呼";
+      const focus = data["重点模拟维度"] || "未选择重点维度";
+      printMeta.textContent = `${nickname}｜${direction || focus}｜${plan}｜生成时间：${new Date().toLocaleString("zh-CN")}`;
+
+      const sections = Array.from(document.querySelectorAll(".section-card"));
+      const html = sections.map((section) => {
+        const title = section.dataset.title || "未命名部分";
+        const controls = Array.from(section.querySelectorAll("input, textarea, select"));
+        const items = controls.map((control) => {
+          if (control.type === "radio" && !control.checked) return "";
+          const label = control.name;
+          const value = control.type === "radio" ? control.value : control.value;
+          if (!String(value || "").trim()) return "";
+          return `<div class="print-item"><b>${escapeHTML(label)}</b><p>${escapeHTML(value)}</p></div>`;
+        }).filter(Boolean).join("");
+        if (!items) return "";
+        return `<section class="print-section"><h2>${escapeHTML(title)}</h2>${items}</section>`;
+      }).filter(Boolean).join("");
+
+      printContent.innerHTML = html || "<p>还没有填写内容。</p>";
+    }
+
+    function collectPdfItems() {
+      const sections = Array.from(document.querySelectorAll(".section-card"));
+      return sections.map((section) => {
+        const title = section.dataset.title || "未命名部分";
+        const controls = Array.from(section.querySelectorAll("input, textarea, select"));
+        const items = controls.map((control) => {
+          if (control.type === "radio" && !control.checked) return null;
+          const label = control.name || "未命名字段";
+          const value = control.type === "radio" ? control.value : control.value;
+          if (!String(value || "").trim()) return null;
+          return { label, value: String(value).trim() };
+        }).filter(Boolean);
+        return items.length ? { title, items } : null;
+      }).filter(Boolean);
+    }
+
+    function wrapCanvasText(ctx, text, maxWidth) {
+      const source = String(text || "").replace(/\r/g, "").split("\n");
+      const lines = [];
+      source.forEach((paragraph) => {
+        let line = "";
+        Array.from(paragraph || " ").forEach((char) => {
+          const test = line + char;
+          if (ctx.measureText(test).width > maxWidth && line) {
+            lines.push(line);
+            line = char;
+          } else {
+            line = test;
+          }
+        });
+        lines.push(line);
+      });
+      return lines;
+    }
+
+    function dataUrlToBinary(dataUrl) {
+      return atob(dataUrl.split(",")[1]);
+    }
+
+    function pdfEscape(value) {
+      return String(value || "").replace(/[\\()]/g, "\\$&");
+    }
+
+    function buildImagePdf(jpegDataUrls, pageWidth, pageHeight, title) {
+      const objects = [];
+      const addObject = (body) => {
+        objects.push(body);
+        return objects.length;
+      };
+
+      const catalogId = addObject("<< /Type /Catalog /Pages 2 0 R >>");
+      const pagesId = addObject("");
+      const pageIds = [];
+
+      jpegDataUrls.forEach((dataUrl, index) => {
+        const imageBinary = dataUrlToBinary(dataUrl);
+        const imageId = addObject(`<< /Type /XObject /Subtype /Image /Width ${pageWidth} /Height ${pageHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imageBinary.length} >>\nstream\n${imageBinary}\nendstream`);
+        const content = `q\n${pageWidth} 0 0 ${pageHeight} 0 0 cm\n/Im${index + 1} Do\nQ`;
+        const contentId = addObject(`<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
+        const pageId = addObject(`<< /Type /Page /Parent ${pagesId} 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << /Im${index + 1} ${imageId} 0 R >> >> /Contents ${contentId} 0 R >>`);
+        pageIds.push(pageId);
+      });
+
+      objects[pagesId - 1] = `<< /Type /Pages /Kids [${pageIds.map((id) => `${id} 0 R`).join(" ")}] /Count ${pageIds.length} >>`;
+
+      const infoId = addObject(`<< /Title (${pdfEscape(title)}) /Producer (Formsight local PDF generator) >>`);
+      let pdf = "%PDF-1.4\n%\xFF\xFF\xFF\xFF\n";
+      const offsets = [0];
+      objects.forEach((body, index) => {
+        offsets.push(pdf.length);
+        pdf += `${index + 1} 0 obj\n${body}\nendobj\n`;
+      });
+      const xrefOffset = pdf.length;
+      pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+      for (let i = 1; i <= objects.length; i += 1) {
+        pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
+      }
+      pdf += `trailer\n<< /Size ${objects.length + 1} /Root ${catalogId} 0 R /Info ${infoId} 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
+
+      const bytes = new Uint8Array(pdf.length);
+      for (let i = 0; i < pdf.length; i += 1) bytes[i] = pdf.charCodeAt(i) & 0xff;
+      return new Blob([bytes], { type: "application/pdf" });
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function renderMaterialPdfBlob() {
+      const data = getData();
+      const { direction, plan } = getSelectedSimulation();
+      const nickname = data["称呼"] || "未填写称呼";
+      const focus = data["重点模拟维度"] || "未选择重点维度";
+      const createdAt = new Date().toLocaleString("zh-CN");
+      const sections = collectPdfItems();
+
+      const pageWidth = 1240;
+      const pageHeight = 1754;
+      const marginX = 92;
+      const marginTop = 92;
+      const marginBottom = 96;
+      const contentWidth = pageWidth - marginX * 2;
+      const pages = [];
+
+      let canvas = document.createElement("canvas");
+      canvas.width = pageWidth;
+      canvas.height = pageHeight;
+      let ctx = canvas.getContext("2d");
+      let y = marginTop;
+      let pageNo = 1;
+
+      const setupPage = () => {
+        ctx.fillStyle = "#f7f4ee";
+        ctx.fillRect(0, 0, pageWidth, pageHeight);
+        ctx.fillStyle = "#111111";
+        ctx.font = "700 42px 'Microsoft YaHei', 'PingFang SC', sans-serif";
+        ctx.fillText("见相模拟材料", marginX, 72);
+        ctx.font = "400 22px 'Microsoft YaHei', 'PingFang SC', sans-serif";
+        ctx.fillStyle = "rgba(17,17,17,0.54)";
+        ctx.fillText(`第 ${pageNo} 页`, pageWidth - marginX - 76, 72);
+        ctx.strokeStyle = "rgba(17,17,17,0.14)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(marginX, 104);
+        ctx.lineTo(pageWidth - marginX, 104);
+        ctx.stroke();
+        y = 150;
+      };
+
+      const finishPage = () => {
+        ctx.fillStyle = "rgba(17,17,17,0.42)";
+        ctx.font = "400 18px 'Microsoft YaHei', 'PingFang SC', sans-serif";
+        ctx.fillText("请将本 PDF 与付款截图一起发送到微信，用于生成完整模拟报告。", marginX, pageHeight - 48);
+        pages.push(canvas.toDataURL("image/jpeg", 0.92));
+      };
+
+      const newPage = () => {
+        finishPage();
+        pageNo += 1;
+        canvas = document.createElement("canvas");
+        canvas.width = pageWidth;
+        canvas.height = pageHeight;
+        ctx = canvas.getContext("2d");
+        setupPage();
+      };
+
+      const ensureSpace = (height) => {
+        if (y + height > pageHeight - marginBottom) newPage();
+      };
+
+      const drawWrapped = (text, x, maxWidth, font, color, lineHeight) => {
+        ctx.font = font;
+        ctx.fillStyle = color;
+        const lines = wrapCanvasText(ctx, text, maxWidth);
+        lines.forEach((line) => {
+          ensureSpace(lineHeight + 6);
+          ctx.fillText(line, x, y);
+          y += lineHeight;
+        });
+      };
+
+      setupPage();
+
+      ctx.fillStyle = "#111111";
+      ctx.font = "700 30px 'Microsoft YaHei', 'PingFang SC', sans-serif";
+      ctx.fillText("提交信息", marginX, y);
+      y += 46;
+      drawWrapped(`称呼：${nickname}`, marginX, contentWidth, "400 24px 'Microsoft YaHei', 'PingFang SC', sans-serif", "rgba(17,17,17,0.78)", 36);
+      drawWrapped(`模拟方向：${direction || focus}`, marginX, contentWidth, "400 24px 'Microsoft YaHei', 'PingFang SC', sans-serif", "rgba(17,17,17,0.78)", 36);
+      drawWrapped(`模拟方式：${plan}`, marginX, contentWidth, "400 24px 'Microsoft YaHei', 'PingFang SC', sans-serif", "rgba(17,17,17,0.78)", 36);
+      drawWrapped(`生成时间：${createdAt}`, marginX, contentWidth, "400 24px 'Microsoft YaHei', 'PingFang SC', sans-serif", "rgba(17,17,17,0.78)", 36);
+      y += 28;
+
+      if (!sections.length) {
+        drawWrapped("当前还没有填写内容。请先返回页面填写问题模板。", marginX, contentWidth, "400 26px 'Microsoft YaHei', 'PingFang SC', sans-serif", "rgba(17,17,17,0.78)", 40);
+      }
+
+      sections.forEach((section) => {
+        ensureSpace(90);
+        y += 16;
+        ctx.fillStyle = "#111111";
+        ctx.font = "700 30px 'Microsoft YaHei', 'PingFang SC', sans-serif";
+        ctx.fillText(section.title, marginX, y);
+        y += 44;
+        ctx.strokeStyle = "rgba(17,17,17,0.12)";
+        ctx.beginPath();
+        ctx.moveTo(marginX, y - 16);
+        ctx.lineTo(pageWidth - marginX, y - 16);
+        ctx.stroke();
+
+        section.items.forEach((item) => {
+          ensureSpace(96);
+          drawWrapped(item.label, marginX, contentWidth, "700 22px 'Microsoft YaHei', 'PingFang SC', sans-serif", "#111111", 34);
+          drawWrapped(item.value, marginX, contentWidth, "400 23px 'Microsoft YaHei', 'PingFang SC', sans-serif", "rgba(17,17,17,0.72)", 36);
+          y += 18;
+        });
+      });
+
+      finishPage();
+      return buildImagePdf(pages, pageWidth, pageHeight, `见相模拟材料-${nickname}`);
+    }
+
+    async function generatePDF() {
+      saveDraft();
+      buildPrintSheet();
+      const blob = renderMaterialPdfBlob();
+      const nickname = (getData()["称呼"] || "未填写").replace(/[\\/:*?"<>|]/g, "-");
+      const date = new Date().toISOString().slice(0, 10);
+      downloadBlob(blob, `见相模拟材料-${nickname}-${date}.pdf`);
+    }
+
+    form.addEventListener("input", (event) => {
+      if (event.target.matches('input[type="range"]')) syncRangeOutputs();
+      saveDraft();
+    });
+
+    form.addEventListener("change", saveDraft);
+
+    document.addEventListener("pointermove", (event) => {
+      const card = event.target.closest(".section-card");
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    });
+
+    document.addEventListener("click", async (event) => {
+      const action = event.target.closest("[data-action]")?.dataset.action;
+      if (!action) return;
+      if (action === "save") {
+        saveDraft();
+      }
+      if (action === "simulate") {
+        openSimulationModal();
+      }
+      if (action === "close-modal") {
+        closeSimulationModal();
+      }
+      if (action === "close-payment") {
+        closePaymentSheet();
+      }
+      if (action === "print") {
+        generatePDF();
+      }
+      if (action === "copy") {
+        saveDraft();
+        const text = buildPlainText();
+        try {
+          await navigator.clipboard.writeText(text);
+          event.target.textContent = "已复制";
+          setTimeout(() => { event.target.textContent = "复制材料文本"; }, 1200);
+        } catch {
+          alert("复制失败，可以手动全选页面内容保存。");
+        }
+      }
+      if (action === "copy-simulation-request") {
+        saveDraft();
+        const text = buildSimulationRequest();
+        try {
+          await navigator.clipboard.writeText(text);
+          event.target.textContent = "已复制申请";
+          setTimeout(() => { event.target.textContent = "复制模拟申请"; }, 1400);
+        } catch {
+          alert("复制失败，可以先复制材料文本，再添加微信发送模拟方向和模拟方式。");
+        }
+      }
+      if (action === "show-wechat-afterpay") {
+        showWechatAfterpay();
+        event.target.textContent = "已显示微信二维码";
+        setTimeout(() => { event.target.textContent = "我已付款，下一步"; }, 1400);
+      }
+      if (action === "clear") {
+        if (!confirm("确定清空当前草稿吗？")) return;
+        localStorage.removeItem(storageKey);
+        form.reset();
+        syncRangeOutputs();
+        updateProgress();
+      }
+    });
+
+    simulateModal.addEventListener("click", (event) => {
+      if (event.target === simulateModal) closeSimulationModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && simulateModal.classList.contains("is-open")) {
+        closeSimulationModal();
+      }
+    });
+
+    document.addEventListener("change", (event) => {
+      if (event.target.matches('input[name="modalDirection"], input[name="modalPlan"]')) {
+        updateSimulationSummary();
+        const { plan } = getSelectedSimulation();
+        if (plan === "付费完整模拟") {
+          openPaymentSheet();
+        } else {
+          paymentSheet.classList.remove("is-open");
+          wechatAfterpay.classList.remove("is-open");
+        }
+      }
+    });
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      setData(saved);
+    } catch {
+      syncRangeOutputs();
+      updateProgress();
+    }
+  </script>
+</body>
+</html>

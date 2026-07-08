@@ -1,0 +1,1434 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>见相模拟报告 · 可读版 v0</title>
+  <style>
+    :root {
+      --ground:#08090A;
+      --surface:#16171C;
+      --surface-2:#1E1F25;
+      --surface-3:#26272E;
+      --line:rgba(255,255,255,.07);
+      --line-strong:rgba(255,255,255,.12);
+      --text:#F7F8F8;
+      --text-2:#A7ADB8;
+      --muted:#6B7280;
+      --accent:#5E6AD2;
+      --accent-2:#A78BFA;
+      --good:#55C2A0;
+      --warn:#D6A84F;
+      --risk:#E46E6E;
+      --radius:16px;
+      color-scheme:dark;
+      font-family:"Microsoft YaHei UI","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 78% 0%, rgba(94,106,210,.18), transparent 28rem),
+        radial-gradient(circle at 12% 18%, rgba(167,139,250,.08), transparent 22rem),
+        linear-gradient(180deg,#08090A 0%,#0B0C0F 48%,#08090A 100%);
+      line-height:1.6;
+    }
+    a { color:inherit; }
+    .progress { position:fixed; inset:0 0 auto 0; height:2px; z-index:10; background:transparent; }
+    .progress i { display:block; width:0%; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+    .shell { width:min(1180px, calc(100% - 32px)); margin:0 auto; }
+    .topbar {
+      position:sticky;
+      top:0;
+      z-index:9;
+      backdrop-filter:blur(20px);
+      background:rgba(8,9,10,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .shell { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:64px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.01em; }
+    .brand-mark { width:30px; height:30px; border:1px solid var(--line-strong); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(245,245,247,.18), rgba(245,245,247,.04) 42%, transparent 43%), linear-gradient(135deg,#1E1F25,#08090A); position:relative; box-shadow:inset 0 0 0 6px rgba(245,245,247,.035), 0 12px 34px rgba(0,0,0,.28); }
+    .brand-mark::before { content:""; position:absolute; left:6px; right:6px; top:14px; height:1px; background:linear-gradient(90deg,transparent,rgba(245,245,247,.82),transparent); }
+    .brand-mark::after { content:""; position:absolute; inset:10px; border-radius:50%; background:rgba(245,245,247,.92); box-shadow:0 0 22px rgba(245,245,247,.28); }
+    .brand-logo { border-radius:8px; overflow:hidden; background:none; box-shadow:0 12px 34px rgba(0,0,0,.28); }
+    .brand-logo::before,.brand-logo::after { display:none; }
+    .brand-logo img { display:block; width:100%; height:100%; object-fit:cover; }
+    nav { display:flex; gap:6px; align-items:center; overflow:auto; }
+    nav a { color:var(--text-2); text-decoration:none; font-size:13px; padding:7px 10px; border:1px solid transparent; border-radius:10px; white-space:nowrap; }
+    nav a:hover { color:var(--text); background:rgba(255,255,255,.04); border-color:var(--line); }
+    .hero { padding:72px 0 34px; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.08fr) 360px; gap:28px; align-items:stretch; }
+    .eyebrow,.kicker { color:var(--accent-2); font:700 12px/1.2 "Consolas","Courier New",monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h1,h2,h3,p { margin:0; }
+    h1 { margin-top:18px; max-width:850px; font-size:clamp(42px, 6.5vw, 82px); line-height:.96; letter-spacing:-.055em; }
+    h2 { margin-top:10px; font-size:clamp(26px, 3.4vw, 44px); line-height:1.08; letter-spacing:-.035em; text-wrap:pretty; }
+    h3 { font-size:18px; line-height:1.25; letter-spacing:-.015em; }
+    .report-title { margin-top:18px; max-width:850px; font-size:clamp(42px, 6.5vw, 82px); line-height:.96; letter-spacing:-.055em; }
+    .hero-conclusion { margin-top:18px; max-width:760px; font-size:clamp(26px, 4.2vw, 48px); line-height:1.05; letter-spacing:-.052em; color:rgba(245,245,247,.84); }
+    .lead { margin-top:22px; max-width:760px; color:var(--text-2); font-size:18px; text-wrap:pretty; }
+    .takeaway { margin-top:18px; display:inline-flex; max-width:780px; color:#DDE0EA; background:rgba(94,106,210,.12); border:1px solid rgba(94,106,210,.28); border-radius:14px; padding:12px 14px; }
+    .hero-card,.panel {
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(22,23,28,.94),rgba(14,15,18,.92));
+      box-shadow:0 1px 2px rgba(0,0,0,.3);
+    }
+    .hero-card { padding:18px; display:flex; flex-direction:column; justify-content:space-between; min-height:360px; }
+    .hero-card .label { color:var(--muted); font:700 12px "Consolas","Courier New",monospace; text-transform:uppercase; }
+    .hero-card .main-prob { margin:18px 0 16px; font-size:72px; line-height:.9; letter-spacing:-.06em; }
+    .hero-card .main-line { color:var(--text-2); }
+    .mini-stack { display:grid; gap:10px; margin-top:20px; }
+    .mini-row { display:grid; grid-template-columns:78px 1fr auto; gap:10px; align-items:center; color:var(--text-2); font-size:13px; }
+    .mini-row i { height:7px; border-radius:999px; background:var(--surface-3); overflow:hidden; }
+    .mini-row em { display:block; height:100%; border-radius:999px; background:var(--accent); }
+    .mini-row b { color:var(--text); }
+    .question { margin-top:26px; padding:16px 0 0; border-top:1px solid var(--line); color:var(--text-2); font-size:14px; }
+    .branch-composition { margin-top:22px; max-width:780px; }
+    .composition-track { position:relative; height:16px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; border:1px solid var(--line); }
+    .composition-track span { position:absolute; top:0; bottom:0; }
+    .composition-track .inertia { background:linear-gradient(90deg,rgba(214,168,79,.38),rgba(214,168,79,.78)); }
+    .composition-track .intervention { background:linear-gradient(90deg,rgba(94,106,210,.42),rgba(245,245,247,.9)); }
+    .composition-track .rupture { background:linear-gradient(90deg,rgba(228,110,110,.36),rgba(228,110,110,.72)); }
+    .composition-labels { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px; }
+    .composition-labels div { display:flex; justify-content:space-between; gap:8px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.03); color:var(--text-2); font-size:13px; }
+    .composition-labels b { color:var(--text); }
+    .panel { margin:20px 0; padding:28px; }
+    .section-copy { max-width:760px; margin-bottom:22px; }
+    .section-copy p { margin-top:12px; color:var(--text-2); font-size:15px; }
+    .branch-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .branch-card,.agent-card,.signal-list article,.action-grid article {
+      animation:rise .7s cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay:var(--delay,0ms);
+    }
+    .branch-card { padding:16px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03); }
+    .branch-card.intervention { border-color:rgba(94,106,210,.32); background:linear-gradient(180deg,rgba(94,106,210,.14),rgba(255,255,255,.03)); }
+    .branch-top { display:flex; justify-content:space-between; align-items:center; color:var(--text-2); font:700 12px "Consolas","Courier New",monospace; }
+    .branch-top b { color:var(--text); font-size:24px; letter-spacing:-.04em; }
+    .branch-card h3 { margin-top:12px; min-height:46px; }
+    .branch-sub { margin-top:8px; color:var(--muted); font-size:13px; }
+    .branch-meter { height:7px; margin:16px 0; border-radius:999px; background:var(--surface-3); overflow:hidden; }
+    .branch-meter i { display:block; height:100%; border-radius:999px; background:var(--accent); }
+    .inertia .branch-meter i { background:var(--warn); }
+    .rupture .branch-meter i { background:var(--risk); }
+    .branch-time-preview { display:grid; gap:8px; margin:0 0 15px; }
+    .branch-time-preview div { padding:10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.026); }
+    .branch-time-preview span { color:var(--accent-2); font:700 11px "Consolas","Courier New",monospace; text-transform:uppercase; }
+    .branch-time-preview p { margin-top:5px; color:rgba(245,245,247,.68); font-size:12px; line-height:1.58; }
+    dl { display:grid; gap:12px; margin:0; }
+    dt { color:var(--muted); font:700 12px "Consolas","Courier New",monospace; }
+    dd { margin:4px 0 0; color:var(--text-2); font-size:13px; line-height:1.65; }
+    .branch-map-card { margin-top:16px; display:grid; grid-template-columns:290px 1fr; gap:18px; align-items:center; padding:18px; border:1px solid var(--line); border-radius:18px; background:radial-gradient(circle at 78% 26%, rgba(255,255,255,.07), transparent 34%), rgba(255,255,255,.025); }
+    .map-copy p { margin-top:10px; color:var(--text-2); font-size:13px; }
+    .branch-map { width:100%; min-height:230px; }
+    .branch-map line { stroke:rgba(245,245,247,.34) !important; stroke-linecap:round; }
+    .branch-map .core { fill:rgba(245,245,247,.12) !important; stroke:rgba(245,245,247,.42) !important; }
+    .branch-node circle { fill:rgba(245,245,247,.08) !important; stroke:rgba(245,245,247,.36) !important; filter:drop-shadow(0 20px 36px rgba(0,0,0,.35)); }
+    .branch-node.intervention circle { fill:rgba(94,106,210,.22) !important; stroke:rgba(245,245,247,.62) !important; }
+    .branch-node.inertia circle { fill:rgba(214,168,79,.12) !important; }
+    .branch-node.rupture circle { fill:rgba(228,110,110,.12) !important; }
+    .branch-map text { fill:#f5f5f7 !important; font:700 14px "Microsoft YaHei UI", sans-serif; }
+    .branch-map .node-score { fill:#a1a1a6 !important; font:700 13px "Consolas","Courier New",monospace; }
+    .branch-map .map-note { fill:#86868b !important; font:12px "Microsoft YaHei UI", sans-serif; }
+    .variables-panel { display:grid; grid-template-columns:360px 1fr; gap:26px; align-items:start; }
+    .variable-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .variable {
+      appearance:none;
+      text-align:left;
+      color:var(--text);
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      background:rgba(255,255,255,.035);
+      cursor:pointer;
+      transition:transform .15s ease-out, border-color .15s ease-out, background .15s ease-out;
+    }
+    .variable:hover { transform:translateY(-1px); border-color:rgba(255,255,255,.16); background:rgba(255,255,255,.055); }
+    .variable span { display:block; color:var(--text-2); font-size:13px; }
+    .variable b { display:block; margin:4px 0 8px; font-size:30px; line-height:1; letter-spacing:-.04em; }
+    .variable p { min-height:40px; margin:0 0 12px; color:rgba(245,245,247,.66); font-size:12px; line-height:1.55; }
+    .variable i,.dimension-list i { display:block; height:6px; border-radius:999px; background:var(--surface-3); overflow:hidden; }
+    .variable em,.dimension-list em { display:block; height:100%; border-radius:999px; background:var(--accent); }
+    .variable.good em,.dimension-list .good em { background:var(--good); }
+    .variable.warn em,.dimension-list .warn em { background:var(--warn); }
+    .variable.risk em,.dimension-list .risk em { background:var(--risk); }
+    .explain-box { grid-column:2; min-height:126px; color:#DFE2EC; border:1px solid rgba(94,106,210,.25); background:rgba(94,106,210,.1); border-radius:14px; padding:18px; font-size:14px; line-height:1.85; text-wrap:pretty; }
+    .readiness-panel { background:radial-gradient(circle at 18% 18%, rgba(245,245,247,.08), transparent 28%), linear-gradient(180deg,rgba(22,23,28,.96),rgba(8,9,10,.94)); }
+    .gate-layout { display:grid; grid-template-columns:280px 1fr; gap:18px; align-items:stretch; }
+    .gate-meter { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:280px; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.026); }
+    .gate-ring { --gate:72%; width:186px; height:186px; border-radius:50%; display:grid; place-items:center; position:relative; background:conic-gradient(#f5f5f7 0 var(--gate), rgba(255,255,255,.08) var(--gate) 100%); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12), 0 24px 70px rgba(0,0,0,.34); }
+    .gate-ring::after { content:""; position:absolute; inset:15px; border-radius:50%; background:linear-gradient(180deg,#161617,#050506); border:1px solid rgba(255,255,255,.12); }
+    .gate-ring span,.gate-ring small { position:relative; z-index:1; grid-area:1/1; }
+    .gate-ring span { font-size:56px; line-height:1; letter-spacing:-.06em; align-self:center; transform:translateY(-8px); }
+    .gate-ring small { align-self:center; transform:translateY(38px); color:var(--text-2); font:700 12px "Consolas","Courier New",monospace; text-transform:uppercase; }
+    .gate-meter p { margin-top:16px; color:var(--text-2); font-size:13px; text-align:center; }
+    .gate-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+    .gate-grid article { padding:15px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.032); }
+    .gate-grid span { color:var(--text-2); font-size:13px; }
+    .gate-grid b { display:block; margin:7px 0 12px; font-size:34px; line-height:1; letter-spacing:-.04em; }
+    .gate-grid i { display:block; height:6px; border-radius:999px; background:var(--surface-3); overflow:hidden; }
+    .gate-grid em { display:block; height:100%; border-radius:999px; background:#f5f5f7; }
+    .gate-grid .warn em { background:#a1a1a6; }
+    .gate-grid .risk em { background:#86868b; }
+    .reason-strip { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .reason-strip span { padding:8px 10px; border:1px solid var(--line); border-radius:999px; color:var(--text-2); background:rgba(255,255,255,.035); font-size:12px; }
+    .agent-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .action-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .agent-card,.action-grid article,.signal-list article { padding:15px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.035); }
+    .agent-card { padding:18px; background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.024)); }
+    .agent-score { width:36px; height:36px; display:grid; place-items:center; margin-bottom:14px; border-radius:10px; background:var(--surface-2); color:var(--accent-2); font:800 15px "Consolas","Courier New",monospace; }
+    .agent-card p,.action-grid p,.signal-list p { margin-top:10px; color:var(--text-2); font-size:13px; line-height:1.65; }
+    .agent-card h3 { font-size:22px; letter-spacing:-.04em; }
+    .agent-portrait { min-height:150px; color:rgba(245,245,247,.78)!important; line-height:1.85!important; }
+    .agent-facts { display:grid; gap:7px; margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
+    .agent-facts p { margin:0!important; color:rgba(245,245,247,.68)!important; }
+    .agent-synthesis { margin-top:16px; padding:20px; border:1px solid rgba(245,245,247,.16); border-radius:18px; background:radial-gradient(circle at 14% 0%, rgba(255,255,255,.08), transparent 32%), rgba(255,255,255,.035); }
+    .agent-synthesis h3 { margin-top:8px; max-width:780px; font-size:28px; letter-spacing:-.05em; }
+    .agent-synthesis p { margin-top:12px; max-width:880px; color:var(--text-2); line-height:1.78; }
+    .agent-synthesis ul { display:grid; gap:8px; margin:14px 0 0; padding-left:18px; color:rgba(245,245,247,.72); font-size:13px; line-height:1.7; }
+    strong { color:var(--text); }
+    .muted { color:var(--muted)!important; }
+    .chain { display:grid; grid-template-columns:1fr 42px 1fr 42px 1fr 42px 1fr; gap:10px; align-items:center; }
+    .chain div { min-height:92px; display:flex; flex-direction:column; justify-content:center; padding:14px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.035); }
+    .chain span { color:var(--muted); font-size:12px; }
+    .chain b { margin-top:4px; font-size:18px; }
+    .chain i { height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); position:relative; }
+    .chain i::after { content:""; position:absolute; right:0; top:-4px; width:9px; height:9px; border-top:1px solid var(--accent); border-right:1px solid var(--accent); transform:rotate(45deg); }
+    .signal-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-top:18px; }
+    .signal-list span,.action-grid span { color:var(--accent-2); font:700 11px "Consolas","Courier New",monospace; text-transform:uppercase; }
+    .coupling-board { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:18px; align-items:center; }
+    .coupling-board svg { width:100%; border:1px solid var(--line); border-radius:18px; background:radial-gradient(circle at 50% 42%, rgba(255,255,255,.08), transparent 32%), rgba(255,255,255,.022); }
+    .coupling-board line { stroke:rgba(245,245,247,.24) !important; stroke-width:1.2; }
+    .coupling-node circle { fill:rgba(245,245,247,.09) !important; stroke:rgba(245,245,247,.34) !important; }
+    .coupling-node.agency circle { fill:rgba(94,106,210,.22) !important; stroke:rgba(245,245,247,.6) !important; }
+    .coupling-node text { fill:#f5f5f7 !important; font:700 14px "Microsoft YaHei UI", sans-serif; }
+    .coupling-node .node-type { fill:#a1a1a6 !important; font:700 10px "Consolas","Courier New",monospace; }
+    .coupling-notes { display:grid; gap:9px; }
+    .coupling-notes span { display:block; padding:12px; border:1px solid var(--line); border-radius:14px; color:var(--text-2); background:rgba(255,255,255,.032); font-size:13px; }
+    .coupling-notes b { display:block; margin-bottom:4px; color:var(--text); font-size:13px; }
+    .scene-matrix { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .scene-matrix article { border:1px solid var(--line); border-radius:18px; overflow:hidden; background:rgba(255,255,255,.028); }
+    .scene-head { min-height:118px; padding:16px; display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.015)); }
+    .scene-head span { color:var(--accent-2); font:700 12px "Consolas","Courier New",monospace; text-transform:uppercase; }
+    .scene-head b { font-size:20px; line-height:1.2; letter-spacing:-.025em; }
+    .scene-slice { padding:14px 16px; border-top:1px solid var(--line); }
+    .scene-slice small { color:var(--muted); font:700 12px "Consolas","Courier New",monospace; }
+    .scene-slice p { margin-top:6px; color:var(--text-2); font-size:13px; line-height:1.65; }
+    .scene-slice em { color:#f5f5f7; font-style:normal; font-weight:700; }
+    .quality-head { display:grid; grid-template-columns:240px 1fr; gap:14px; margin-bottom:14px; }
+    .quality-head > div { padding:16px; border:1px solid rgba(94,106,210,.26); border-radius:14px; background:rgba(94,106,210,.1); }
+    .quality-head span,.quality-head small { display:block; color:var(--text-2); }
+    .quality-head b { display:block; margin:4px 0; font-size:56px; line-height:1; letter-spacing:-.05em; }
+    .quality-head p { padding:16px; color:var(--text-2); border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.035); }
+    .dimension-list { display:grid; gap:9px; }
+    .dimension-list article { padding:12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.028); }
+    .dimension-list article > div { display:flex; justify-content:space-between; gap:12px; margin-bottom:8px; color:var(--text-2); }
+    .dimension-list p { margin-top:8px; color:var(--muted); font-size:12px; }
+    details { border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03); overflow:hidden; }
+    summary { cursor:pointer; padding:16px; color:var(--text); }
+    pre { margin:0; padding:16px; overflow:auto; max-height:520px; color:#C7CBD6; background:#050607; border-top:1px solid var(--line); font:12px/1.6 "Consolas","Courier New",monospace; }
+    .footer { padding:26px 0 64px; color:var(--muted); font-size:13px; }
+    @keyframes rise { from { transform:translateY(6px); } to { transform:translateY(0); } }
+    @media (max-width:980px) {
+      .hero-grid,.variables-panel,.quality-head,.branch-map-card,.gate-layout,.coupling-board { grid-template-columns:1fr; }
+      .branch-grid,.agent-grid,.action-grid,.scene-matrix { grid-template-columns:1fr 1fr; }
+      .signal-list { grid-template-columns:1fr 1fr; }
+      .explain-box { grid-column:auto; }
+      nav { display:none; }
+    }
+    @media (max-width:640px) {
+      .shell { width:min(100% - 22px, 1180px); }
+      .hero { padding-top:42px; }
+      .panel { padding:18px; }
+      .branch-grid,.agent-grid,.action-grid,.variable-grid,.signal-list,.gate-grid,.scene-matrix,.composition-labels { grid-template-columns:1fr; }
+      .chain { grid-template-columns:1fr; }
+      .chain i { height:26px; width:1px; justify-self:center; background:linear-gradient(180deg,transparent,var(--accent),transparent); }
+      .chain i::after { right:-4px; top:auto; bottom:0; transform:rotate(135deg); }
+    }
+  </style>
+  <style id="formsight-delivery-theme">
+/* FormSight Delivery Theme
+   Apple-like Life Observatory / black-white-silver system
+   Applies to generated reports and visualization pages. */
+
+:root {
+  --ground: #000000 !important;
+  --surface: #161617 !important;
+  --surface-2: #1d1d1f !important;
+  --surface-3: #2a2a2d !important;
+  --ink: #f5f5f7 !important;
+  --text: #f5f5f7 !important;
+  --text-2: #a1a1a6 !important;
+  --muted: #86868b !important;
+  --paper: #000000 !important;
+  --wash: #0b0b0d !important;
+  --line: rgba(255,255,255,.14) !important;
+  --line-strong: rgba(255,255,255,.24) !important;
+  --teal: #f5f5f7 !important;
+  --gold: #a1a1a6 !important;
+  --rust: #86868b !important;
+  --plum: #c7c7cc !important;
+  --accent: #f5f5f7 !important;
+  --accent-2: #a1a1a6 !important;
+  --good: #f5f5f7 !important;
+  --warn: #a1a1a6 !important;
+  --risk: #86868b !important;
+  color-scheme: dark !important;
+}
+
+html { background: #000 !important; }
+
+body {
+  color: #f5f5f7 !important;
+  background:
+    radial-gradient(circle at 72% 8%, rgba(255,255,255,.08), transparent 28rem),
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,.045), transparent 24rem),
+    linear-gradient(180deg, #000 0%, #050506 52%, #000 100%) !important;
+  font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .035;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 16%, black, transparent 74%);
+  z-index: -1;
+}
+
+main,
+.shell {
+  width: min(1180px, calc(100% - 32px)) !important;
+}
+
+header,
+.hero,
+.hero-card,
+section,
+.panel,
+.card,
+.branch-card,
+.agent-card,
+.metric,
+.memory-item,
+.coupling-list div,
+.scene-grid article,
+.symbol-grid article,
+.timeline-item,
+.branch,
+.result-lines article {
+  color: #f5f5f7 !important;
+  border-color: rgba(255,255,255,.14) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.014)),
+    rgba(12,12,14,.86) !important;
+  box-shadow: none !important;
+}
+
+header,
+.hero {
+  border-radius: 28px !important;
+  background:
+    radial-gradient(circle at 76% 24%, rgba(255,255,255,.12), transparent 30%),
+    linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.012)),
+    #050506 !important;
+}
+
+h1,
+h2,
+h3 {
+  color: #f5f5f7 !important;
+  font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", system-ui, sans-serif !important;
+  letter-spacing: -.055em !important;
+}
+
+h1 { font-weight: 650 !important; }
+h2 { font-weight: 600 !important; }
+
+.brand-mark {
+  width: 30px !important;
+  height: 30px !important;
+  border: 1px solid rgba(255,255,255,.24) !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(245,245,247,.18), rgba(245,245,247,.04) 42%, transparent 43%),
+    linear-gradient(135deg,#1E1F25,#08090A) !important;
+  position: relative !important;
+  box-shadow: inset 0 0 0 6px rgba(245,245,247,.035), 0 12px 34px rgba(0,0,0,.28) !important;
+}
+
+.brand-mark::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 6px !important;
+  right: 6px !important;
+  top: 14px !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(245,245,247,.82), transparent) !important;
+}
+
+.brand-mark::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 10px !important;
+  border-radius: 50% !important;
+  background: rgba(245,245,247,.92) !important;
+  box-shadow: 0 0 22px rgba(245,245,247,.28) !important;
+}
+
+.brand-logo {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: none !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.28) !important;
+}
+
+.brand-logo::before,
+.brand-logo::after {
+  display: none !important;
+}
+
+.brand-logo img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.report-title {
+  margin-top: 18px !important;
+  max-width: 850px !important;
+  font-size: clamp(42px, 6.5vw, 82px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.055em !important;
+  font-weight: 650 !important;
+}
+
+.hero-conclusion {
+  margin-top: 18px !important;
+  max-width: 760px !important;
+  font-size: clamp(26px, 4.2vw, 48px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.052em !important;
+  color: rgba(245,245,247,.84) !important;
+  font-weight: 600 !important;
+}
+
+p,
+li,
+dd,
+.lead,
+.sub,
+.small,
+.section-desc,
+.main-line,
+.branch-sub,
+.viz-note,
+.muted,
+.timeline-item p,
+.scene-grid p,
+.symbol-grid p,
+.memory-item p,
+.coupling-list p {
+  color: rgba(245,245,247,.68) !important;
+}
+
+.eyebrow,
+.kicker,
+.kind,
+.score,
+.tag,
+.label,
+.step-index,
+.svg-small,
+.svg-tiny {
+  color: #a1a1a6 !important;
+}
+
+a,
+.text-link { color: #2997ff !important; }
+
+.button.primary,
+button.primary {
+  color: #000 !important;
+  border-color: transparent !important;
+  background: #f5f5f7 !important;
+  box-shadow: 0 18px 44px rgba(255,255,255,.08) !important;
+}
+
+.button.secondary,
+button.secondary {
+  color: #f5f5f7 !important;
+  border-color: rgba(255,255,255,.24) !important;
+  background: rgba(255,255,255,.04) !important;
+}
+
+.bar,
+.branch-meter,
+.variable i,
+.dimension-list i,
+.mini-row i,
+.branch-row i {
+  background: rgba(255,255,255,.1) !important;
+}
+
+.bar i,
+.branch-meter i,
+.variable em,
+.dimension-list em,
+.mini-row em,
+.branch-row em,
+.progress i {
+  background: linear-gradient(90deg, #f5f5f7, #86868b) !important;
+}
+
+pre,
+.seed {
+  color: #d2d2d7 !important;
+  border-color: rgba(255,255,255,.12) !important;
+  background: #050506 !important;
+}
+
+svg text,
+.svg-title,
+.svg-label,
+.branch-title {
+  fill: #f5f5f7 !important;
+}
+
+svg rect,
+svg circle,
+svg ellipse {
+  fill: rgba(245,245,247,.18) !important;
+  stroke: rgba(255,255,255,.34) !important;
+}
+
+svg path,
+svg line,
+svg polyline {
+  stroke: rgba(245,245,247,.46) !important;
+}
+
+.pipe-step,
+.round-strip article,
+.quality-head > div,
+.quality-head p,
+.dimension-list article,
+.variable,
+.field-input-node rect,
+.coupling-field-cards article,
+.variable-force-cards article,
+.universe-cards article {
+  color: #f5f5f7 !important;
+  border-color: rgba(255,255,255,.14) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.015)),
+    rgba(20,20,22,.9) !important;
+}
+
+.pipe-step i {
+  background: linear-gradient(0deg, rgba(245,245,247,.24), rgba(255,255,255,.04)) !important;
+}
+
+.field-input-node text,
+.field-coupling-node text,
+.field-branch-title,
+.variable-force-node text,
+.pressure-core text,
+.variable-branch-label,
+.map-kicker,
+.branch-score {
+  fill: #f5f5f7 !important;
+}
+
+.field-mini,
+.field-axis {
+  fill: #a1a1a6 !important;
+}
+
+img {
+  filter: grayscale(.55) contrast(1.06) brightness(.82) !important;
+}
+
+</style>
+</head>
+<body>
+  <div class="progress"><i id="progressBar"></i></div>
+  <header class="topbar">
+    <div class="shell">
+      <div class="brand"><span class="brand-mark brand-logo"><img src="./assets/brand/formsight-logo.svg" alt="见相 logo" /></span><span>见相 FormSight</span></div>
+      <nav><a href="#overview">结论</a><a href="#branches">三条线</a><a href="#readiness">转向</a><a href="#variables">变量</a><a href="#coupling">耦合</a><a href="#scenes">场景</a><a href="#agents">人格</a><a href="#chain">过去</a><a href="#material">可信度</a><a href="#actions">行动</a></nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="overview" class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Readable Simulation Report / v0</span>
+          <h1 class="report-title">见相模拟报告</h1>
+          <h2 class="hero-conclusion">转向线目前最强，但它不是定局</h2>
+          <p class="lead">这份报告读法很简单：先看三条线，再看是什么变量把你推向其中一条。当前最强的是“转向线”（约 46%），核心冲突是“一个反复运行的内在冲突”。</p>
+          <p class="takeaway">主要内在力量：控制者 + 观察者。这不是人格标签，而是解释你为什么会反复用同一种方式面对机会。</p>
+          <div class="branch-composition">
+    <div class="composition-track"><span class="inertia" style="left:0%;width:37.57406000288046%"></span><span class="intervention" style="left:37.57406000288046%;width:45.511567649859344%"></span><span class="rupture" style="left:83.0856276527398%;width:16.914372347260205%"></span></div>
+    <div class="composition-labels">
+      <div>
+        <span>惯性线</span>
+        <b>38%</b>
+      </div><div>
+        <span>转向线</span>
+        <b>46%</b>
+      </div><div>
+        <span>断裂线</span>
+        <b>17%</b>
+      </div>
+    </div>
+  </div>
+          <p class="question"><strong>本次问题：</strong>正在考虑转向，但迟迟没有把想法变成现实行动</p>
+        </div>
+        <aside class="hero-card">
+          <div>
+            <span class="label">当前最强分支</span>
+            <div class="main-prob">46%</div>
+            <h3>转向线</h3>
+            <p class="main-line">一个小的公开试验会开始改变外界如何看见你，也改变你如何相信自己。</p>
+          </div>
+          <div class="mini-stack">
+            <div class="mini-row">
+              <span>惯性线</span>
+              <i><em style="width:37.57406000288046%"></em></i>
+              <b>38%</b>
+            </div><div class="mini-row">
+              <span>转向线</span>
+              <i><em style="width:45.511567649859344%"></em></i>
+              <b>46%</b>
+            </div><div class="mini-row">
+              <span>断裂线</span>
+              <i><em style="width:16.914372347260205%"></em></i>
+              <b>17%</b>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="branches" class="panel">
+      <div class="section-copy">
+        <span class="kicker">01 / 先看结果</span>
+        <h2>这不是一句“你会怎样”，而是三个现实分支。</h2>
+        <p>先看这里就够了：如果继续当前惯性会怎样，如果做一个小干预会怎样，如果一直压着不处理又会怎样。</p>
+      </div>
+      <div class="branch-grid"><article class="branch-card inertia" style="--delay:0ms">
+      <div class="branch-top">
+        <span>惯性线</span>
+        <b>38%</b>
+      </div>
+      <h3>默认人生线</h3>
+      <p class="branch-sub">如果什么都不改</p>
+      <div class="branch-meter"><i style="width:37.57406000288046%"></i></div>
+      <div class="branch-time-preview">
+        <div><span>3个月</span><p>3个月后，你大概率还在处理“一次需要更高可见度的新机会”延伸出来的近期压力；事情看似有推进，但关键动作容易被推迟。</p></div>
+        <div><span>1年</span><p>生活状态会更像维持系统：家庭牵引成为最显眼的变量，行动动量被继续放在后面。</p></div>
+      </div>
+      <dl>
+        <div><dt>会变成什么</dt><dd>资产缓冲会限制每一次转向的速度，所以问题不会消失，只会换一种形式回来。</dd></div>
+        <div><dt>触发条件</dt><dd>关键变量保持原状：继续等待更安全的时刻，继续用熟悉方式处理压力。</dd></div>
+        <div><dt>材料里的关键推力</dt><dd>先求稳定的家庭牵引</dd></div>
+      </dl>
+    </article><article class="branch-card intervention" style="--delay:80ms">
+      <div class="branch-top">
+        <span>转向线</span>
+        <b>46%</b>
+      </div>
+      <h3>隐秘转向线</h3>
+      <p class="branch-sub">如果提前做一个小动作</p>
+      <div class="branch-meter"><i style="width:45.511567649859344%"></i></div>
+      <div class="branch-time-preview">
+        <div><span>3个月</span><p>3个月后，你会围绕“更有自主权的生活”做一个小测试：先让一个动作进入现实，而不是继续只在脑内比较。</p></div>
+        <div><span>1年</span><p>这条线的关键不是变勇敢，而是让家庭牵引先动一点。只要能形成连续反馈，身体恢复力会变成新的支点。</p></div>
+      </div>
+      <dl>
+        <div><dt>会变成什么</dt><dd>如果外部反馈能被稳定接住，clear analysis, delayed entry 不再只是一种内耗，而会变成转向信号。</dd></div>
+        <div><dt>触发条件</dt><dd>在事情变严重之前，先做一个小的、可验证的现实动作，而不是继续在脑内推演。</dd></div>
+        <div><dt>材料里的关键推力</dt><dd>先求稳定的家庭牵引</dd></div>
+      </dl>
+    </article><article class="branch-card rupture" style="--delay:160ms">
+      <div class="branch-top">
+        <span>断裂线</span>
+        <b>17%</b>
+      </div>
+      <h3>断裂重启线</h3>
+      <p class="branch-sub">如果压力继续被压住</p>
+      <div class="branch-meter"><i style="width:16.914372347260205%"></i></div>
+      <div class="branch-time-preview">
+        <div><span>3个月</span><p>3个月后，压力还没真正爆开，但你会更频繁想要躲开、冷处理，或者用“先不管了”获得短暂轻松。</p></div>
+        <div><span>1年</span><p>这不是主动选择，而是系统被逼到必须重排。家庭牵引 2.0 越高，断裂越容易带着关系成本一起出现。</p></div>
+      </div>
+      <dl>
+        <div><dt>会变成什么</dt><dd>资产缓冲会限制每一次转向的速度，断裂线会从情绪冲动变成现实选项。</dd></div>
+        <div><dt>触发条件</dt><dd>情绪、钱、关系或身体压力继续累积，但没有被提前处理。</dd></div>
+        <div><dt>材料里的关键推力</dt><dd>先求稳定的家庭牵引</dd></div>
+      </dl>
+    </article></div>
+      <div class="branch-map-card">
+    <div class="map-copy">
+      <span class="kicker">Branch Map</span>
+      <h3>三条线不是并列文案，而是当前变量拉出的路径压力。</h3>
+      <p>圆越大，说明这条线当前越容易发生；线越粗，说明它和核心冲突的连接越强。</p>
+    </div>
+    <svg class="branch-map" viewBox="0 0 720 230" role="img" aria-label="人生分支压力图">
+      <defs>
+        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="rgba(245,245,247,.92)" />
+          <stop offset="100%" stop-color="rgba(245,245,247,.08)" />
+        </radialGradient>
+      </defs>
+      <line x1="360" y1="112" x2="134" y2="112" stroke-width="3.4158236366254964" />
+      <line x1="360" y1="112" x2="360" y2="76" stroke-width="4.137415240896304" />
+      <line x1="360" y1="112" x2="586" y2="142" stroke-width="2" />
+      <circle class="core" cx="360" cy="112" r="34" />
+      <text x="360" y="118" text-anchor="middle">核心冲突</text>
+      <g class="branch-node inertia">
+        <circle cx="134" cy="112" r="39.78110520120979" />
+        <text x="134" y="108" text-anchor="middle">惯性线</text>
+        <text class="node-score" x="134" y="130" text-anchor="middle">38%</text>
+      </g><g class="branch-node intervention">
+        <circle cx="360" cy="76" r="43.11485841294092" />
+        <text x="360" y="72" text-anchor="middle">转向线</text>
+        <text class="node-score" x="360" y="94" text-anchor="middle">46%</text>
+      </g><g class="branch-node rupture">
+        <circle cx="586" cy="142" r="31.104036385849284" />
+        <text x="586" y="138" text-anchor="middle">断裂线</text>
+        <text class="node-score" x="586" y="160" text-anchor="middle">17%</text>
+      </g>
+      <text class="map-note" x="360" y="214" text-anchor="middle">当前主导：转向线，但它会被新的行动与反馈重新改写</text>
+    </svg>
+  </div>
+    </section>
+
+    <section id="readiness" class="panel readiness-panel">
+    <div class="section-copy">
+      <span class="kicker">02 / 转向可行性闸门</span>
+      <h2>想改变和真的会改变，中间隔着一层现实闸门。</h2>
+      <p>这一步会把“有转机”重新校准成“这个人实际能不能转向”。所以保守、回避、现金流薄、家庭牵引强的人，转向线不会被模型硬抬高。</p>
+    </div>
+    <div class="gate-layout">
+      <div class="gate-meter">
+        <div class="gate-ring" style="--gate:82%">
+          <span>82</span>
+          <small>转向闸门</small>
+        </div>
+        <p>原始转向压力：122.9<br/>
+        校准后转向压力：100.8</p>
+      </div>
+      <div class="gate-grid">
+        <article class="risk">
+            <span>行动动量</span>
+            <b>2.0</b>
+            <i><em style="width:20%"></em></i>
+          </article><article class="risk">
+            <span>自我信任</span>
+            <b>4.0</b>
+            <i><em style="width:40%"></em></i>
+          </article><article class="risk">
+            <span>现金流缓冲</span>
+            <b>4.0</b>
+            <i><em style="width:40%"></em></i>
+          </article><article class="warn">
+            <span>家庭牵引</span>
+            <b>6.0</b>
+            <i><em style="width:60%"></em></i>
+          </article><article class="good">
+            <span>精力风险</span>
+            <b>3.0</b>
+            <i><em style="width:30%"></em></i>
+          </article><article class="good">
+            <span>人生机动性</span>
+            <b>8.5</b>
+            <i><em style="width:85%"></em></i>
+          </article>
+      </div>
+    </div>
+    <div class="reason-strip">
+      <span>需要确定后才行动，转向会先停留在脑内模拟</span><span>行动动量偏低，想改变不等于会持续改变</span><span>家庭与体面解释会增强惯性</span><span>有外部见证者，能把想法拉回现实反馈</span>
+    </div>
+  </section>
+    <section id="variables" class="panel variables-panel">
+    <div class="section-copy">
+      <span class="kicker">03 / 现实变量</span>
+      <h2>不是“性格决定命运”，而是变量在互相推。</h2>
+      <p>点一下每个变量，可以看到它在这份报告里的含义。分数不是好坏判断，而是说明这个变量对未来分支的推力。</p>
+    </div>
+    <div class="variable-grid"><button class="variable risk" data-explain="角色负荷代表你在做选择时，背后同时牵动多少责任、身份和他人的期待。它在本次报告中是 偏高，说明“正在考虑转向，但迟迟没有把想法变成现实行动”并不是一个单纯的个人决定，而会牵动你对稳定、责任和关系后果的判断。当你面对“一次需要更高可见度的新机会”这类场景时，容易先计算“我这样做会不会影响别人”，而不是先问自己真正想往哪里走。">
+      <span>角色负荷</span>
+      <b>9</b>
+      <p>你身上同时背着很多责任，做选择时很难只考虑自己。</p>
+      <i><em style="width:90%"></em></i>
+    </button><button class="variable risk" data-explain="资产缓冲不是简单看钱多钱少，而是看你能不能承受一次小规模试错。它在本次报告中是 中等，意味着你仍可以围绕“更有自主权的生活”做动作，但最好把成本拆小：先验证一个现实反馈，再决定是否加大投入。如果缓冲不足，任何转向都会被“万一失败怎么办”拉回去，最后变成继续维持旧路径。">
+      <span>资产缓冲</span>
+      <b>4</b>
+      <p>你能试，但每一步都要控制成本。</p>
+      <i><em style="width:40%"></em></i>
+    </button><button class="variable risk" data-explain="外部压力指家庭、现实任务、时间节点、评价环境等因素对你的推力。它在本次报告中是 偏高，说明“正在考虑转向，但迟迟没有把想法变成现实行动”之所以难推进，不只是你想不清楚，而是外界一直在要求你给出更安全、更可解释的答案。它会放大“熟悉反应”，让你更倾向于延迟、解释、防御，直到机会窗口变窄。">
+      <span>外部压力</span>
+      <b>25</b>
+      <p>外界要求很多，你容易被现实推着走。</p>
+      <i><em style="width:83.33333333333334%"></em></i>
+    </button><button class="variable good" data-explain="支持能力代表你身边是否有人、资源或结构能托住你的试错。它在本次报告中是 偏高，会直接影响你能不能把想法变成现实反馈。如果支持强，你不必独自硬扛“一次需要更高可见度的新机会”带来的压力；如果支持弱，你需要主动组织帮助，否则很多选择都会变成孤立作战，最后再次回到“做出不可逆的错误选择”的循环里。">
+      <span>支持能力</span>
+      <b>10</b>
+      <p>你身边有能托住你的人或资源，不必全靠自己硬扛。</p>
+      <i><em style="width:100%"></em></i>
+    </button><button class="variable good" data-explain="能量风险看的是身体、注意力和情绪余量是否已经影响判断。它在本次报告中是 偏低，说明你当前做决定时，不能只看道理对不对，还要看自己有没有足够状态执行。当能量下降时，人会更容易把疲惫误认成命运，把暂时做不到理解成永远做不到。因此关键动作要安排在状态相对稳定的时候。">
+      <span>能量风险</span>
+      <b>3</b>
+      <p>目前精力风险不高，身体还没有明显拖住你。</p>
+      <i><em style="width:30%"></em></i>
+    </button><button class="variable good" data-explain="人生机动性代表你还有多少移动、试错、重组生活结构的空间。它在本次报告中是 偏高，说明你并非完全被困住，但转向不能靠一次巨大的改变完成。更适合的方式，是围绕“正在考虑转向，但迟迟没有把想法变成现实行动”先做一个可撤回的小动作，让现实返回一点反馈。只要反馈开始出现，分支权重就会从“想象未来”转向“现实更新”。">
+      <span>人生机动性</span>
+      <b>8.5</b>
+      <p>你仍然有移动和转向空间，不是完全被困住。</p>
+      <i><em style="width:85%"></em></i>
+    </button></div>
+    <div class="explain-box" id="variableExplain">外部压力指家庭、现实任务、时间节点、评价环境等因素对你的推力。它在本次报告中是 偏高，说明“正在考虑转向，但迟迟没有把想法变成现实行动”之所以难推进，不只是你想不清楚，而是外界一直在要求你给出更安全、更可解释的答案。它会放大“熟悉反应”，让你更倾向于延迟、解释、防御，直到机会窗口变窄。</div>
+  </section>
+    <section id="agents" class="panel">
+    <div class="section-copy">
+      <span class="kicker">06 / 内在力量</span>
+      <h2>你不是只有一个“我”，而是几种反应在轮流接管。</h2>
+      <p>这里不要当成人格测试看。它解释的是：机会出现时，哪一种反应会先替你做决定。</p>
+    </div>
+    <div class="agent-grid">
+      <article class="agent-card" style="--delay:0ms">
+        <div class="agent-score">4</div>
+        <h3>控制者</h3>
+        <p class="agent-portrait">控制者不是“强势”这么简单，它是一套用确定性保护自己的反应系统。它会习惯性地把未来拆成风险、成本、后果和可控变量，只有当路径足够清楚时才允许自己行动。它的外在表现通常是谨慎、计划性强、反复确认、害怕临时变化，也容易在关键机会前先退一步。控制者的价值在于减少失误、保住基本盘；但如果它长期接管人生，机会会被过度筛选，生活会越来越稳定，也越来越窄。</p>
+        <div class="agent-facts">
+          <p><strong>想要：</strong>想要安全、确定、可控</p>
+          <p><strong>害怕：</strong>害怕一步走错造成不可逆后果</p>
+          <p><strong>常用策略：</strong>计划、延迟、减少变量</p>
+        </div>
+        <p class="muted">生活稳定，但路会越来越窄</p>
+      </article><article class="agent-card" style="--delay:80ms">
+        <div class="agent-score">3</div>
+        <h3>观察者</h3>
+        <p class="agent-portrait">观察者代表一种退后半步看世界的能力。它会不断记录人的反应、关系的变化、事情背后的模式，也会把自己的情绪拿出来分析。它让你比很多人更早看见问题的结构，适合做判断、复盘和长期规划。它的外在表现是敏感、清醒、善于总结，但也可能把行动变成旁观，把人生变成一份永远没写完的分析报告。当观察者太强，你不是不知道该做什么，而是总想再看一会儿。</p>
+        <div class="agent-facts">
+          <p><strong>想要：</strong>想要先看清局势和人的反应</p>
+          <p><strong>害怕：</strong>害怕冲动进入错误关系或错误选择</p>
+          <p><strong>常用策略：</strong>观察、分析、复盘、延后行动</p>
+        </div>
+        <p class="muted">判断力很强，但容易把行动变成旁观</p>
+      </article><article class="agent-card" style="--delay:160ms">
+        <div class="agent-score">3</div>
+        <h3>讨好者</h3>
+        <p class="agent-portrait">讨好者是一套以关系安全为中心的反应。它会很快捕捉别人的情绪、期待和不满，然后自动调整自己的表达，避免冲突、避免让人失望。它的外在表现是会照顾气氛、说话留余地、容易先解释、先道歉、先让步。讨好者能让关系维持得柔软，也能换来短期安全；但它的代价是边界变薄，真实需求被推迟，最后容易变成“别人都觉得你很好，只有你自己觉得很累”。</p>
+        <div class="agent-facts">
+          <p><strong>想要：</strong>想要关系安全、气氛稳定、不让人失望</p>
+          <p><strong>害怕：</strong>害怕冲突、拒绝和被关系抛下</p>
+          <p><strong>常用策略：</strong>迎合、解释、让步、压低自己的需求</p>
+        </div>
+        <p class="muted">关系表面顺滑，但真实需求容易长期积压</p>
+      </article><article class="agent-card" style="--delay:240ms">
+        <div class="agent-score">1</div>
+        <h3>证明者</h3>
+        <p class="agent-portrait">证明者的核心不是虚荣，而是对“我是否足够有价值”的长期不安。它会把人生理解成一场需要交卷的考试：成绩、认可、作品、关系里的评价，都可能变成证明自己的材料。它的外在表现是努力、上进、不甘心、怕被看低，也容易在每个阶段都给自己设一个新的标准。证明者能带来很强的驱动力，但如果它一直掌权，你会很难真正休息，因为一旦停下来，就会觉得自己又不够好了。</p>
+        <div class="agent-facts">
+          <p><strong>想要：</strong>想证明自己值得被看见</p>
+          <p><strong>害怕：</strong>害怕被认为不够好</p>
+          <p><strong>常用策略：</strong>把人生变成一场必须赢的考试</p>
+        </div>
+        <p class="muted">容易有成就，但很难真正放松</p>
+      </article>
+    </div>
+    <div class="agent-synthesis">
+    <span class="kicker">人格叠加后的外化表现</span>
+    <h3>真正影响命运的，不是某一个人格，而是它们接管你的顺序。</h3>
+    <p>这几种力量不是彼此独立的标签，而是会在同一个现实场景里轮流接管。当前组合里，控制者、观察者、讨好者会共同决定你面对机会时的第一反应：先评估风险、先观察局势、先照顾关系，还是先证明自己。 所以这份报告看重的不是“你是哪种人格”，而是哪些反应会在未来关键节点里放大，哪些反应需要被温和地松动。</p>
+    <ul>
+      <li>控制者与观察者叠加时，容易形成“想清楚再行动”的模式：判断力会增强，但行动窗口也可能被分析拖慢。</li><li>控制者与讨好者叠加时，很多选择不只是现实选择，也是在避免让别人失望，所以你会更谨慎地处理关系里的决定。</li><li>观察者与讨好者叠加时，你会特别会读空气，也特别容易把别人的反应提前放进自己的决策里。</li>
+    </ul>
+  </div>
+  </section>
+    <section id="chain" class="panel chain-panel">
+    <div class="section-copy">
+      <span class="kicker">07 / 过去如何进入现实</span>
+      <h2>过去不是留在过去，它会变成今天的第一反应。</h2>
+      <p>见相看的不是“发生过什么”本身，而是这些经历沉积成了什么反应，然后又如何影响机会、关系、钱和行动。</p>
+    </div>
+    <div class="chain">
+      <div><span>过去经历</span><b>事件沉积</b></div>
+      <i></i>
+      <div><span>形成反应</span><b>默认策略</b></div>
+      <i></i>
+      <div><span>影响选择</span><b>现实变量</b></div>
+      <i></i>
+      <div><span>生成分支</span><b>三条人生线</b></div>
+    </div>
+    <div class="signal-list">
+      <article>
+        <span>家庭系统</span>
+        <h3>先求稳定的家庭牵引</h3>
+        <p>这条线索会参与未来分支权重。</p>
+      </article><article>
+        <span>决策方式</span>
+        <h3>容易把别人的认可放进自己的选择里</h3>
+        <p>这条线索会参与未来分支权重。</p>
+      </article><article>
+        <span>家庭系统</span>
+        <h3>边界和关系责任缠在一起</h3>
+        <p>这条线索会参与未来分支权重。</p>
+      </article><article>
+        <span>决策方式</span>
+        <h3>必须足够确定之后才敢进入新路径</h3>
+        <p>这条线索会参与未来分支权重。</p>
+      </article><article>
+        <span>身体能量</span>
+        <h3>身体能量</h3>
+        <p>这条线索会参与未来分支权重。</p>
+      </article>
+    </div>
+  </section>
+    <section id="coupling" class="panel coupling-panel">
+    <div class="section-copy">
+      <span class="kicker">04 / 变量耦合图</span>
+      <h2>这张图展示的不是性格标签，而是你的经历如何互相牵动。</h2>
+      <p>节点来自你提供的事件、反复模式、想要的未来、害怕的未来和现实变量。每个人的节点都不一样，线条表示这些线索如何共同推向当前问题。</p>
+    </div>
+    <div class="coupling-board">
+      <svg viewBox="0 0 720 360" role="img" aria-label="变量耦合网络">
+        <line x1="174" y1="94" x2="360" y2="182" /><line x1="544" y1="88" x2="360" y2="182" /><line x1="150" y1="242" x2="360" y2="182" /><line x1="566" y1="250" x2="360" y2="182" /><line x1="290" y1="52" x2="290" y2="52" /><line x1="430" y1="48" x2="360" y2="182" /><line x1="256" y1="314" x2="290" y2="52" /><line x1="462" y1="318" x2="360" y2="182" /><line x1="76" y1="170" x2="360" y2="182" /><line x1="640" y1="170" x2="360" y2="182" /><line x1="224" y1="174" x2="360" y2="182" /><line x1="496" y1="174" x2="360" y2="182" /><line x1="346" y1="300" x2="360" y2="182" /><line x1="350" y1="72" x2="360" y2="182" /><line x1="112" y1="310" x2="360" y2="182" /><line x1="610" y1="314" x2="360" y2="182" /><line x1="360" y1="112" x2="360" y2="182" />
+        <g class="coupling-node core">
+          <circle cx="360" cy="182" r="52" />
+          <text x="360" y="180" text-anchor="middle">当前问题</text>
+          <text class="node-type" x="360" y="197" text-anchor="middle">核心</text>
+        </g><g class="coupling-node agency">
+          <circle cx="174" cy="94" r="58" />
+          <text x="174" y="92" text-anchor="middle">行动感</text>
+          <text class="node-type" x="174" y="109" text-anchor="middle">变量</text>
+        </g><g class="coupling-node money">
+          <circle cx="544" cy="88" r="40" />
+          <text x="544" y="86" text-anchor="middle">现金流</text>
+          <text class="node-type" x="544" y="103" text-anchor="middle">变量</text>
+        </g><g class="coupling-node family">
+          <circle cx="150" cy="242" r="57.333333333333336" />
+          <text x="150" y="240" text-anchor="middle">家庭牵引</text>
+          <text class="node-type" x="150" y="257" text-anchor="middle">变量</text>
+        </g><g class="coupling-node energy">
+          <circle cx="566" cy="250" r="36" />
+          <text x="566" y="248" text-anchor="middle">身体能量</text>
+          <text class="node-type" x="566" y="265" text-anchor="middle">变量</text>
+        </g><g class="coupling-node n5">
+          <circle cx="290" cy="52" r="52" />
+          <text x="290" y="50" text-anchor="middle">先求稳定的家庭牵引</text>
+          <text class="node-type" x="290" y="67" text-anchor="middle">家庭</text>
+        </g><g class="coupling-node n6">
+          <circle cx="430" cy="48" r="48" />
+          <text x="430" y="46" text-anchor="middle">容易把别人的认可放…</text>
+          <text class="node-type" x="430" y="63" text-anchor="middle">决策</text>
+        </g><g class="coupling-node n7">
+          <circle cx="256" cy="314" r="44" />
+          <text x="256" y="312" text-anchor="middle">边界和关系责任缠在…</text>
+          <text class="node-type" x="256" y="329" text-anchor="middle">家庭</text>
+        </g><g class="coupling-node n8">
+          <circle cx="462" cy="318" r="44" />
+          <text x="462" y="316" text-anchor="middle">必须足够确定之后才…</text>
+          <text class="node-type" x="462" y="333" text-anchor="middle">决策</text>
+        </g><g class="coupling-node n9">
+          <circle cx="76" cy="170" r="44" />
+          <text x="76" y="168" text-anchor="middle">能量</text>
+          <text class="node-type" x="76" y="185" text-anchor="middle">能量</text>
+        </g><g class="coupling-node n10">
+          <circle cx="640" cy="170" r="40" />
+          <text x="640" y="168" text-anchor="middle">时间线</text>
+          <text class="node-type" x="640" y="185" text-anchor="middle">时间线</text>
+        </g><g class="coupling-node n11">
+          <circle cx="224" cy="174" r="40" />
+          <text x="224" y="172" text-anchor="middle">关系</text>
+          <text class="node-type" x="224" y="189" text-anchor="middle">关系</text>
+        </g><g class="coupling-node n12">
+          <circle cx="496" cy="174" r="32" />
+          <text x="496" y="172" text-anchor="middle">宠物作为日常锚点</text>
+          <text class="node-type" x="496" y="189" text-anchor="middle">symbol</text>
+        </g><g class="coupling-node n13">
+          <circle cx="346" cy="300" r="32" />
+          <text x="346" y="298" text-anchor="middle">未完成物作为开放回路</text>
+          <text class="node-type" x="346" y="315" text-anchor="middle">symbol</text>
+        </g><g class="coupling-node n14">
+          <circle cx="350" cy="72" r="32" />
+          <text x="350" y="70" text-anchor="middle">梦/反复词作为未处…</text>
+          <text class="node-type" x="350" y="87" text-anchor="middle">symbol</text>
+        </g><g class="coupling-node n15">
+          <circle cx="112" cy="310" r="32" />
+          <text x="112" y="308" text-anchor="middle">自我档案作为身份系统</text>
+          <text class="node-type" x="112" y="325" text-anchor="middle">symbol</text>
+        </g><g class="coupling-node n16">
+          <circle cx="610" cy="314" r="32" />
+          <text x="610" y="312" text-anchor="middle">一次需要更高可见度…</text>
+          <text class="node-type" x="610" y="329" text-anchor="middle">career</text>
+        </g><g class="coupling-node n17">
+          <circle cx="360" cy="112" r="32" />
+          <text x="360" y="110" text-anchor="middle">明明有能力，却总是…</text>
+          <text class="node-type" x="360" y="127" text-anchor="middle">feedback</text>
+        </g>
+      </svg>
+      <div class="coupling-notes">
+        <span><b>行动感</b>决定想法能否变成现实测试</span><span><b>现金流</b>决定转向能承受多大成本</span><span><b>家庭牵引</b>决定选择是否需要体面解释</span><span><b>身体能量</b>决定判断会不会被疲惫劫持</span><span><b>先求稳定的家庭牵引</b>家庭正在参与未来分支</span><span><b>容易把别人的认可放进自己的选择里</b>决策正在参与未来分支</span><span><b>边界和关系责任缠在一起</b>家庭正在参与未来分支</span>
+      </div>
+    </div>
+  </section>
+    <section id="scenes" class="panel scenes-panel">
+    <div class="section-copy">
+      <span class="kicker">05 / 未来场景切片</span>
+      <h2>真正有价值的不是概率，而是未来的你大概在经历什么。</h2>
+      <p>这里会把你提供的具体事件、反复模式和现实变量接入三条线，生成 3 个月、1 年、3 年后的生活切片。</p>
+    </div>
+    <div class="scene-matrix">
+      <article class="inertia">
+          <div class="scene-head">
+            <span>惯性线</span>
+            <b>默认人生线</b>
+          </div>
+          <div class="scene-slice">
+            <small>3个月后</small>
+            <p><em>在做什么：</em>3个月后，你大概率还在处理“一次需要更高可见度的新机会”延伸出来的近期压力；事情看似有推进，但关键动作容易被推迟。</p>
+            <p><em>生活状态：</em>生活状态会更像维持系统：身份弹性成为最显眼的变量，行动动量被继续放在后面。</p>
+            <p><em>风险/转机：</em>风险不是突然失败，而是做出不可逆的错误选择。如果行动动量仍停在 1.0 左右，惯性会继续占上风。</p>
+          </div><div class="scene-slice">
+            <small>1年后</small>
+            <p><em>在做什么：</em>1年后，如果这一年仍围绕“熟悉反应”运转，你会更会维持稳定，但也更习惯把真正想要的东西放到以后。</p>
+            <p><em>生活状态：</em>生活状态会更像维持系统：家庭牵引成为最显眼的变量，行动动量被继续放在后面。</p>
+            <p><em>风险/转机：</em>风险不是突然失败，而是做出不可逆的错误选择。如果行动动量仍停在 0.0 左右，惯性会继续占上风。</p>
+          </div><div class="scene-slice">
+            <small>3年后</small>
+            <p><em>在做什么：</em>3年后，这条线不一定会让生活崩掉，但会让选择空间变窄：你更擅长忍耐，也更难相信自己能换一种活法。</p>
+            <p><em>生活状态：</em>生活状态会更像维持系统：家庭牵引成为最显眼的变量，行动动量被继续放在后面。</p>
+            <p><em>风险/转机：</em>风险不是突然失败，而是做出不可逆的错误选择。如果行动动量仍停在 0.0 左右，惯性会继续占上风。</p>
+          </div>
+        </article><article class="intervention">
+          <div class="scene-head">
+            <span>转向线</span>
+            <b>隐秘转向线</b>
+          </div>
+          <div class="scene-slice">
+            <small>3个月后</small>
+            <p><em>在做什么：</em>3个月后，你会围绕“更有自主权的生活”做一个小测试：先让一个动作进入现实，而不是继续只在脑内比较。</p>
+            <p><em>生活状态：</em>这条线的关键不是变勇敢，而是让行动动量先动一点。只要能形成连续反馈，身体恢复力会变成新的支点。</p>
+            <p><em>风险/转机：</em>最大风险是测试还没完成，又回到脑内比较。现金流缓冲 6.3、自我信任 6.0 会决定这条线能不能落地。</p>
+          </div><div class="scene-slice">
+            <small>1年后</small>
+            <p><em>在做什么：</em>1年后，如果小测试能持续一年，你会开始拥有一组外部反馈：别人如何看见你、你如何证明自己、钱和关系能不能托住这条路。</p>
+            <p><em>生活状态：</em>这条线的关键不是变勇敢，而是让家庭牵引先动一点。只要能形成连续反馈，身体恢复力会变成新的支点。</p>
+            <p><em>风险/转机：</em>最大风险是测试还没完成，又回到脑内比较。现金流缓冲 9.1、自我信任 8.0 会决定这条线能不能落地。</p>
+          </div><div class="scene-slice">
+            <small>3年后</small>
+            <p><em>在做什么：</em>3年后，这条线的价值不是一次性成功，而是你已经形成一种方法：用现实测试替代反复想象。</p>
+            <p><em>生活状态：</em>这条线的关键不是变勇敢，而是让家庭牵引先动一点。只要能形成连续反馈，自我信任会变成新的支点。</p>
+            <p><em>风险/转机：</em>最大风险是测试还没完成，又回到脑内比较。现金流缓冲 10.0、自我信任 10.0 会决定这条线能不能落地。</p>
+          </div>
+        </article><article class="rupture">
+          <div class="scene-head">
+            <span>断裂线</span>
+            <b>断裂重启线</b>
+          </div>
+          <div class="scene-slice">
+            <small>3个月后</small>
+            <p><em>在做什么：</em>3个月后，压力还没真正爆开，但你会更频繁想要躲开、冷处理，或者用“先不管了”获得短暂轻松。</p>
+            <p><em>生活状态：</em>这不是主动选择，而是系统被逼到必须重排。家庭牵引 4.0 越高，断裂越容易带着关系成本一起出现。</p>
+            <p><em>风险/转机：</em>断裂不一定是坏事，但如果没有复盘，它会把“熟悉反应”带到下一个场景里。</p>
+          </div><div class="scene-slice">
+            <small>1年后</small>
+            <p><em>在做什么：</em>1年后，如果持续压住不处理，某个关系、工作、家庭或身体节点会变成导火索，让你仓促重排生活。</p>
+            <p><em>生活状态：</em>这不是主动选择，而是系统被逼到必须重排。家庭牵引 2.0 越高，断裂越容易带着关系成本一起出现。</p>
+            <p><em>风险/转机：</em>断裂不一定是坏事，但如果没有复盘，它会把“熟悉反应”带到下一个场景里。</p>
+          </div><div class="scene-slice">
+            <small>3年后</small>
+            <p><em>在做什么：</em>3年后，断裂可能已经把人生带到新位置，但如果没有复盘，旧模式会在新场景里重新出现。</p>
+            <p><em>生活状态：</em>这不是主动选择，而是系统被逼到必须重排。家庭牵引 0.0 越高，断裂越容易带着关系成本一起出现。</p>
+            <p><em>风险/转机：</em>断裂不一定是坏事，但如果没有复盘，它会把“熟悉反应”带到下一个场景里。</p>
+          </div>
+        </article>
+    </div>
+  </section>
+    <section id="material" class="panel">
+    <div class="section-copy">
+      <span class="kicker">08 / 本次报告可信度</span>
+      <h2>材料越具体，模拟越像你，而不是像一个泛泛的人。</h2>
+      <p>The seed material can support a useful simulation, with some low-resolution areas.</p>
+    </div>
+    <div class="quality-head">
+      <div>
+        <span>材料质量</span>
+        <b>66</b>
+        <small>usable</small>
+      </div>
+      <p>薄弱维度：成长时间线 / 求学与同伴 / 城市 / 阶层 / 身体 / 数字生活 / 亲密关系 / 世界观 / 行动感</p>
+    </div>
+    <div class="dimension-list">
+      <article class="good">
+          <div><strong>当前问题</strong><span>12 / 12</span></div>
+          <i><em style="width:100%"></em></i>
+          <p>The current life question and self-description are clear enough.</p>
+        </article><article class="good">
+          <div><strong>行为历史</strong><span>14 / 14</span></div>
+          <i><em style="width:100%"></em></i>
+          <p>There is enough behavioral history to support pattern inference.</p>
+        </article><article class="risk">
+          <div><strong>成长时间线</strong><span>5.7 / 16</span></div>
+          <i><em style="width:35.625%"></em></i>
+          <p>Timeline material is thin, so the model may miss when and how earlier events shaped later decision patterns.</p>
+        </article><article class="good">
+          <div><strong>现实变量</strong><span>16 / 16</span></div>
+          <i><em style="width:100%"></em></i>
+          <p>Roles, assets, environment, and body variables are relatively complete.</p>
+        </article><article class="good">
+          <div><strong>家庭与关系</strong><span>14 / 14</span></div>
+          <i><em style="width:100%"></em></i>
+          <p>Family and relationship pressure can participate in the simulation.</p>
+        </article><article class="risk">
+          <div><strong>求学与同伴</strong><span>3.5 / 14</span></div>
+          <i><em style="width:25%"></em></i>
+          <p>Education and peer material is thin, so the model may miss how early environments shaped the current choice style.</p>
+        </article><article class="risk">
+          <div><strong>城市 / 阶层 / 身体 / 数字生活</strong><span>0 / 18</span></div>
+          <i><em style="width:2%"></em></i>
+          <p>Hidden growth variables are thin, so the future report may overfocus on obvious family, work, or money variables.</p>
+        </article><article class="risk">
+          <div><strong>亲密关系 / 世界观 / 行动感</strong><span>5.8 / 14</span></div>
+          <i><em style="width:41.42857142857142%"></em></i>
+          <p>Romantic, worldview, and agency material is thin, so the model may miss how the person interprets risk, love, failure, and future choices.</p>
+        </article><article class="good">
+          <div><strong>价值与决策</strong><span>14 / 14</span></div>
+          <i><em style="width:100%"></em></i>
+          <p>Value conflicts and decision style are clear enough.</p>
+        </article><article class="good">
+          <div><strong>外部观察</strong><span>14.4 / 18</span></div>
+          <i><em style="width:80%"></em></i>
+          <p>External observation is thin; private review depends more on structured material and lower confidence.</p>
+        </article><article class="warn">
+          <div><strong>长文本与象征线索</strong><span>10.7 / 16</span></div>
+          <i><em style="width:66.875%"></em></i>
+          <p>Symbolic and longform material is thin, so name/place/object/dream cues should be treated as weak hints.</p>
+        </article>
+    </div>
+  </section>
+    <section id="actions" class="panel action-panel">
+    <div class="section-copy">
+      <span class="kicker">09 / 接下来怎么用</span>
+      <h2>不要把这份报告当结论，把它当作下一周的验证路线。</h2>
+      <p>接下来的动作会围绕“正在考虑转向，但迟迟没有把想法变成现实行动”展开，重点观察 先求稳定的家庭牵引 是否还在影响你的选择。</p>
+    </div>
+    <div class="action-grid">
+      <article>
+        <span>第 1 步</span>
+        <h3>从一个具体场景开始观察</h3>
+        <p>未来 7 天先盯住“一次需要更高可见度的新机会”这一类场景：当它再次出现时，记录你第一反应是推进、解释、回避，还是继续等待更确定的时机。</p>
+      </article>
+      <article>
+        <span>第 2 步</span>
+        <h3>做一次低成本转向测试</h3>
+        <p>一个小的公开试验会开始改变外界如何看见你，也改变你如何相信自己。 这一步不要做大，只需要让现实给你一次反馈：它会改变关系、现金流、精力，还是只改变你的心理预期。</p>
+      </article>
+      <article>
+        <span>第 3 步</span>
+        <h3>补充最影响判断的材料</h3>
+        <p>下一次补充时，优先围绕「成长时间线、求学与同伴、城市 / 阶层 / 身体 / 数字生活」写具体事件：发生了什么、你当时怎么反应、最后结果怎样。</p>
+      </article>
+      <article>
+        <span>提醒</span>
+        <h3>分支会被你的反馈改写</h3>
+        <p>当前最高线是“转向线”。如果未来一周你在“一个反复运行的内在冲突”里做出了不同反应，转向线的权重会随之变化。</p>
+      </article>
+    </div>
+  </section>
+    <section id="details" class="panel details-panel">
+    <div class="section-copy">
+      <span class="kicker">10 / 模型细节</span>
+      <h2>原始结构摘要：这里默认折叠。</h2>
+      <p>如果只想看结论，读到上面就够了。这里保留原始结构，是为了方便你以后继续补充材料、比较前后变化。</p>
+    </div>
+    <details>
+      <summary>展开原始模型摘要</summary>
+      <pre>{
+  &quot;core_conflict&quot;: {
+    &quot;id&quot;: &quot;controller_observer&quot;,
+    &quot;name&quot;: &quot;clear analysis, delayed entry&quot;,
+    &quot;dynamic&quot;: &quot;The Controller demands certainty while the Observer supplies endless analysis.&quot;,
+    &quot;risk&quot;: &quot;The person may stay before the threshold of action for years.&quot;
+  },
+  &quot;branches&quot;: [
+    {
+      &quot;id&quot;: &quot;inertia&quot;,
+      &quot;name&quot;: &quot;Inertia Branch&quot;,
+      &quot;premise&quot;: &quot;The current pattern continues.&quot;,
+      &quot;weight&quot;: 83.2238,
+      &quot;focus&quot;: &quot;career&quot;,
+      &quot;focus_lens&quot;: &quot;这个方向重点看：一个人如何把能力、机会、现实约束和身份变化连接起来。&quot;,
+      &quot;key_question&quot;: &quot;这个选择会消耗多少现金流、精力和社会评价？&quot;,
+      &quot;trajectory&quot;: &quot;The Controller remains dominant. The person becomes better at surviving career direction, but the unresolved pattern \&quot;clear analysis, delayed entry\&quot; keeps narrowing future choices. In the \&quot;事业 / 学业 / 转型\&quot; focus, this branch should be read through: 这个选择会消耗多少现金流、精力和社会评价？ This happens with limited financial runway, while external mobility exists.&quot;,
+      &quot;likely_inflection&quot;: &quot;first major career turn&quot;,
+      &quot;cinematic_name&quot;: &quot;默认人生线&quot;,
+      &quot;narrative_logic&quot;: &quot;如果 The Controller 继续主导，clear analysis, delayed entry 会被处理得更熟练，但不会真正松开。&quot;,
+      &quot;future_scenes&quot;: [
+        {
+          &quot;horizon&quot;: &quot;3个月后&quot;,
+          &quot;text&quot;: &quot;你会更频繁地意识到当前结构不再适合你，但仍会把行动推迟到更安全的时刻。&quot;
+        },
+        {
+          &quot;horizon&quot;: &quot;1年后&quot;,
+          &quot;text&quot;: &quot;资产缓冲会限制每一次转向的速度，所以问题不会消失，只会换一种形式回来。&quot;
+        },
+        {
+          &quot;horizon&quot;: &quot;3年后&quot;,
+          &quot;text&quot;: &quot;你可能已经更擅长维持稳定，但选择范围会比现在更窄。&quot;
+        }
+      ],
+      &quot;shareable_sentence&quot;: &quot;这条线最像“没有崩坏，但也没有真正换命”。&quot;
+    },
+    {
+      &quot;id&quot;: &quot;intervention&quot;,
+      &quot;name&quot;: &quot;Intervention Branch&quot;,
+      &quot;premise&quot;: &quot;One key behavior changes before the next threshold.&quot;,
+      &quot;weight&quot;: 100.8048,
+      &quot;focus&quot;: &quot;career&quot;,
+      &quot;focus_lens&quot;: &quot;这个方向重点看：一个人如何把能力、机会、现实约束和身份变化连接起来。&quot;,
+      &quot;key_question&quot;: &quot;当前最小可验证行动是什么？&quot;,
+      &quot;trajectory&quot;: &quot;The person interrupts plan, delay, reduce variables, avoid irreversible choices. This does not remove fear, but it allows a new branch where identity formation becomes negotiable instead of fixed. In the \&quot;事业 / 学业 / 转型\&quot; focus, the first useful test is: 当前最小可验证行动是什么？ The branch works only if assets, energy, and family pressure are staged rather than ignored.&quot;,
+      &quot;likely_inflection&quot;: &quot;leaving a stable role&quot;,
+      &quot;cinematic_name&quot;: &quot;隐秘转向线&quot;,
+      &quot;narrative_logic&quot;: &quot;这条线不是靠突然勇敢，而是让一个关键变量先动起来，逼迫旧结构重新排列。&quot;,
+      &quot;future_scenes&quot;: [
+        {
+          &quot;horizon&quot;: &quot;3个月后&quot;,
+          &quot;text&quot;: &quot;一个小的公开试验会开始改变外界如何看见你，也改变你如何相信自己。&quot;
+        },
+        {
+          &quot;horizon&quot;: &quot;1年后&quot;,
+          &quot;text&quot;: &quot;如果外部反馈能被稳定接住，clear analysis, delayed entry 不再只是一种内耗，而会变成转向信号。&quot;
+        },
+        {
+          &quot;horizon&quot;: &quot;3年后&quot;,
+          &quot;text&quot;: &quot;真正决定这条线的，是你是否进入新的评价系统，而不是你是否一次性做对。&quot;
+        }
+      ],
+      &quot;shareable_sentence&quot;: &quot;这条线最像“不是推翻人生，而是悄悄换掉评价系统”。&quot;
+    },
+    {
+      &quot;id&quot;: &quot;rupture&quot;,
+      &quot;name&quot;: &quot;Rupture Branch&quot;,
+      &quot;premise&quot;: &quot;Suppressed conflict breaks through.&quot;,
+      &quot;weight&quot;: 37.4641,
+      &quot;focus&quot;: &quot;career&quot;,
+      &quot;focus_lens&quot;: &quot;这个方向重点看：一个人如何把能力、机会、现实约束和身份变化连接起来。&quot;,
+      &quot;key_question&quot;: &quot;谁能提供真实反馈，而不是情绪安慰？&quot;,
+      &quot;trajectory&quot;: &quot;If the conflict remains compressed, The person may stay before the threshold of action for years. The life path may reset abruptly rather than evolve gradually, especially under high role load or energy risk. In the \&quot;事业 / 学业 / 转型\&quot; focus, the warning signal is: 谁能提供真实反馈，而不是情绪安慰？&quot;,
+      &quot;likely_inflection&quot;: &quot;forming long-term relationships&quot;,
+      &quot;cinematic_name&quot;: &quot;断裂重启线&quot;,
+      &quot;narrative_logic&quot;: &quot;当压抑的冲突长期没有出口，人生不会优雅转向，而会用一次断裂强迫系统重排。&quot;,
+      &quot;future_scenes&quot;: [
+        {
+          &quot;horizon&quot;: &quot;3个月后&quot;,
+          &quot;text&quot;: &quot;某个压力点会让你开始幻想彻底离开，而不是继续解释自己为什么还没准备好。&quot;
+        },
+        {
+          &quot;horizon&quot;: &quot;1年后&quot;,
+          &quot;text&quot;: &quot;资产缓冲会限制每一次转向的速度，断裂线会从情绪冲动变成现实选项。&quot;
+        },
+        {
+          &quot;horizon&quot;: &quot;3年后&quot;,
+          &quot;text&quot;: &quot;如果断裂发生，它未必是失败，但它通常意味着前面太多信号被延迟处理。&quot;
+        }
+      ],
+      &quot;shareable_sentence&quot;: &quot;这条线最像“身体和现实替你做了那个你迟迟不敢做的决定”。&quot;
+    }
+  ],
+  &quot;world_scores&quot;: {
+    &quot;role_load&quot;: 9,
+    &quot;financial_runway&quot;: 4,
+    &quot;external_pressure&quot;: 25,
+    &quot;support_capacity&quot;: 10,
+    &quot;energy_risk&quot;: 3,
+    &quot;life_mobility&quot;: 8.5
+  },
+  &quot;dominant_agents&quot;: [
+    {
+      &quot;id&quot;: &quot;controller&quot;,
+      &quot;name&quot;: &quot;The Controller&quot;,
+      &quot;desire&quot;: &quot;safety, certainty, predictability&quot;,
+      &quot;fear&quot;: &quot;losing control and suffering irreversible consequences&quot;,
+      &quot;strategy&quot;: &quot;plan, delay, reduce variables, avoid irreversible choices&quot;,
+      &quot;life_pull&quot;: &quot;stable but narrow life paths&quot;,
+      &quot;score&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;observer&quot;,
+      &quot;name&quot;: &quot;The Observer&quot;,
+      &quot;desire&quot;: &quot;clarity and distance&quot;,
+      &quot;fear&quot;: &quot;being trapped by emotion or foolish commitment&quot;,
+      &quot;strategy&quot;: &quot;analyze instead of acting&quot;,
+      &quot;life_pull&quot;: &quot;knowing the path without entering it&quot;,
+      &quot;score&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;pleaser&quot;,
+      &quot;name&quot;: &quot;The Pleaser&quot;,
+      &quot;desire&quot;: &quot;acceptance and relational safety&quot;,
+      &quot;fear&quot;: &quot;disappointing others or losing position in a relationship&quot;,
+      &quot;strategy&quot;: &quot;say fine, suppress needs, avoid conflict&quot;,
+      &quot;life_pull&quot;: &quot;being needed by many but understood by few&quot;,
+      &quot;score&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;prover&quot;,
+      &quot;name&quot;: &quot;The Prover&quot;,
+      &quot;desire&quot;: &quot;recognition and proof of worth&quot;,
+      &quot;fear&quot;: &quot;being seen as not good enough&quot;,
+      &quot;strategy&quot;: &quot;turn life into an exam that must be won&quot;,
+      &quot;life_pull&quot;: &quot;high achievement with low inner satisfaction&quot;,
+      &quot;score&quot;: 1
+    }
+  ],
+  &quot;turning_points&quot;: [
+    {
+      &quot;id&quot;: &quot;threshold_before_action&quot;,
+      &quot;name&quot;: &quot;Threshold Before Action&quot;,
+      &quot;description&quot;: &quot;A moment where the person has enough information but still seeks more certainty.&quot;,
+      &quot;signals&quot;: [
+        &quot;delay&quot;,
+        &quot;over-prepare&quot;,
+        &quot;analyze&quot;
+      ],
+      &quot;likely_age_window&quot;: &quot;late 20s to early 30s&quot;,
+      &quot;tests&quot;: [
+        &quot;controller&quot;,
+        &quot;observer&quot;
+      ],
+      &quot;branch_effect&quot;: {
+        &quot;inertia&quot;: 1,
+        &quot;intervention&quot;: 2
+      },
+      &quot;score&quot;: 5
+    },
+    {
+      &quot;id&quot;: &quot;family_permission_break&quot;,
+      &quot;name&quot;: &quot;Family Permission Break&quot;,
+      &quot;description&quot;: &quot;The person realizes that waiting for family permission may be the mechanism keeping the old life stable.&quot;,
+      &quot;signals&quot;: [
+        &quot;family expects&quot;,
+        &quot;stability&quot;,
+        &quot;risky&quot;,
+        &quot;guaranteed&quot;
+      ],
+      &quot;likely_age_window&quot;: &quot;early adulthood to mid adulthood&quot;,
+      &quot;tests&quot;: [
+        &quot;pleaser&quot;,
+        &quot;controller&quot;,
+        &quot;escaper&quot;
+      ],
+      &quot;branch_effect&quot;: {
+        &quot;intervention&quot;: 2,
+        &quot;rupture&quot;: 1
+      },
+      &quot;score&quot;: 5
+    },
+    {
+      &quot;id&quot;: &quot;small_public_commitment&quot;,
+      &quot;name&quot;: &quot;Small Public Commitment&quot;,
+      &quot;description&quot;: &quot;A low-risk public experiment tests whether the person can act before feeling fully ready.&quot;,
+      &quot;signals&quot;: [
+        &quot;AI tool usage&quot;,
+        &quot;writing&quot;,
+        &quot;product thinking&quot;,
+        &quot;new opportunity&quot;
+      ],
+      &quot;likely_age_window&quot;: &quot;late 20s to mid 30s&quot;,
+      &quot;tests&quot;: [
+        &quot;observer&quot;,
+        &quot;controller&quot;,
+        &quot;prover&quot;
+      ],
+      &quot;branch_effect&quot;: {
+        &quot;intervention&quot;: 3
+      },
+      &quot;score&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;relationship_truth_moment&quot;,
+      &quot;name&quot;: &quot;Relationship Truth Moment&quot;,
+      &quot;description&quot;: &quot;A relationship reveals whether the person can express discomfort before disappearing.&quot;,
+      &quot;signals&quot;: [
+        &quot;friend feedback&quot;,
+        &quot;relationship&quot;,
+        &quot;fine&quot;,
+        &quot;withdraw&quot;
+      ],
+      &quot;likely_age_window&quot;: &quot;any&quot;,
+      &quot;tests&quot;: [
+        &quot;pleaser&quot;,
+        &quot;escaper&quot;,
+        &quot;observer&quot;
+      ],
+      &quot;branch_effect&quot;: {
+        &quot;intervention&quot;: 1,
+        &quot;rupture&quot;: 2
+      },
+      &quot;score&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;identity_cost_moment&quot;,
+      &quot;name&quot;: &quot;Identity Cost Moment&quot;,
+      &quot;description&quot;: &quot;A choice requires losing an old identity before the new identity is socially confirmed.&quot;,
+      &quot;signals&quot;: [
+        &quot;career change&quot;,
+        &quot;new opportunity&quot;,
+        &quot;leaving stable environment&quot;
+      ],
+      &quot;likely_age_window&quot;: &quot;early adulthood&quot;,
+      &quot;tests&quot;: [
+        &quot;prover&quot;,
+        &quot;controller&quot;,
+        &quot;escaper&quot;
+      ],
+      &quot;branch_effect&quot;: {
+        &quot;intervention&quot;: 2,
+        &quot;rupture&quot;: 1
+      },
+      &quot;score&quot;: 2
+    }
+  ]
+}</pre>
+    </details>
+  </section>
+  </main>
+
+  <footer class="shell footer">
+    见相报告 v0：用于自我观察与结构化复盘，不构成心理、医疗、法律、金融或人生决策建议。
+  </footer>
+
+  <script>
+    const progress = document.getElementById("progressBar");
+    const updateProgress = () => {
+      const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      progress.style.width = Math.min(100, Math.max(0, scrollY / max * 100)) + "%";
+    };
+    addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    document.querySelectorAll(".variable").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.getElementById("variableExplain").textContent = button.dataset.explain;
+        document.querySelectorAll(".variable").forEach((item) => item.style.borderColor = "var(--line)");
+        button.style.borderColor = "rgba(94,106,210,.62)";
+      });
+    });
+  </script>
+</body>
+</html>
