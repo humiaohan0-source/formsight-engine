@@ -1,0 +1,9 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">见相 logo option 02 - Time Lens</title>
+  <desc id="desc">A quiet circular lens with one temporal cut line.</desc>
+  <rect width="160" height="160" rx="36" fill="#0B0C0D"/>
+  <circle cx="80" cy="80" r="42" stroke="#F5F5F0" stroke-width="8"/>
+  <path d="M50 110L110 50" stroke="#F5F5F0" stroke-width="5" stroke-linecap="round" stroke-opacity=".68"/>
+  <circle cx="80" cy="80" r="8" fill="#F5F5F0"/>
+  <path d="M91 69C99 72 104 78 106 87" stroke="#AEB6C3" stroke-width="4" stroke-linecap="round"/>
+</svg>
